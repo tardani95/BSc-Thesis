@@ -1,0 +1,47 @@
+\documentclass[../main.tex]{subfiles}
+\graphicspath{{resources/}{resources/android_res}}
+ 
+\begin{document}
+
+\section{Androidos alkalmazás elkészítése}
+    \subsection{Androidról álltalában}
+        Android a világ legnépszerűbb mobil operációs rendszere. Több milliárd eszközön fut, mint például a telefonokon, órákon, táblagépeken,TV-ken, és még sok máson. 
+        Különböző alakú és méretű eszközökön egyaránt elfut, ezzel óriási flexibilitást biztosítva az alkalmazás fejlesztők számára. 
+        A nemrégiben megjelent \textit{Android Things} lehetővé teszi az okos, internetre csatlakoztatott eszközök építését, nem csak általános, hanem kereskedelmi és ipari felhasználásra is. A meglévő Android-os fejlesztői eszközökön kívül elérhetővé válik az alacsony szintű I/O könyvtárak kezelése is. 
+        
+        Azért döntöttem az Android alapú vezérlés melett, mert megbízható, biztonságos, mindezekmellett nagyon olcsó eszközökön is tökéletesen működik. 
+        
+    \subsection{Android Platform felépítése} %https://developer.android.com/guide/platform/
+        Az Android egy nyílt forráskódú, Linux alapú szoftvercsomag, amely számos eszköz és formai tényező számára készült. A ~\ref{fig:android_szoftvercsomag} .ábra mutatja a platform legfontosabb összetevőit.
+        \begin{figure}[h!]
+            \centering
+            \includegraphics[width=10cm]{android_res/android_szoftvercsomag.png}
+            \caption{Android szoftvercsomag}
+            \label{fig:android_szoftvercsomag}
+        \end{figure}
+        
+        \subsubsection{A Linux kernel}
+            Az Android platform alapja a Linux kernel. Például az Android Runtime (ART) a Linux kernelen alapszik, ami magábanrejti az olyan funkciókat, mint a szálkezelést és az alacsonyszintű memóriakezelést.
+            A Linux kernel segítségével az Android kihasználhatja a kulcsfontosságú biztonsági funkciókat, és lehetővé teszi az eszközgyártók számára, hogy egy jól ismert rendszermaghoz hardver-illesztőprogramokat fejlesszenek ki.
+            
+        \subsubsection{Hardware Abstacion Layer (HAL)}
+            A hardver absztrakciós réteg (HAL) olyan szabványos felületet, amely a hardver képességeit a magasabb szintű Java API keretrendszer számára biztosítja. A HAL több könyvtármodulból áll, amelyek mindegyike egy adott típusú hardverösszetevőhöz, például a kamerához vagy a bluetooth modulhoz, ad hozzáférést. Amikor egy API hívás érkezik egy adott hardverhez, akkor az Android rendszer betölti a megfelelő komponenshez tartozó könyvtár-modulokat.
+            
+        \subsubsection{Android Runtime (ART)}
+            Az Android 5.0-s verzióját (API-szint 21) vagy újabb verziót használó eszközök esetében minden alkalmazás saját folyamatában és az Android Runtime (ART) saját példányán fut. Az ART olyan virtuális gépek futtatására íródott, amelyek alacsony memóriájú eszközökön futtatnak DEX-fájlokat, speciálisan az Androidra tervezett bytecode formátumot, amely a minimális memóriahasználatra optimalizált. A toolchainek lefordítják a Java forrásokat DEX bytecode-ba, amelyek már futtathatóak az Android platformon.
+            
+        \subsubsection{Natív C/C++ könyvtárak}
+            
+        
+    \subsection{Android alkalmazások felépítése}
+    
+        
+    
+        
+        Felhasználói felület
+        A felhasználói felület a manapság gyakori 5.5-inch-es, 16:9-es képarányú, FullHD (1920x1080) felbontású mobiltelefonokra terveztem és valósítottam meg, de ennél nagyobb kijelzőjű tableteken is elfut az alkalmazás.
+        
+        
+%https://shop.technexion.com/pico-pi-imx7-startkit-rainbow-hat.html
+%https://developer.android.com/about/
+\end{document}
