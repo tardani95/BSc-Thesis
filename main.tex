@@ -1,31 +1,147 @@
-\documentclass{article}
-\usepackage[utf8]{inputenc}
+%------------------------------------------
+% Szakdolgozat
+% 
+% Android vezérlésű okos LED-rendszer fejlesztése
+% Tar Dániel
+%
+% Konzulens: Szakály Norbert
+%------------------------------------------
 
-\title{BSc Thesis}
-\author{tardani95 }
-\date{November 2018}
+\documentclass[12pt,a4paper]{article}
+\usepackage{misc_content/format}
 
-\usepackage{natbib}
-\usepackage{graphicx}
 
 \begin{document}
 
-\maketitle
+\pagenumbering{roman}
+\author{\myname}
+\title{Android vezérlésű okos LED-rendszer fejlesztése}
 
-\section{Introduction}
-There is a theory which states that if ever anyone discovers exactly what the Universe is for and why it is here, it will instantly disappear and be replaced by something even more bizarre and inexplicable.
-There is another theory which states that this has already happened.
+%--Szennycímoldal-----------------------------------------
+\thispagestyle{empty}
+\begin{center}
+     \MakeUppercase{\myname}\\
+     SZAKDOLGOZAT
+\end{center}
+\newpage
 
-\begin{figure}[h!]
+%--Sorozatcímoldal----------------------------------------
+\thispagestyle{empty}
+\begin{center}
+     BUDAPESTI MŰSZAKI ÉS GAZDASÁGTUDOMÁNYI EGYETEM\\
+     GÉPÉSZMÉRNÖKI KAR\\
+     MECHATRONIKA, OPTIKA ÉS GÉPÉSZETI INFORMATIKA TANSZÉK\\[1ex]
+     \resizebox{2.5cm}{!}{
+          \includegraphics{resources/mogi.png}
+     }\\[1ex]
+     SZAKDOLGOZATOK
+\end{center}
+\newpage
+
+%--Címoldal-----------------------------------------------
+\thispagestyle{empty}
+\begin{titlepage} %environment for unique titlepage design
 \centering
-\includegraphics[scale=1.7]{universe}
-\caption{The Universe}
-\label{fig:universe}
-\end{figure}
+\resizebox{4.5cm}{!}{
+  \includegraphics{resources/bme_logo_kicsi.eps}
+}\\[1ex]
+{\bf BUDAPESTI MŰSZAKI ÉS GAZDASÁGTUDOMÁNYI EGYETEM}\\
+{\bf GÉPÉSZMÉRNÖKI KAR}\\
+{\bf MECHATRONIKA, OPTIKA ÉS GÉPÉSZETI INFORMATIKA TANSZÉK}\\[3cm]
 
-\section{Conclusion}
-``I always thought something was fundamentally wrong with the universe'' \citep{adams1995hitchhiker}
+{\LARGE \scshape \myname}\\[2ex]
+{\LARGE SZAKDOLGOZAT}\\[2ex]
+{\LARGE \bf Android vezérlésű okos LED-rendszer fejlesztése}\\[2ex]
+{\itshape Development of android controlled wireless LED-lighting system}\\[5cm]
 
+\begin{tabularx}{\textwidth}{XXXX}
+Konzulens: & Témavezető: \\
+\hspace{0.75cm} \itshape asd & \hspace{0.75cm} \itshape Szakály Norbert \\
+\hspace{0.75cm} asd & \hspace{0.75cm} tanszéki mérnök \\
+\end{tabularx}\\[5.5cm]
+
+{\Large Budapest, 2018}
+\end{titlepage}
+\newpage
+
+%--Záradék és nyilatkozatok-------------------------------
+\subfile{misc_content/nyilatkozatok}
+\newpage
+
+%--Tartalomjegyzék----------------------------------------
+\thispagestyle{plain}
+\tableofcontents
+\newpage
+
+%--Előszó-------------------------------------------------
+\thispagestyle{empty}
+\subfile{sections/eloszo}
+\newpage
+
+%--Jelölések jegyzéke-------------------------------------
+\thispagestyle{plain}
+\section*{Jelölések jegyzéke}
+
+A táblázatban a többször előforduló jelölések magyar és angol nyelvű elnevezése, valamint a fizikai mennyiségek es etén annak mértékegysége található. Az egyes mennyiségek jelölése – ahol lehetséges – megegyezik hazai és a nemzetközi szak-irodalomban elfogadott jelölésekkel. A ritkán alkalmazott jelölések magyarázata első előfordulási helyüknél található.
+\newpage
+
+%--Footer-------------------------------------------------
+\thispagestyle{fancy}
+\pagenumbering{arabic}
+
+%--Bevezetés----------------------------------------------
+\thispagestyle{fancy}
+\subfile{sections/bevezetes}
+\newpage
+
+%--Irodalomkutatás----------------------------------------
+%\subfile{sections/literature}
+%\newpage
+%---------------------------------------------------------
+
+%--Tartalmi rész------------------------------------------
+    \thispagestyle{fancy}
+    \subfile{sections/1_section}
+    \subfile{sections/2_section}
+    \subfile{sections/3_section}
+    \subfile{sections/4_section}
+    \subfile{sections/5_section}
+    \newpage
+%---------------------------------------------------------
+
+%--Összefoglalás------------------------------------------
+\subfile{sections/osszefoglalas_HU}
+\newpage
+%---------------------------------------------------------
+
+%--Források-----------------------------------------------
+% \addcontentsline{toc}{section}{Források}
+% \bibliographystyle{unsrt}
+% \bibliographystyle{acm}
 \bibliographystyle{plain}
 \bibliography{references}
+\newpage
+%---------------------------------------------------------
+
+%--Angol összefoglalás------------------------------------
+\subfile{sections/osszefoglalas_EN}
+\newpage
+%---------------------------------------------------------
+
+%--Rövidítések jegyzéke-----------------------------------
+%\addcontentsline{toc}{section}{Rövidítések jegyzéke}
+% \begin{abbreviations}
+% 	\item[HRC]	\angol{Human Robot Collaboration}
+% 	\item[IoT]	\angol{Internet of Things}
+% 	\item[IoE]	\angol{Internet of Everything}
+% 	\item[TCP]	\angol{Tool Center Point}
+% 	\item[HRI]	\angol{Human-Robot Interaction}
+% \end{abbreviations}
+%---------------------------------------------------------
+
+%--Függelékek---------------------------------------------
+%\newpage
+%\appendix
+%\subfile{sections/appendix}
+%---------------------------------------------------------
 \end{document}

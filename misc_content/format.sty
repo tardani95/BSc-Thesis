@@ -1,0 +1,173 @@
+%------------------------------------------------------------------------------%
+% This file contains the style commands and configuration data for all the     %
+% included LaTeX files of my thesis.                                           %
+%                                                                              %
+% file name:     format.sty                                                    %
+% created by:    Juhasz Zoltan                                                 %
+% modified by:   Daniel Tar                                                    %
+%------------------------------------------------------------------------------%
+
+\usepackage{subfiles}
+
+
+
+\usepackage{amsmath}
+\usepackage{titling}
+
+\usepackage{pdfpages} % to include pdf
+
+\usepackage{wasysym}
+
+\usepackage{multicol}
+\usepackage{t1enc}
+
+\newcommand{\rpm}{\raisebox{.2ex}{$\scriptstyle\pm$}}
+
+
+
+%packages for using the special central europian fonts
+\usepackage{fancyhdr} % for the header on the first page
+\usepackage[magyar]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage{t1enc}
+\usepackage{geometry}
+\usepackage{makecell}
+
+\usepackage{natbib}
+
+\frenchspacing
+
+\setcounter{secnumdepth}{3}
+\setcounter{tocdepth}{3}
+
+\usepackage{textcomp}
+\usepackage{gensymb}
+\usepackage{ucs}
+
+\usepackage{bm}
+\usepackage{hhline}
+
+
+%packages for using special math symbols (The package "amsmath" makes possible
+%to use unified commands for horizontal spacing both in math and text mode).
+
+\allowdisplaybreaks
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{latexsym}
+
+\usepackage{breqn}
+
+%packages for handling graphics
+%\usepackage{graphics}
+\usepackage{graphicx}  % for the includegrapichs
+\usepackage{color}
+\usepackage{psfrag}
+\usepackage{overpic,pst-plot,pst-coil}
+
+\usepackage{url}
+\usepackage{graphicx}
+\usepackage[labelfont=bf,labelsep=colon]{caption}
+\usepackage{subcaption}
+\usepackage{listings}
+\usepackage{float}
+
+\usepackage{multicol}
+\usepackage{multirow}
+
+\usepackage{siunitx}
+%\sisetup{inter-unit-product ={}}
+
+\usepackage[hidelinks,pdftex, 
+                      pdfauthor={Gabor Knyihar},
+                      pdftitle={Multi-body modelling of wiper system mechanisms}]{hyperref}
+
+
+%define new colors
+%%\definecolor{grey}{rgb}{0.8745,0.8745,0.8745}
+
+%package that supports the array environment
+\usepackage{array}
+\usepackage{makecell}
+\usepackage{tabularx}
+\usepackage{listliketab}
+\usepackage{lipsum}
+
+%this package enables to define cites as ranges in the format [1,2-5]
+%\usepackage{rangecite}
+
+%this package provides a new table (tabular) environment that can break between pages
+\usepackage{longtable}
+
+
+\usepackage{tikz}
+
+
+\usepackage[capitalise]{cleveref}
+
+\usepackage{xcolor}
+\usepackage{framed}
+\definecolor{shadecolor}{rgb}{0.8,0.8,0.8}
+
+%this command sets the line scpacing (the space between consecutive lines)
+%to 1.5 lines, but only when the font size is 12pt.
+\renewcommand{\baselinestretch}{1.24}
+
+%the commands below define the geometry of the page and the appearance of the
+%headers, footers and page numbering on each page
+\pagestyle{headings}
+\renewcommand{\sectionmark}[1]{\markleft{\MakeUppercase{#1}}}
+\pagenumbering{arabic}
+\textwidth 155mm
+\hoffset -1in 
+\oddsidemargin 35mm
+\evensidemargin 25mm
+\voffset -1in
+\topmargin 15mm
+\headheight 5mm
+\headsep 10mm
+\textheight 240mm
+\footskip 15mm
+
+
+
+%These new and renewed commands in the first curly brackets
+%substitute the ones which are in the second curly brackets.  
+
+%\newcommand{\newCommandName}{text to insert}
+\newcommand{\myname}{Tar Dániel }
+\newcommand{\myneptun}{GUTOY7}	
+
+%The commands below define theorem-like environments and their nameing.
+\newtheorem{theorem}{Theorem}
+\newtheorem{thesis}{Thesis}
+
+%------------------------------------------------------------ addition by kng2bp
+
+% new font type
+\usepackage{palatino}
+\usepackage{titlesec}
+\usepackage{lastpage}
+\usepackage{setspace}
+
+\pagestyle{plain}
+\titleformat{\section}{\Large}{\thesection}{1em}{\MakeUppercase}
+
+
+\pagestyle{fancy}
+\titleformat{\section}{\Large}{\thesection.}{1em}{\MakeUppercase}
+\renewcommand{\sectionmark}[1]{\markright{#1}}
+
+\fancyhead[RO,LE]{\rightmark}
+\fancyhead[RE,LO]{}
+\fancyfoot[RO, LE]{\thepage/\pageref{LastPage}}
+\fancyfoot[C]{}
+\renewcommand{\headrulewidth}{1 pt}
+\renewcommand{\footrulewidth}{1 pt}
+
+%The commands below defines an abbrevation environment
+%\newcommand{\abbrlabel}[1]{\makebox[3cm][l]{\textbf{#1}\ \dotfill}}
+%\newenvironment{abbreviations}{\begin{list}{}{\renewcommand{\makelabel}{\abbrlabel}}}{\end{list}}
+
+%------------------------------------------------------------------- end of file
+
