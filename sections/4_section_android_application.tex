@@ -42,13 +42,13 @@
             
             Ha olyan alkalmazást fejlesztünk, amiben C/C++ kód van, akkor használhatjuk az Android NDK-t hogy a natív kódból közvetlenül hozzáférhessünk ezekhez a könyvtárakhoz.
             
-        \subsubsection{Java API keretrendszer}
+        \subsubsection{Java API keretrendszer //TODO}
             
             
-        \subsubsection{Rendszer alkalmazások}
+        \subsubsection{Rendszer alkalmazások //TODO}
             
         
-    \subsection{Android alkalmazások felépítése} %https://developer.android.com/guide/components/fundamentals
+    \subsection{Android alkalmazások felépítése //TODO} %https://developer.android.com/guide/components/fundamentals
         There are four different types of app components:
 
             Activities
@@ -66,6 +66,90 @@
         A felhasználói felület a manapság gyakori 5.5-inch-es, 16:9-es képarányú, FullHD (1920x1080) felbontású mobiltelefonokra terveztem és valósítottam meg, de ennél nagyobb kijelzőjű tableteken is elfut az alkalmazás.
         
         
+    \subsection{Az elkészült alkalmazás funkciói és felhasználói kézikönyv}
+        Az alkalmazás indításakor valamilyen WiFi hálózathoz csatlakozva vagyunk, akkor az
+        alapértelmezett Simple Color Picker képernyő töltődik be, amit később a beállításokban módosíthatunk kedvünk szerint. Egyébként pedig egy hibát jelző oldal, amin a csatlakozás gombra kattintva eljuthatunk a készülékünk WiFi beállítások menüjébe, és ott csatlakozhatunk a hálózatra (Ábra: ~\ref{fig:wifi_err_01},~\ref{fig:wifi_err_02},~\ref{fig:wifi_err_03}).
+        
+        %\subsubsection{Hibaelhárítás}
+             
+            \begin{figure}[h!]
+                \begin{floatrow}
+                    \ffigbox{\includegraphics[width=5cm]{android_res/screen_pictures/wifi_err_01.png}}{\caption{Koppintson a csatlakozás gombra!}\label{fig:wifi_err_01}}
+                    \ffigbox{\includegraphics[width=5cm]{android_res/screen_pictures/wifi_err_02.png}}{\caption{Majd a bekapcsolásra!}\label{fig:wifi_err_02}}
+                \end{floatrow}
+            \end{figure}
+            \begin{figure}[!h]
+                \centering
+                \includegraphics[width=5cm]{android_res/screen_pictures/wifi_err_03.png}
+                \caption{Végül válaszza ki azt a hálózatot amire csatlakoztatva van a LED sor!}
+                \label{fig:wifi_err_03}
+            \end{figure}
+        
+        \subsubsection{Led sor IP-címének a beállítása}
+            Először is szükségünk lesz a LED sor IP címére. Ezt két módon tehetjük meg:
+            
+            \begin{enumerate}
+                \item Mobiltelefonunkon a Fing nevű alkalmazással könnyedén felderíthetjük a lokális Wifi hálózaton található eszközöket IP címükkel. Innen egyszerűen másoljuk ki vagy írjuk le egy papírlapra.
+                \item A helyi hálózati routerre csatlakozott eszközök listájából
+            \end{enumerate}
+            
+            \begin{figure}[!h]
+                \includegraphics[height=7cm]{android_res/screen_pictures/ip_addr_fing}
+                \includegraphics[height=7cm]{android_res/screen_pictures/ip_addr_router}
+                \caption{LED sor IP címének felderítése Fing nevű alkalmazással és routerünk menüjéből}
+            \end{figure}
+
+            Ezek után visszalépve az alkalmazásba, átnavigálva a beállítások menüre beállíthatjuk a LED sor IP címét:
+            
+            \begin{enumerate}
+                \item Navigációs menü előhozása
+                
+                    Az alkalmazáson belül bármelyik képernyőről ezzel (Ábra:  ~\ref{fig:onMenu1},~\ref{fig:onMenu2}) a két módszerrel lehet előhozni a navigációs menüt.
+                    \begin{figure}[!h]
+                        \begin{floatrow}
+                            \ffigbox{\includegraphics[width=5cm]{android_res/screen_pictures/nav_menu_01.png}}{\caption{A menü gombra való kattintással}\label{fig:onMenu1}}
+                            \ffigbox{\includegraphics[width=5cm]{android_res/screen_pictures/nav_menu_02.png}}{\caption{˝Swipe gesture segítségével˝}\label{fig:onMenu2}}
+                        \end{floatrow}
+                    \end{figure}\\
+                    
+                \item Beállítások fül kiválasztása
+                     \begin{figure}[!h]
+                        \includegraphics[height=7cm]{android_res/screen_pictures/tap_settings_menu}
+                        \caption{Koppintson a Beállítások fülre! //TODO}
+                    \end{figure}
+                    
+                \item Helyi hálózati IP cím beállítása (Ábra: ~\ref{fig:tap_local_ip},~\ref{fig:set_local_ip})
+                    \begin{figure}[h!]
+                        \begin{floatrow}
+                            \ffigbox{\includegraphics[width=5cm]{android_res/screen_pictures/tap_local_ip.png}}{\caption{Koppintson a helyi hálózati IP cím beállításra!}\label{fig:tap_local_ip}}
+                            \ffigbox{\includegraphics[width=5cm]{android_res/screen_pictures/set_local_ip.png}}{\caption{Állítsa be az IP címet, majd koppintson
+az Ok gombra!}\label{fig:set_local_ip}}
+                        \end{floatrow}
+                    \end{figure}
+                
+            \end{enumerate}
+            
+            
+        
 %https://shop.technexion.com/pico-pi-imx7-startkit-rainbow-hat.html
 %https://developer.android.com/about/
+        \subsubsection{Simple Color Picker mód} %https://github.com/LarsWerkman/HoloColorPicker
+            Ezen a képernyőn egy külső forrásból származó Color Picker található. A csúszkák mozgatásával tudjuk kiválasztani az adot színt, majd a \textit{Szín beállítása} gomb megnyomásával állíthatjuk be a LED sor színét (Ábra ~\ref{fig:s_cp_01},~\ref{fig:s_cp_02}).
+            
+            \begin{figure}[h!]
+                \begin{floatrow}
+                    \ffigbox{\includegraphics[width=5cm]{android_res/screen_pictures/s_cp_01.png}}{\caption{A csúszkák mozgatásával változtathatjuk a megjelenítendő színt}\label{fig:s_cp_01}}
+                    \ffigbox{\includegraphics[width=5cm]{android_res/screen_pictures/s_cp_02.png}}{\caption{Szín beállítását a gombra koppintással végezhetjük el}\label{fig:s_cp_02}}
+                \end{floatrow}
+            \end{figure}\\
+            
+            A képernyőt személyre szabhatjuk a beállítások fülön lévő automata színválasztó funkció bekapcsolásával (Ábra ~\ref{fig:s_cp_03},~\ref{fig:s_cp_04}).
+            
+            \begin{figure}[h!]
+                \begin{floatrow}
+                    \ffigbox{\includegraphics[width=5cm]{android_res/screen_pictures/s_cp_03.png}}{\caption{Automatikus színválasztás funkció bekapcsolása}\label{fig:s_cp_03}}
+                    \ffigbox{\includegraphics[width=5cm]{android_res/screen_pictures/s_cp_04.png}}{\caption{Ezek után a csúszkákat mozgatva automatikusan változtatja a színt}\label{fig:s_cp_04}}
+                \end{floatrow}
+            \end{figure}
+            
 \end{document}
