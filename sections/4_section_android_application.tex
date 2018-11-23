@@ -151,5 +151,61 @@ az Ok gombra!}\label{fig:set_local_ip}}
                     \ffigbox{\includegraphics[width=5cm]{android_res/screen_pictures/s_cp_04.png}}{\caption{Ezek után a csúszkákat mozgatva automatikusan változtatja a színt}\label{fig:s_cp_04}}
                 \end{floatrow}
             \end{figure}
+        
+        \subsection{Party mód //TODO}
+            Ebben a módban a telefon mozgatásával állítható be a LED sor színe, vagyis ha táncolunk, ugrálunk akkor változik a szín. 
             
+        \subsection{Audio Visualizer //TODO}
+            //fft elméleti hátér
+            //api
+            //hogyan állítja be a színt
+        
+        \subsection{Beállítások menü}
+            Ezen a nézeten lehet testre szabni az alkalmazást.
+            
+            \subsubsection{Helyi hálózati IP cím beállítása}
+                \begin{figure}[h!]
+                    \begin{floatrow}
+                        \ffigbox{\includegraphics[width=5cm]{android_res/screen_pictures/tap_local_ip.png}}{\caption{Koppintson a helyi hálózati IP cím beállításra!}\label{fig:tap_local_ip2}}
+                        \ffigbox{\includegraphics[width=5cm]{android_res/screen_pictures/set_local_ip.png}}{\caption{Állítsa be az IP címet, majd koppintson az Ok gombra!}\label{fig:set_local_ip2}}
+                    \end{floatrow}
+                \end{figure}
+            
+            \subsubsection{Vizuális értesítők bekapcsolása}
+                Ennek funkciónak a használatához el kell fogadni a megfelelő engedélyeket, különben nem fog működni.
+                
+                Amennyiben az engedélyeket nem adjuk meg, akkor egy hiba üzenet ugrik fel (Ábra ~\ref{fig:permission_denied}).
+                \begin{figure}[h!]
+                    \centering
+                    \includegraphics[width=5cm]{android_res/screen_pictures/visual_notification_02.png}
+                    \caption{Felugró hibaüzenet}
+                    \label{fig:permission_denied}
+                \end{figure}
+                Ha mégis használni szeretnénk ezt a funkciót, akkor újra be kell állítani, majd ezt követően megadni meg az engedélyeket.
+                
+                A vizuális értesítések bekapcsolása után további két beállítás válik elérhetővé, amikkel testre lehet szabni, hogy hívás, vagy sms érkezése esetén milyen színnel villogjon a LED sor (Ábra ~\ref{fig:vis_not_01}).
+                
+                \begin{figure}[!h]
+                    \includegraphics[height=9.5cm]{android_res/screen_pictures/visual_notification_01.png}
+                    \caption{Az engedélyek elfogadása után elérhető új két beállítási lehetőség}
+                     \label{fig:vis_not_01}
+                \end{figure}
+                
+                A bejövő hívás vagy SMS szín opcióra koppintva előhozhatunk egy ablakot (Ábra \ref{fig:vis_not_03}), ahol beállíthatjuk a kívánt értesítési színt. 
+                
+                \begin{figure}[!h]
+                    \includegraphics[width=5.6cm]{android_res/screen_pictures/visual_notification_03.png}
+                    \caption{Bal oldalt a jelenlegi, jobb oldalt a beállítani kívánt szín látható, amit az Ok gomb lenyomásával ment el az alkalmazás.}
+                    \label{fig:vis_not_03}
+                \end{figure}
+            
+            \subsubsection{Automata színbeállítás a Simple Color Picker módhoz}
+                Az automata színválasztás bekapcsolása és a hatására változó Simple Color Picker mód ablak (Ábra ~\ref{fig:s_cp_05},~\ref{fig:s_cp_06}).
+                \begin{figure}[h!]
+                \begin{floatrow}
+                    \ffigbox{\includegraphics[width=5cm]{android_res/screen_pictures/s_cp_03.png}}{\caption{Automatikus színválasztás funkció bekapcsolása}\label{fig:s_cp_05}}
+                    \ffigbox{\includegraphics[width=5cm]{android_res/screen_pictures/s_cp_04.png}}{\caption{Ezek után a csúszkákat mozgatva automatikusan változtatja a színt}\label{fig:s_cp_06}}
+                \end{floatrow}
+            \end{figure}
+                
 \end{document}
