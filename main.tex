@@ -18,7 +18,8 @@
 \title{Android vezérlésű okos LED-rendszer fejlesztése}
 
 %--Szennycímoldal-----------------------------------------
-\thispagestyle{empty}
+\thispagestyle{plain}
+\pagenumbering{gobble}
 \begin{center}
      \MakeUppercase{\myname}\\
      SZAKDOLGOZAT
@@ -65,6 +66,7 @@ Konzulens: & Témavezető: \\
 \newpage
 
 %--Záradék és nyilatkozatok-------------------------------
+\pagenumbering{roman}
 \subfile{misc_content/nyilatkozatok}
 \newpage
 
@@ -74,7 +76,7 @@ Konzulens: & Témavezető: \\
 \newpage
 
 %--Előszó-------------------------------------------------
-\thispagestyle{empty}
+\thispagestyle{plain}
 \subfile{sections/eloszo}
 \newpage
 
@@ -106,22 +108,24 @@ A táblázatban a többször előforduló jelölések magyar és angol nyelvű e
     \subfile{sections/1_section_szakirodalom}
     
     % Tervezési feladat követelményeinek felállítása
-    % \subfile{sections/2_section}
+    \subfile{sections/2_section_tervezesi_kovetelmenyek}
     
     % Eszköz (elektronikai és beágyazott szoftverének) tervezése és összeállítása
-    % \subfile{sections/3_section}
+    \subfile{sections/3_section_eszkoz_tervezese_es_osszeallitasa}
     
     % Androidos alkalmazás elkészítése
     \subfile{sections/4_section_android_application}
     
     % Elkészült eszköz értékelése, költségterv számolása
-    % \subfile{sections/5_section}
+    \subfile{sections/5_section}
     \newpage
 %---------------------------------------------------------
 
+
+%\pagenumbering{gobble} % oldalszamozas kikapcsolasa
 %--Összefoglalás------------------------------------------
-\subfile{sections/osszefoglalas_HU}
-\newpage
+% \subfile{sections/osszefoglalas_HU}
+% \newpage
 %---------------------------------------------------------
 
 %--Források-----------------------------------------------
@@ -134,8 +138,8 @@ A táblázatban a többször előforduló jelölések magyar és angol nyelvű e
 %---------------------------------------------------------
 
 %--Angol összefoglalás------------------------------------
-\subfile{sections/osszefoglalas_EN}
-\newpage
+% \subfile{sections/osszefoglalas_EN}
+% \newpage
 %---------------------------------------------------------
 
 %--Rövidítések jegyzéke-----------------------------------
