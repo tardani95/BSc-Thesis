@@ -6,7 +6,7 @@
     \subsection{Elektronikai tervezés}
         Az elektronikai tervezést 3 fázisra és az utolsó fázis hibáinak kijavítására bontanám le. Az első fázis első lépései között szerepelt az Ebay-ről vásárolt eszközök tesztelése: működik-e mindegyik, programozható-e a fejlesztői lap, konfigurálható-e a Wifi modul, stb\ldots
         
-        Második lépésként megnéztem a mikrovezérlőm lábkiosztását (Abra \ref{fig:stm32f103_pinout}) és az alapján kiválasztottam melyeket fogom használni. 
+        Második lépésként megnéztem a mikrovezérlőm lábkiosztását (Ábra \ref{fig:stm32f103_pinout}) és az alapján kiválasztottam melyeket fogom használni. 
         
         % https://os.mbed.com/users/hudakz/code/STM32F103C8T6_Hello/wiki/Homepage
         \begin{figure}[h!]
@@ -46,12 +46,12 @@
         
         \begin{figure}[h!]
             \centering
-                \includegraphics[width=6cm]{resources/pcb_res/board_v01.png}
+                \includegraphics[width=6cm, angle =-90]{resources/pcb_res/board_v01.png}
             \caption{2. fázisú NYÁK-terv}
             \label{fig:board_v01}
         \end{figure}
         
-        A NYÁK-ot vasalásos technikával elkészítettem: a tervet fényes papírra lézernyomtatóval kinyomtattam, egy egyoldalas NYÁK-lapra ráhelyeztem, a tonerport vasalóval átvittem a réz felületre, a tonerral nem fedett réz részeket pedig a maratószer lemarattam, és végül acetonnal eltávolítottam, hogy a megmaradt rézfelületre lehessen forrasztani. Az így elkészült NYÁK-ot (Ábra \ref{fig:pcb_v10}) beforrasztottam és az alkatrészeket belehelyeztem. Ezzel a NYÁK-al már el lehetett kezdeni a beágyazott szoftver fejlesztését, az elektronikai rész stabilan működött.
+        A NYÁK-ot vasalásos technikával elkészítettem: a tervet fényes papírra lézernyomtatóval kinyomtattam, egy egyoldalas NYÁK-lapra ráhelyeztem, a tonerport vasalóval átvittem a réz felületre, a tonerral nem fedett réz részeket pedig a maratószer lemarattam, és végül acetonnal eltávolítottam, hogy a megmaradt rézfelületre lehessen forrasztani. Az így elkészült NYÁK-ot (Ábra \ref{fig:pcb_v01}) beforrasztottam és az alkatrészeket belehelyeztem. Ezzel a NYÁK-al már el lehetett kezdeni a beágyazott szoftver fejlesztését, az elektronikai rész stabilan működött.
         
         \begin{figure}[h!]
             \centering
@@ -60,14 +60,10 @@
             \label{fig:pcb_v01}
         \end{figure}
         
-        A 3. fázis tartalmazza DC/DC áramkör tervezését és mikrovezérlő perifériáival együtti integrálását egy nyomtatott áramköri lapra. 
+        A 3. fázis tartalmazza DC/DC áramkörök tervezését és mikrovezérlő perifériáival együtti integrálását egy nyomtatott áramköri lapra. 
         
+//TODO
         
-        
- 
- 
-        
-
 v2 ugyon ugy modulokbol - csak vasalasos technikaval keszitett - mukodik de nem szep, illetve szeretnem emgtanulni a dc/dc tervezest - kepek\
 
 v3 tervezes legyartas kinaban - kepek\\ 
