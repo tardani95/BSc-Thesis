@@ -5,11 +5,11 @@
 
 \section{Androidos alkalmazás elkészítése}
     \subsection{Androidról általában}
-        Android a világ legnépszerűbb mobil operációs rendszere. Több milliárd eszközön fut, mint például a telefonokon, órákon, táblagépeken, TV-ken, és még sok máson. 
+        Az Android a világ legnépszerűbb mobil operációs rendszere. Több milliárd eszközön fut, mint például a telefonokon, órákon, táblagépeken, TV-ken, és még sok máson. 
         Különböző alakú és méretű eszközökön egyaránt elfut, ezzel óriási flexibilitást biztosítva az alkalmazás fejlesztők számára. 
-        A nemrégiben megjelent \textit{Android Things} lehetővé teszi az okos, internetre csatlakoztatott eszközök építését, nem csak általános, hanem kereskedelmi és ipari felhasználásra is. Egy ilyen fejlesztői készletet mutat be  \ref{fig:android_things}.~Ábra. A meglévő Androidos fejlesztői eszközökön kívül elérhetővé válik az alacsony szintű I/O könyvtárak kezelése is. 
+        A nemrégiben megjelent \textit{Android Things} lehetővé teszi az okos, internetre csatlakoztatott eszközök építését, nem csak általános, hanem kereskedelmi és ipari felhasználásra is. Egy ilyen fejlesztői készletet mutat be az \ref{fig:android_things}.~ábra. A meglévő Androidos fejlesztői eszközökön kívül elérhetővé válik az alacsony szintű I/O könyvtárak kezelése is. 
         
-        Azért döntöttem az Android alapú vezérlés mellett, mert megbízható, biztonságos, mindezek mellett nagyon olcsó eszközökön is tökéletesen működik. 
+        Azért döntöttem az Android alapú vezérlés mellett, mert megbízható, biztonságos és olcsó eszközökön is tökéletesen működik. 
         
         \begin{figure}[h!] %https://shop.technexion.com/pico-pi-imx7-startkit-rainbow-hat.html
             \centering
@@ -28,17 +28,17 @@
         \end{figure}
         
         \subsubsection{A Linux kernel}
-            Az Android platform alapja a Linux kernel. Például az Android Runtime (ART) a Linux kernelen alapszik, ami magában rejti az olyan funkciókat, mint a szálkezelés és az alacsonyszintű  memóriakezelés.
+            Az Android platform alapja a Linux kernel. Többek között az Android Runtime (ART) is Linux kernelen alapszik, ami magában rejti az olyan funkciókat, mint a szálkezelés és az alacsonyszintű  memóriakezelés.
             A Linux kernel segítségével az Android kihasználhatja a kulcsfontosságú biztonsági funkciókat, és lehetővé teszi az eszközgyártók számára, hogy egy jól ismert rendszermaghoz hardver-illesztőprogramokat fejlesszenek ki.
             
         \subsubsection{Hardware Abstacion Layer (HAL)}
-             A hardver absztrakciós réteg (HAL) olyan szabványos felületet, amely a hardver képességeit a magasabb szintű Java API keretrendszer számára biztosítja. A HAL több könyvtármodulból áll,  amelyek mindegyike egy adott típusú hardverösszetevőhöz, például a kamerához vagy a bluetooth modulhoz ad hozzáférést. Amikor egy API hívás érkezik egy adott hardverhez, akkor az Android rendszer betölti a megfelelő komponenshez tartozó könyvtár-modulokat.
+             A hardver absztrakciós réteg (HAL) egy olyan szabványos felület, amely a hardver képességeit a magasabb szintű Java API keretrendszer számára biztosítja. A HAL több könyvtármodulból áll,  amelyek mindegyike egy adott típusú hardverösszetevőhöz, például a kamerához vagy a bluetooth modulhoz, ad hozzáférést. Amikor egy API hívás érkezik egy adott hardverhez, akkor az Android rendszer betölti a megfelelő komponenshez tartozó könyvtár-modulokat.
             
         \subsubsection{Android Runtime (ART)}
-            Az Android 5.0-s verzióját (API-szint 21) vagy újabb verziót használó eszközök esetében minden alkalmazás saját folyamatában és az saját példányán fut. Az ART olyan virtuális gépek futtatására íródott, amelyek alacsony memóriájú eszközökön futtatnak DEX-fájlokat, speciálisan az Androidra tervezett bytecode formátumot, amely a minimális memóriahasználatra optimalizált. A toolchainek lefordítják a Java forrásokat DEX bytecode-ba, amelyek már futtathatóak az Android platformon.
+            Az Android 5.0-s verzióját (API-szint 21) vagy újabb verziót használó eszközök esetében minden alkalmazás saját folyamatában és a saját példányán fut. Az ART olyan virtuális gépek futtatására íródott, amelyek alacsony memóriájú eszközökön futtatnak DEX-fájlokat, speciálisan az Androidra tervezett bytecode formátumot, amely a minimális memóriahasználatra lett optimalizálva. A toolchainek lefordítják a Java forrásokat DEX bytecode-ba, amelyek már futtathatóak az Android platformon.
             
         \subsubsection{Natív C/C++ könyvtárak}
-            Számos fő Android rendszer komponens és szolgáltatás, mintpéldául az ART és a HAL, amelyek natív kódokon alapuló könyvtárokon alapszanak. Az Android platform a Java keretrendszernek megadja a hozzáférést ezekhez a könyvtárakhoz. Például hozzáférhetünk az OpenGL ES-hez az Android keretrendszer Java OpenGL API-val és így 2D-s és 3D-s grafikákat készíthetünk az alkalmazásainkban.
+            Számos fő Android rendszer komponens és szolgáltatás, mint például az ART és a HAL is natív kódokon alapuló könyvtárokon alapszanak. Az Android platform a Java keretrendszernek megadja a hozzáférést ezekhez a könyvtárakhoz. Például hozzáférhetünk az OpenGL ES-hez az Android keretrendszer Java OpenGL API-val és így 2D-s és 3D-s grafikákat készíthetünk az alkalmazásainkban.
             
             Ha olyan alkalmazást fejlesztünk, amiben C/C++ kód van, akkor használhatjuk az Android NDK-t hogy a natív kódból közvetlenül hozzáférhessünk ezekhez a könyvtárakhoz.
             
@@ -63,12 +63,12 @@
     
         
         Felhasználói felület
-        A felhasználói felület a manapság gyakori 5.5-inch-es, 16:9-es képarányú, FullHD (1920x1080) felbontású mobiltelefonokra terveztem és valósítottam meg, de ennél nagyobb kijelzőjű tableteken is elfut az alkalmazás.
+        A felhasználói felületet a manapság gyakori 5.5-inch-es, 16:9-es képarányú, FullHD (1920x1080) felbontású mobiltelefonokra terveztem és valósítottam meg, de ennél nagyobb kijelzőjű tableteken is elfut az alkalmazás.
         
         
     \subsection{Az elkészült alkalmazás funkciói és felhasználói kézikönyv}
-        Az alkalmazás indításakor valamilyen WiFi hálózathoz csatlakozva vagyunk, akkor az
-        alapértelmezett Simple Color Picker képernyő töltődik be, amit később a beállításokban módosíthatunk kedvünk szerint. Egyébként pedig egy hibát jelző oldal, amin a csatlakozás gombra kattintva eljuthatunk a készülékünk WiFi beállítások menüjébe, és ott csatlakozhatunk a hálózatra (Ábra: ~\ref{fig:wifi_err_01},~\ref{fig:wifi_err_02},~\ref{fig:wifi_err_03}).
+        Az alkalmazás indításakor szükséges, hogy valamilyen WiFi hálózathoz legyen csatlakoztatva az eszköz. Ekkor az
+        alapértelmezett Simple Color Picker képernyő töltődik be, amit később a beállításokban módosíthatunk kedvünk szerint. Ha nincs WiFi hálózatra csatlakoztatva az eszköz, akkor egy hibát jelző oldal jelenik meg, amin a csatlakozás gombra kattintva eljuthatunk a készülék WiFi beállítás menüjébe, és ott csatlakozhatunk a hálózatra (\ref{fig:wifi_err_01}., \ref{fig:wifi_err_02}. és \ref{fig:wifi_err_03}. ábrák).
         
         %\subsubsection{Hibaelhárítás}
              
@@ -86,11 +86,11 @@
             \end{figure}
         
         \subsubsection{Led sor IP-címének a beállítása}
-            Először is szükségünk lesz a LED sor IP címére. Ezt két módon tehetjük meg:
+            A LED sor eredeti IP címe két módon szerezhető meg:
             
             \begin{enumerate}
-                \item Mobiltelefonunkon a Fing nevű alkalmazással könnyedén felderíthetjük a lokális Wifi hálózaton található eszközöket IP címükkel. Innen egyszerűen másoljuk ki vagy írjuk le egy papírlapra.
-                \item A helyi hálózati routerre csatlakozott eszközök listájából
+                \item Mobiltelefonunkon a Fing nevű alkalmazással könnyedén felderíthetjük a lokális Wifi hálózaton található eszközöket IP címükkel együtt, ami innen egyszerűen kimásolható.
+                \item A helyi hálózati routerre csatlakozott eszközök listájából.
             \end{enumerate}
             
             \begin{figure}[!h]
@@ -99,12 +99,12 @@
                 \caption{LED sor IP címének felderítése Fing nevű alkalmazással és routerünk menüjéből}
             \end{figure}
 
-            Ezek után visszalépve az alkalmazásba, átnavigálva a beállítások menüre beállíthatjuk a LED sor IP címét:
+            Ezek után visszalépve az alkalmazásba, átnavigálva a beállítások menüre beállítható a LED sor IP címe:
             
             \begin{enumerate}
                 \item Navigációs menü előhozása
                 
-                    Az alkalmazáson belül bármelyik képernyőről ezzel (Ábra:  ~\ref{fig:onMenu1},~\ref{fig:onMenu2}) a két módszerrel lehet előhozni a navigációs menüt.
+                    Az alkalmazáson belül bármelyik képernyőről ezzel (\ref{fig:onMenu1}. és \ref{fig:onMenu2}. ábrák) a két módszerrel lehet előhozni a navigációs menüt:
                     \begin{figure}[!h]
                         \begin{floatrow}
                             \ffigbox{\includegraphics[width=5cm]{android_res/screen_pictures/nav_menu_01.png}}{\caption{A menü gombra való kattintással}\label{fig:onMenu1}}
@@ -118,7 +118,7 @@
                         \caption{Koppintson a Beállítások fülre! //TODO}
                     \end{figure}
                     
-                \item Helyi hálózati IP cím beállítása (Ábra: ~\ref{fig:tap_local_ip},~\ref{fig:set_local_ip})
+                \item Helyi hálózati IP cím beállítása (\ref{fig:tap_local_ip}. és \ref{fig:set_local_ip}. ábrák)
                     \begin{figure}[h!]
                         \begin{floatrow}
                             \ffigbox{\includegraphics[width=5cm]{android_res/screen_pictures/tap_local_ip.png}}{\caption{Koppintson a helyi hálózati IP cím beállításra!}\label{fig:tap_local_ip}}
@@ -134,7 +134,7 @@ az Ok gombra!}\label{fig:set_local_ip}}
 %https://shop.technexion.com/pico-pi-imx7-startkit-rainbow-hat.html
 %https://developer.android.com/about/
         \subsubsection{Simple Color Picker mód} %https://github.com/LarsWerkman/HoloColorPicker
-            Ezen a képernyőn egy külső forrásból származó Color Picker található. A csúszkák mozgatásával tudjuk kiválasztani az adot színt, majd a \textit{Szín beállítása} gomb megnyomásával állíthatjuk be a LED sor színét (Ábra ~\ref{fig:s_cp_01},~\ref{fig:s_cp_02}).
+            Ezen a képernyőn egy külső forrásból származó Color Picker található. A csúszkák mozgatásával tudjuk kiválasztani az adott színt, majd a \textit{Szín beállítása} gomb megnyomásával állíthatjuk be a LED sor színét (\ref{fig:s_cp_01}. és \ref{fig:s_cp_02}. ábrák).
             
             \begin{figure}[h!]
                 \begin{floatrow}
@@ -143,7 +143,7 @@ az Ok gombra!}\label{fig:set_local_ip}}
                 \end{floatrow}
             \end{figure}\\
             
-            A képernyőt személyre szabhatjuk a beállítások fülön lévő automata színválasztó funkció bekapcsolásával (Ábra ~\ref{fig:s_cp_03},~\ref{fig:s_cp_04}).
+            A képernyőt személyre szabhatjuk a beállítások fülön lévő automata színválasztó funkció bekapcsolásával (\ref{fig:s_cp_03}. és \ref{fig:s_cp_04}. ábrák).
             
             \begin{figure}[h!]
                 \begin{floatrow}
@@ -153,7 +153,7 @@ az Ok gombra!}\label{fig:set_local_ip}}
             \end{figure}
         
         \subsection{Party mód //TODO}
-            Ebben a módban a telefon mozgatásával állítható be a LED sor színe, vagyis ha táncolunk, ugrálunk akkor változik a szín. 
+            Ebben a módban a telefon mozgatásával állítható be a LED sor színe, vagyis ha táncolunk vagy ugrálunk akkor változik a szín. 
             
         \subsection{Audio Visualizer //TODO}
             //fft elméleti hátér
@@ -174,7 +174,7 @@ az Ok gombra!}\label{fig:set_local_ip}}
             \subsubsection{Vizuális értesítők bekapcsolása}
                 Ennek funkciónak a használatához el kell fogadni a megfelelő engedélyeket, különben nem fog működni.
                 
-                Amennyiben az engedélyeket nem adjuk meg, akkor egy hiba üzenet ugrik fel (Ábra ~\ref{fig:permission_denied}).
+                Amennyiben az engedélyeket nem adjuk meg, egy hiba üzenet ugrik fel (\ref{fig:permission_denied}. ábra).
                 \begin{figure}[h!]
                     \centering
                     \includegraphics[width=5cm]{android_res/screen_pictures/visual_notification_02.png}
@@ -183,7 +183,7 @@ az Ok gombra!}\label{fig:set_local_ip}}
                 \end{figure}
                 Ha mégis használni szeretnénk ezt a funkciót, akkor újra be kell állítani, majd ezt követően megadni meg az engedélyeket.
                 
-                A vizuális értesítések bekapcsolása után további két beállítás válik elérhetővé, amikkel testre lehet szabni, hogy hívás, vagy sms érkezése esetén milyen színnel villogjon a LED sor (Ábra ~\ref{fig:vis_not_01}).
+                A vizuális értesítések bekapcsolása után további két beállítás válik elérhetővé, amikkel testre lehet szabni, hogy hívás, vagy sms érkezése esetén milyen színnel villogjon a LED sor (~\ref{fig:vis_not_01}. ábra).
                 
                 \begin{figure}[!h]
                     \includegraphics[height=9.5cm]{android_res/screen_pictures/visual_notification_01.png}
@@ -191,7 +191,7 @@ az Ok gombra!}\label{fig:set_local_ip}}
                      \label{fig:vis_not_01}
                 \end{figure}
                 
-                A bejövő hívás vagy SMS szín opcióra koppintva előhozhatunk egy ablakot (Ábra \ref{fig:vis_not_03}), ahol beállíthatjuk a kívánt értesítési színt. 
+                A bejövő hívás vagy SMS szín opcióra koppintva előhozhatunk egy ablakot (\ref{fig:vis_not_03}. ábra), ahol beállíthatjuk a kívánt értesítési színt. 
                 
                 \begin{figure}[!h]
                     \includegraphics[width=5.6cm]{android_res/screen_pictures/visual_notification_03.png}
@@ -200,7 +200,7 @@ az Ok gombra!}\label{fig:set_local_ip}}
                 \end{figure}
             
             \subsubsection{Automata színbeállítás a Simple Color Picker módhoz}
-                Az automata színválasztás bekapcsolása és a hatására változó Simple Color Picker mód ablak (Ábra ~\ref{fig:s_cp_05},~\ref{fig:s_cp_06}).
+                Az automata színválasztás bekapcsolása és a hatására változó Simple Color Picker mód ablak (~\ref{fig:s_cp_05}. és ~\ref{fig:s_cp_06}. ábrák).
                 \begin{figure}[h!]
                 \begin{floatrow}
                     \ffigbox{\includegraphics[width=5cm]{android_res/screen_pictures/s_cp_03.png}}{\caption{Automatikus színválasztás funkció bekapcsolása}\label{fig:s_cp_05}}
