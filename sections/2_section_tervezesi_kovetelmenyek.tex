@@ -1,4 +1,5 @@
 \documentclass[../main.tex]{subfiles}
+\graphicspath{{resources/}{resources/pcb_res}}
  
 \begin{document}
 
@@ -17,7 +18,7 @@
                 \item 3.3V DC tápfelszültség
             \end{itemize}
             
-            Ennek az IC-nek az ESP01 típusú modulját (Ábra \ref{fig:esp01}) használtam. Körübelül 500 Ft-ért lehet hozzájutni az Ebay-en, és egy 2x4-es csatlakozóval lehet az áramkörünkhöz csatlakoztatni.
+            Ennek az IC-nek az ESP01 típusú modulját (\ref{fig:esp01}. Ábra) használtam. Körübelül 500 Ft-ért lehet hozzájutni az Ebay-en, és egy 2x4-es csatlakozóval lehet az áramkörünkhöz csatlakoztatni.
             
             \begin{figure}[h!]
                 \centering
@@ -30,8 +31,8 @@
             
             \begin{figure}[h!]
                 \centering
-                    \includegraphics[width=10cm]{resources/pcb_res/ledstrip.jpg}
-                \caption{Ebay-ről vásárolt LED szalag //TODO kép frissítése (dummy kép)}
+                    \includegraphics[width=7cm]{resources/pcb_res/ledstrip}
+                \caption{Ebay-ről vásárolt LED szalag}
                 \label{fig:ledstrip}
             \end{figure}
         
@@ -58,7 +59,7 @@
             
             \begin{figure}[h!] % https://hacktronics.co.in/microcontrollers/stm32f103c8t6-cortex-m3-32-bbit-risc-core-72-mhz-microcontroller-lqfp48-package
                 \centering
-                    \includegraphics[width=6cm]{resources/pcb_res/stm32f103c8t6.jpg}
+                    \includegraphics[width=4.5cm]{resources/pcb_res/stm32f103c8t6.jpg}
                 \caption{STM32F103C8T6 típusú mikrovezérlő}
                 \label{fig:stm32f103_ic}
             \end{figure}
@@ -92,4 +93,7 @@
         \end{itemize}
        
         %A vezérlő NYÁK-om táplálására egy 12V-os, szűrt, egyenáramú tápegységet választottam, mivel így a LED sort közvetlenül a NYÁK-ról meg tudom majd táplálni.   
+
+\newpage
+
 \end{document}
