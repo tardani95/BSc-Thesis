@@ -8,8 +8,8 @@
 %------------------------------------------
 
 \documentclass[12pt,a4paper]{article}
+%,twoside]{article}
 \usepackage{misc_content/format}
-
 
 \begin{document}
 
@@ -55,9 +55,9 @@
 {\itshape Development of android controlled wireless LED-lighting system}\\[5cm]
 
 \begin{tabularx}{\textwidth}{XXXX}
-Konzulens: & Témavezető: \\
-\hspace{0.75cm} \itshape asd & \hspace{0.75cm} \itshape Szakály Norbert \\
-\hspace{0.75cm} asd & \hspace{0.75cm} tanszéki mérnök \\
+~~~~~~ & Témavezető: \\
+\hspace{0.75cm} \itshape ~~~~~~ & \hspace{0.75cm} \itshape Szakály Norbert \\
+\hspace{0.75cm} ~~~~~~ & \hspace{0.75cm} tanszéki mérnök \\
 \end{tabularx}\\[5.5cm]
 
 {\Large Budapest, 2018}
@@ -65,17 +65,27 @@ Konzulens: & Témavezető: \\
 \newpage
 
 %--Záradék és nyilatkozatok-------------------------------
+\pagenumbering{roman}
+\setcounter{page}{4}
 \subfile{misc_content/nyilatkozatok}
-\setcounter{page}{6}
 \newpage
-
 %--Tartalomjegyzék----------------------------------------
-\thispagestyle{plain}
+
+% \newpage\thispagestyle{empty}
+% \addtocontents{toc}{\protect\thispagestyle{empty}}
+% \tableofcontents
+
+\newpage
+\thispagestyle{empty}
 \tableofcontents
 \newpage
 
+
+% \pagenumbering{arabic}
 %--Előszó-------------------------------------------------
+\newpage
 \thispagestyle{plain}
+% \setcounter{page}{1}
 \subfile{sections/eloszo}
 \newpage
 
@@ -84,16 +94,48 @@ Konzulens: & Témavezető: \\
 \section*{Jelölések jegyzéke}
 
 A táblázatban a többször előforduló jelölések magyar és angol nyelvű elnevezése, valamint a fizikai mennyiségek esetén annak mértékegysége található. Az egyes mennyiségek jelölése – ahol lehetséges – megegyezik hazai és a nemzetközi szakirodalomban elfogadott jelölésekkel. A ritkán alkalmazott jelölések magyarázata első előfordulási helyüknél található.
+
+% \begin{table}[h!]
+% \centering
+% \begin{tabular}{lll}
+% Rövidítések &                                    &                                     \\
+% \hline
+% Jelölés     & Megnevezés                         & Értelmezés                          \\
+% \hline
+% CAD         & Computer-aided design              &                                     \\
+% CAE         & Computer-aided Design              &                                     \\
+% CAM         &                                    &                                     \\
+% DC          & Direct current                     & Egyenáram                           \\
+% IC          & Integrated Circuit                 & Intergált áramköt                   \\
+% IDE         & Integrated development environment & Integrált fejlesztői környezet      \\
+% LDO         & Low-dropout regulator              & Alacsony feszültségesésű szabályozó \\
+% LED         & Light Emitting Diode               & fényt kibocsájtó dióda              \\
+% LDO         & Low-dropout regulator              & Alacsony feszültségesésű szabályozó \\
+% LDO         & Low-dropout regulator              & Alacsony feszültségesésű szabályozó \\
+% LDO         & Low-dropout regulator              & Alacsony feszültségesésű szabályozó \\
+% LDO         & Low-dropout regulator              & Alacsony feszültségesésű szabályozó \\
+% LDO         & Low-dropout regulator              & Alacsony feszültségesésű szabályozó \\
+% LDO         & Low-dropout regulator              & Alacsony feszültségesésű szabályozó \\
+% LDO         & Low-dropout regulator              & Alacsony feszültségesésű szabályozó \\
+% LDO         & Low-dropout regulator              & Alacsony feszültségesésű szabályozó \\
+% LDO         & Low-dropout regulator              & Alacsony feszültségesésű szabályozó \\
+% LDO         & Low-dropout regulator              & Alacsony feszültségesésű szabályozó
+% \end{tabular}
+% \end{table}
+
 %Ennyit találtam most:
-LED
-UART
-IC
-NyÁK
-DC/DC áramkör
-LDO
-LiPo akkumulátor
-ART
-DEX-fájl
+% LED
+% UART
+% IC
+% NYÁK
+% CAD
+% CAM
+% CAE
+% DC/DC áramkör
+% LDO
+% LiPo akkumulátor
+% ART
+% DEX-fájl
 
 
 \newpage
@@ -116,21 +158,27 @@ DEX-fájl
     \thispagestyle{fancy}
     
     % Okos LED-rendszerek felkutatása, forgalomban lévő eszközök áttekintése
+    \clearpage
     \subfile{sections/1_section_szakirodalom}
     
     % Tervezési feladat követelményeinek felállítása
+    \clearpage
     \subfile{sections/2_section_tervezesi_kovetelmenyek}
     
     % Eszköz (elektronikai és beágyazott szoftverének) tervezése és összeállítása
+    \clearpage
     \subfile{sections/3_section_eszkoz_tervezese_es_osszeallitasa}
     
     % Beagyazott szoftver keszitese
+    \clearpage
     \subfile{sections/4_section_beagyazott_szoftver_keszitese}
     
     % Androidos alkalmazás elkészítése
+    \clearpage
     \subfile{sections/5_section_android_application}
     
     % Elkészült eszköz értékelése, költségterv számolása
+    \clearpage
     \subfile{sections/6_section}
     \newpage
 %---------------------------------------------------------
@@ -144,16 +192,19 @@ DEX-fájl
 
 %--Források-----------------------------------------------
 % \addcontentsline{toc}{section}{Források}
-\bibliographystyle{unsrt}
+% \bibliographystyle{unsrt}
 % \bibliographystyle{acm}
 % \bibliographystyle{plain}
-\bibliography{references}
+
 \newpage
+\addcontentsline{toc}{section}{Hivatkozások}
+\bibliographystyle{unsrt}
+\bibliography{references}
 %---------------------------------------------------------
 
 %--Angol összefoglalás------------------------------------
-% \subfile{sections/osszefoglalas_EN}
-% \newpage
+ \subfile{sections/osszefoglalas_EN}
+ \newpage
 %---------------------------------------------------------
 
 %--Rövidítések jegyzéke-----------------------------------
@@ -168,8 +219,8 @@ DEX-fájl
 %---------------------------------------------------------
 
 %--Függelékek---------------------------------------------
-%\newpage
-%\appendix
-%\subfile{sections/appendix}
+\newpage
+\appendix
+\subfile{sections/appendix}
 %---------------------------------------------------------
 \end{document}

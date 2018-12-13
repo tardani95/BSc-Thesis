@@ -13,18 +13,17 @@
             \item SPL (Standard Peripherals Library) könyvtárral
         \end{itemize}
         
-        Az Arduino környezetben már rengeteg megoldás létezik az interneten az ilyen típusú LED sorok vezérlesére. Az egyiket kiválasztva, letöltve és kisebb módosításokat végezve a programkódon a Wifi modullal való kommunikáció is megoldható. Ez a módszer már elsőre is jól hangzik, de projekt célja nem a gyors működésre bírás, hanem a háttérben futó folyamatok megértése, és az Arduino-s megoldás pont ezt rejti el. Hasonló megoldást kínál az ST gyártó a HAL könyvtárakkal. A már használt STM32CubeMX programban a megfelelő IDE-be (Integrated Development Environment - integrált fejlesztői környezet) lehet generálni majdnem kész projekteket. Egy pár kattintással be lehetne állítani az órajel konfigurációt, az I/O portok, időzítők (továbbiakban Timer), megszakítók (továbbiakban Interrupt), stb. működését életünket jelentősen megkönnyítve. Viszont, mint ahogy a neve is súgallja, hardver absztrakciós réteg, ez a megoldás is elfedi a belső működését a mikrokontrollernek. Az igényeimet végeredményül az SPL könyvtár fogja kielégíteni, ami hozzáférést ad a regiszterekhez, de emellett alapszintű függvényeket is biztosít a folyamatok kezeléséhez. //TODO ref
-        %hal spl
+        Az Arduino környezetben már rengeteg megoldás létezik az interneten az ilyen típusú LED sorok vezérlesére. Az egyiket kiválasztva, letöltve és kisebb módosításokat végezve a programkódon a Wifi modullal való kommunikáció is megoldható. Ez a módszer már elsőre is jól hangzik, de projekt célja nem a gyors működésre bírás, hanem a háttérben futó folyamatok megértése, és az Arduino-s megoldás pont ezt rejti el. Hasonló megoldást kínál az ST gyártó a HAL könyvtárakkal. A már használt STM32CubeMX programban a megfelelő IDE-be (Integrated Development Environment - integrált fejlesztői környezet) lehet generálni majdnem kész projekteket. Egy pár kattintással be lehetne állítani az órajel konfigurációt, az I/O portok, időzítők (továbbiakban Timer), megszakítók (továbbiakban Interrupt), stb. működését életünket jelentősen megkönnyítve. Viszont, mint ahogy a neve is sugallja, hardver absztrakciós réteg, ez a megoldás is elfedi a belső működését a mikrokontrollernek. Az igényeimet végeredményül az SPL könyvtár fogja kielégíteni, ami hozzáférést ad a regiszterekhez, de emellett alapszintű függvényeket is biztosít a folyamatok kezeléséhez. \cite{hal_spl1}\cite{hal_spl2}
         %https://www.purplealienplanet.com/node/61
         %https://electronics.stackexchange.com/questions/225568/stm32f4-and-hal
         
-        A perifériakezelést mindkét esetben DMA-val (direkt memória hozzáférés) valósítottam meg, hogy a processzor ez idő alatt mással tudjon foglalkozni. Az egyes részelemeket az átláthatóság kedvéért igyekeztem külön könyvtárakba csoportosítani, illetve az extra moduloknak további alkönyvtárakat létrehozni. 
+        A perifériakezelést mindkét esetben DMA-val (Direct Memory Acces - direkt memória hozzáférés) valósítottam meg, hogy a processzor ez idő alatt mással tudjon foglalkozni. Az egyes részelemeket az átláthatóság kedvéért igyekeztem külön könyvtárakba csoportosítani, illetve az extra moduloknak további alkönyvtárakat létrehozni. 
         
-        Az adott lábak, periféria, órajelek engedélyezésénél nagy segítségemre volt az adatlapban megtalálható mikrokontroller blokkvázlata (\ref{fig:stm32f103xx_block_diagram}. Ábra). A diagramm megmutatja, hogy melyik buszt, illetve mikor minek az órajeleit kell engedélyezni. Például, ha a SPI1-t szeretném használni, akkor nem csak SPI1 vezérlő számára kell biztosítani a működéshez szükséges órajelet, hanem az APB2 (Advanced Peripheral Bus 2) részére is engedélyezni kell.
+        Az adott lábak, periféria, órajelek engedélyezésénél nagy segítségemre volt az adatlapban megtalálható mikrokontroller blokkvázlata (\ref{fig:stm32f103xx_block_diagram}. ábra). A diagramm megmutatja, hogy melyik buszt, illetve mikor minek az órajeleit kell engedélyezni. Például, ha a SPI1-t szeretném használni, akkor nem csak SPI1 vezérlő számára kell biztosítani a működéshez szükséges órajelet, hanem az APB2 (Advanced Peripheral Bus 2) részére is engedélyezni kell.
         \begin{figure}[h!]
             \centering
                 \includegraphics[width=10cm]{resources/mbed_res/stm32f103xx_block_diagram.png}
-                \caption{STMF103XX blokk diagrammja}
+                \caption{STMF103XX blokk diagrammja\cite{ds_stm32}}
                 \label{fig:stm32f103xx_block_diagram}
         \end{figure}
         
@@ -41,7 +40,7 @@
     \subsection{STM32F103C8T6 mikrokontroller inicializálása}
         A mikrokontroller programozására és debuggolására az ST tulajdonában lévő, ingyenesen elérhető, cross platform Atollic TrueStudio-t használtam. Az IDE Eclipse alapú és rengeteg beágyazott szoftver fejlesztésében segítő eszközzel van kiegészítve. Az STM32CubeMX programban létrehozott projektünket egy az egybe lehet exportálni az IDE-be, persze ilyenkor HAL könyvtárakat használ a projekt.
         Új projekt készítésékor a régi mikrokontrollerekhez, viszont az SPL-t is lehet használni. A mikrokontroller és a debugger fajtája (JTAG/SWD), és még egy pár opció beállítása után egy azonnal fordítható kódot generál.
-        A projektet lebuildelve és felflashelve a mikrokontrollerre, az a main.c állonmányt fogja futtatni, illetve az \textit{main()} függvény a program belépési pontja.
+        A projektet lebuildelve és felflashelve a mikrokontrollerre, az a main.c állományt fogja futtatni, illetve a \textit{main()} függvény a program belépési pontja.
         
         \begin{figure}[h!]
             \centering
@@ -50,21 +49,19 @@
                 \label{fig:ps_main_init}
         \end{figure}
         
-        A \textit{main()} függvény első soraiban (\ref{fig:ps_main_init}. Ábra) kell beállítani kívánt működési órajelet. Ezt a SPL egyik könyvtárában lévő \textit{SystemInit()} nevű függvény végzi el. A függvény alapértelmezett beállítása a 72MHz-es órajel, pont amit én is be akarok állítani. A következő sorokban a DEBUG szó definiálására lefutó \textit{InitDBG()} függvény (//TODO ref vass peter -github). Ebben a függvényben beállításra került, hogyha debuggolásnál megállítjuk a CPU futását, akkor a Timer-ek is megálljanak. Az inicializálást az \textit{InitSysTick()} függvény zárja, amiben be lett állítva hogy a \textit{SysTick_Handler()} interrupt kezelő függvény mikor hívódjon meg. Ez a függvényre épülnek a \textit{util} könyvtárban megtalálható primitív \textit{Delay..()} függvények, és a mikrokontroller helyes működését visszajelző LED villogtatásának.
+        A \textit{main()} függvény első soraiban (\ref{fig:ps_main_init}. ábra) kell beállítani a kívánt működési órajelet. Ezt a SPL egyik könyvtárában lévő \textit{SystemInit()} nevű függvény végzi el. A függvény alapértelmezett beállítása a 72MHz-es órajel, pont amit én is be akarok állítani. A következő sorokban a DEBUG szó definiálására lefutó \textit{InitDBG()} függvény \cite{peter_vass}. Ebben a függvényben beállításra került, hogyha debuggolásnál megállítjuk a CPU futását, akkor a Timer-ek is megálljanak. Az inicializálást az \textit{InitSysTick()} függvény zárja, amiben be lett állítva hogy a \textit{SysTick_Handler()} interrupt kezelő függvény mikor hívódjon meg. Erre a függvényre épülnek a \textit{util} könyvtárban megtalálható primitív \textit{Delay..()} függvények, és a mikrokontroller helyes működését visszajelző LED villogtatások.
        
     \subsection{LED sorral való kommunikáció}
      %   \subsubsection{LED sorral való kommunikáció}
-        //TODO ref ws2811 datasheet
-        Egy LED szalagot egy darab, egy irányú jelcsatornán lehet vezérelni. Ezen a vezetéken kivezérelt megfelelő frekvenciájú PWM (Pulse Width Modulation - impulzus szélesség moduláció) jel kitöltési tényezőjének változtatásával lehet a WS2811-es IC számára a megfelelő bitkombinációt elküldeni. 400kHz-es üzemmódban a '0'-s bithez egy 0,5\micro s ideig magas, és 2,0\micro s ideig alacsony, azaz 20\%-os kitöltési tényezőjű PWM ciklus felel meg. Az '1'-s bithez pedig egy 1,2\micro s ideig magas, és 1,3\micro s ideig alacsony, azaz 48\%-os kitöltési tényezőjű PWM ciklus felel meg. Egy IC számára egy RGB kódnak megfelelő 24bit szélességű adatot (24 darab PWM ciklus) kell elküldeni, 8-8-8 bites felbontással. Ezen felül érkező biteket továbbítja a következő - vele sorba kapcsolt - IC-nek. Az IC-k a kimenetére kötött LED-eken akkor fog megjelleni az elküldött szín, mikor egy reset jel érkezik. A reset jel egy 50\micro s-nál hosszab alacsony feszültség szint. A 800kHz-es üzemmódban az idők a reset jel kivételével a felére csökkennek. 
-        Az általam vásárolt LED sorokon 50 darab ilyen WS2811-es IC található, IC-ként 3 darab RGB LED-del. Ezeket a LED-hármasokat neveztem el ledgroup-oknak (LED csoportoknak), mert ezeknek a színeit lehet külön-külön változtatni. 
+        Egy LED szalagot egy darab, egy irányú jelcsatornán lehet vezérelni. Ezen a vezetéken kivezérelt megfelelő frekvenciájú PWM (Pulse Width Modulation - impulzus szélesség moduláció) jel kitöltési tényezőjének változtatásával lehet a WS2811-es IC számára a megfelelő bitkombinációt elküldeni. 400kHz-es üzemmódban a '0'-s bithez egy 0,5\micro s ideig magas, és 2,0\micro s ideig alacsony, azaz 20\%-os kitöltési tényezőjű PWM ciklus felel meg. Az '1'-s bithez pedig egy 1,2\micro s ideig magas, és 1,3\micro s ideig alacsony, azaz 48\%-os kitöltési tényezőjű PWM ciklus felel meg. Egy IC számára egy RGB kódnak megfelelő 24bit szélességű adatot (24 darab PWM ciklus) kell elküldeni, 8-8-8 bites felbontással. Ezen felül érkező biteket továbbítja a következő - vele sorba kapcsolt - IC-nek. Az IC-k a kimenetére kötött LED-eken akkor fog megjelleni az elküldött szín, mikor egy reset jel érkezik. A reset jel egy 50\micro s-nál hosszab alacsony feszültség szint. A 800kHz-es üzemmódban az idők a reset jel kivételével a felére csökkennek. Az általam vásárolt LED sorokon 50 darab ilyen WS2811-es IC található, IC-ként 3 darab RGB LED-del. Ezeket a LED-hármasokat neveztem el ledgroup-oknak (LED csoportoknak), mert ezeknek a színeit lehet külön-külön változtatni. \cite{ds_ws2811}
         
         \subsubsection{PWM jel létrehozása a kimeneteken}
             A LED sor vezérlésére a hármas Timer (továbbiakban TIM3) 2,3,4-es csatornáit (továbiakkban CHx, ahol az 'x' jelenti az adott csatorna számát) használtam, mert ezek felelnek meg a kapcsolásban bekötött lábaknak (PA7,PB0,PB1). Első körben engedélyezni kell az I/O portokra (esetemben A és B portokra) és az AFIO-ra (alternate function I/O) az órajelet. Az utóbbira azért van szükség, mert a TIM3 ezen keresztül fogja vezérelni az mikrovezélrő lábait. A I/O portokon beállítottam a megfelelő lábakat kimenetre és hogy milyen sebességgel fognak maximálisan operálni.
             
             
-            Második lépés a TIM3 működési frekvenciájának beállítása. A TIM3 az APB1-en található (\ref{fig:stm32f103xx_block_diagram}. ábra), de az összes többi periférával ellentétben az timerek megkapják a 72MHz-es órajelet (\ref{fig:tim3_clk_src}. ábra). Alapvetően a 800kHz-es módra konfiguráltam fel a TIM3-at, mert az előosztó (prescaler) megváltoztatásával 400kHzes működési mód érhető el.
-            A legnagyobb felbontás elérése érdekében egyre választottam az órajelosztást, ami azt jelenti hogy 72MHz-en fog üzemelni a timer. Ezen a frekvencián 90 órajelciklus fel meg 1,25\micros-nak, a 800kHz-es jel periódusidejének. A TIM3 tehát 0-tól fog számolni 89-ig, ahol nullázódik és kezdi újra a számlálást. Azt hogy ez idő alatt mit csinál, az Output Compare mód beállításával lehet megadni.
-            Az előosztót (prescaler) a LED sor könyvtárában való sebesség módok definiálásával változtathatóvá tettem (\ref{fig:ws2811_timing_values}. ábra). Eredményül a lassabb 400kHz mód esetén felére csökkenti a TIM3 működési frekvenciáját, ezzel a kívánt működést okozva.
+            Második lépés a TIM3 működési frekvenciájának beállítása. A TIM3 az APB1-en található (\ref{fig:stm32f103xx_block_diagram}. ábra), de az összes többi periférával ellentétben a timerek megkapják a 72MHz-es órajelet (\ref{fig:tim3_clk_src}. ábra). Alapvetően a 800kHz-es módra konfiguráltam fel a TIM3-at, mert az előosztó (prescaler) megváltoztatásával 400kHzes működési mód érhető el.
+            A legnagyobb felbontás elérése érdekében egyre választottam az órajelosztást, ami azt jelenti hogy 72MHz-en fog üzemelni a timer. Ezen a frekvencián 90 órajelciklus fel meg 1,25\micro s-nak, a 800kHz-es jel periódusidejének. A TIM3 tehát 0-tól fog számolni 89-ig, ahol nullázódik és kezdi újra a számlálást. Azt hogy ez idő alatt mit csinál, az Output Compare mód beállításával lehet megadni.
+            Az előosztót (prescaler) a LED sor könyvtárában való sebesség módok definiálásával változtathatóvá tettem (\ref{fig:ws2811_timing_values}. ábra). Eredményül a lassabb 400kHz-es mód esetén felére csökkenti a TIM3 működési frekvenciáját, ezzel a kívánt működést létrehozva.
             
             \begin{figure}[h!]
                 \centering
@@ -83,51 +80,50 @@
             \end{figure}
          
         \subsubsection{PWM vezérlése DMA segítségével}  
-             A beágyazott szoftverben egy tömben tárolom, hogy melyik LED sornak melyik ledgroupján milyen színt kell megjelenítsek. Ez a tömböt fogja majd később frissíteni a Wifi modulról érkező adat. Viszont a LED sor számára az egyes biteket, illetve a biteknek megfelelő kitöltési tényezőjű (CC értékű) PWM-et kell küldeni. Egy ledgroupnak 3 bájton tárolom a színét, viszont hogy ennek a három bájtnak, azaz 24 bitnek, a kitöltési tényezőjét eltároljam, 24 bájtra lenne szükségem (43, és 18 értékeket a legkisebb egységen, egy bájton lehet eltárolni). Szóval egy ledgroup kitöltési tényezőjének eltárolásához nyolcszor annyi hely szükséges, mint csak a színadataihoz. Ha 6 ledsort csatlakoztatnék az eszközömre akkor ($ 6[ledstrip]\cdot 50 [\frac{ledgroup}{ledstrip}] \cdot 3 [\frac{byte}{ledgroup}] = 900 [byte]$) 900 bájtot, és a kitöltési tényezőket még 7200 bájtot kellene eltároljak. Összesen tehát körülbelül 7,9 kilobájtot ($ (900+7200)/1024 \approx 7,9[kilobyte]$), ami a 64 kilobájtos tárhelynél már egeszén drasztikus. Ezért ezt valamilyen bufferezési technikával kell megoldanom.
+             A beágyazott szoftverben egy tömben tárolom, hogy melyik LED sornak melyik ledgroupján milyen színt kell megjelenítsek. Ez a tömböt fogja majd később frissíteni a Wifi modulról érkező adat. Viszont a LED sor számára az egyes biteket, illetve a biteknek megfelelő kitöltési tényezőjű (CC értékű) PWM-et kell küldeni. Egy ledgroupnak 3 bájton tárolom a színét, viszont hogy ennek a három bájtnak, azaz 24 bitnek, a kitöltési tényezőjét eltároljam, 24 bájtra lenne szükségem (43, és 18 értékeket a legkisebb egységen, egy bájton lehet eltárolni). Szóval egy ledgroup kitöltési tényezőjének eltárolásához nyolcszor annyi hely szükséges, mint csak a színadataihoz. Ha 6 ledsort csatlakoztatnék az eszközömre akkor ($ 6[ledstrip]\cdot 50 [\frac{ledgroup}{ledstrip}] \cdot 3 [\frac{byte}{ledgroup}] = 900 [byte]$) 900 bájtot és a kitöltési tényezőket, vagyis még 7200 bájtot kellene eltároljak. Összesen tehát körülbelül 7,9 kilobájtot ($ (900+7200)/1024 \approx 7,9[kilobyte]$), ami a 64 kilobájtos tárhelynél már egeszén drasztikus. Ezért ezt valamilyen bufferezési technikával kell megoldanom.
              
-             A reference manual timer regiszterei szekciót olvasva találtam rá az úgynevezett DMA Burst funkcióra. Ez a funkció lehetővé teszi, hogy a memóriában lévő tömbből az adatokat, ne csak egy, hanem több timer regiszterbe írja. A működés így a következőképpen készítettem el: az adatok írását a CH2 CC regiszterével kezdi és a CH4 regiszterrel fejezi be. 6 elemű adattömb esetén az 0-s indexú elem kerülne a CH2 CC regiszterébe, 1-es a CH3, 2-es a CH4, 4-es újra a CH2 CC regiszterébe, és így tovább. Tehát a buffer szerkezetemnek úgy kell kinéznie, hogy a párhuzamosan kapcsolt LED sorok azonos indexű bitjei legyen egymás után sorba rendezve.
+             A reference manual \cite{rm0008} timer regiszterei szekciót olvasva találtam rá az úgynevezett DMA Burst funkcióra. Ez a funkció lehetővé teszi, hogy a memóriában lévő tömbből az adatokat, ne csak egy, hanem több timer regiszterbe írja. A működés így a következőképpen készítettem el: az adatok írását a CH2 CC regiszterével kezdi és a CH4 CC regiszterével fejezi be. 6 elemű adattömb esetén az 0-s indexű elem kerülne a CH2 CC regiszterébe, 1-es a CH3, 2-es a CH4, 4-es újra a CH2 CC regiszterébe, és így tovább. Tehát a buffer szerkezetemnek úgy kell kinéznie, hogy a párhuzamosan kapcsolt LED sorok azonos indexű bitjei legyenek egymás után sorba rendezve.
              
              A DMA ciklikus üzemmódban is beállítható, így a memóriában található adatokon iterál végig, újból és újból. A DMA buffer méretét és a ledgroupok számának ismeretében meghatároztam hogy hány ciklus után kell lekapcsolni a DMA-t. Így már csak a buffer megfelelő frissítését kellett megoldanom a működéshez. A DMA vezérlőn be lehet kapcsolni a HT (half transfer - fél transzfer) és FT (full transzfer - teljes transzfer) interruptokat, amik jelzik, hogy a vezérlő végzett a fél, illetve egész buffer kiküldésével. Amikor megjelenik a HT interrrupt akkor fogom a buffer első felét frissíteni a következő adatokkal, a FT interruptnál pedig a buffer második felét.
              
              Utolsó lépésként engedélyeztem a DMA megszakításkezelő függvényeit, és beállítottam a prioritásukat.
              
-             A LED sort frissítése tehát a következő pontokra bomlik le, amit a \textit{refreshLedStrip()} függvényhívással (\ref{fig:ws2811_refreshledstrip}. ábra) indíthatunk el:
+             A LED sor frissítése tehát a következő pontokra bomlik le, amit a \textit{refreshLedStrip()} függvényhívással (\ref{fig:ws2811_refreshledstrip}. ábra) indíthatunk el:
             \begin{enumerate}
-                \item A ledgroup színeinek alapján a kitöltési tényezők meghatározása, és a bufferbe való betöltése
+                \item A ledgroup színei alapján a kitöltési tényezők meghatározása, és a bufferbe való betöltése
                 \item A DMA vezérlő állapotának resetelése, buffer méretének a beállítása
                 \item TIM3 elindítása
                 \item A buffer frissítése a DMA megszakításkezelőjében
-                \item Az adatok kiküldése után a TIM3 leállítása és várakozás legalább a 50\micros resetjel teljesüléséig
+                \item Az adatok kiküldése után a TIM3 leállítása és várakozás legalább a 50\micro s resetjel teljesüléséig
             \end{enumerate}
             
             \begin{figure}[h!]
                 \centering
-                    \includegraphics[width=12cm]{mbed_res/ws2811_refreshLedStrip}
+                    \includegraphics[width=14cm]{mbed_res/ws2811_refreshLedStrip}
                 \caption{Képernyőkép \textit{refreshLedStrip()} függvényről}
                 \label{fig:ws2811_refreshledstrip}
             \end{figure}
             
     \subsection{ESP8266-os Wifi Modul}
         \subsubsection{A Wifi modul bekonfigurálása}
-            %AT instruction set
-            A Wifi modullal való beszélgetés előtt, fel kell konfigurálnom. Be kell állítani az üzemmódját, hogy milyen hálózatra csatlakozzon automatikusan, avagy sem, illetve az UART beállításait. Az eszközön egy AT firmware fut és UART-on keresztül küldhetünk neki AT parancsokat. Az AT parancsok leírása a gyártó által kiadott ESP8266 AT Instruction Set című dokumentumban található (//TODO ref).
+            A Wifi modullal való beszélgetés előtt, fel kell konfigurálnom. Be kell állítani az üzemmódját, hogy milyen hálózatra csatlakozzon automatikusan, avagy sem, illetve az UART beállításait. Az eszközön egy AT firmware fut és UART-on keresztül küldhetünk neki AT parancsokat. Az AT parancsok leírása a gyártó által kiadott ESP8266 AT Instruction Set című dokumentumban található \cite{esp_at_inst_set}.
             
             A modul számára egy USB-Serial átalakítóval küldtem a megfelelő parancsokat. Az eszköz alapértelmezett UART beállításait használtam: 115200 Baudrate, 8 bit szóhosszúság és 1 stop bit. A kommunikáció sebességét nem lehet és felesleges növelnem, mert a LED sor frissítéséhez jóval több idő kell, mint amit az UART-on keresztül érkező csomag fogadása igénybe vesz.
             
-            Az áram körömet úgy terveztem meg, hogy a cserélgetni lehessen a Wifi modulokat, a környezet megváltozásának megfelelően. Három modult konfiguráltam fel különbözőképpen: az egyiket a kollégiumi Wifi hálózatomra, a másikat az otthoni Wifi hálózatra és a harmadikat pedig a laptopom által létrehozott Hotspot hálózatra. Mindegyik AP (Acces Point - hozzáférési pont) módba, és az adott hálózatra való automatikus csatlakozára lett beállítva.
+            Az áramkörömet úgy terveztem meg, hogy cserélgetni lehessen a Wifi modulokat, a környezet megváltozásának megfelelően. Három modult konfiguráltam fel különbözőképpen: az egyiket a kollégiumi Wifi hálózatomra, a másikat az otthoni Wifi hálózatra és a harmadikat pedig a laptopom által létrehozott Hotspot hálózatra. Mindegyik AP (Access Point - hozzáférési pont) módba, és az adott hálózatra való automatikus csatlakozóra lett beállítva.
             
             A LED sorok színét a telefonos applikációban lévő színválasztással fogom vezérelni. Azért, hogy telefonon lévő változtatásokat minél gyorsabban lekövesse a rendszerem, az online számítógépes játékoknál is alkalmazott, UDP (User Datagram Protocol) protokollt választottam. Az UDP protokoll nem biztosítja a hálózaton közlekedő csomagok megérkezését, de ha a sok színváltoztatás közben kimarad egy érték, az sem probléma. A rendszer a legtöbb esetben egy eszközön (routeren) alapuló lokális hálózaton keresztül fog üzemelni, és ebben az esetben a csomagok kiesése elég valószínűtlen.
             
             A Wifi modul bekapcsolása és halózatra csatlakozása körülbelül 8 másodpercet vesz igénybe. Ezután a \textit{AT+CIPSTART="UDP","0",0,1302,2} parancs elküldésével hozható létre az UDP kapcsolat az \textit{1302}-es porton keresztül. A parancs elküldése után az eszközünk fogadja a hálózaton érkező csomagokat a következő formában: \textit{+IPD,<len>:<data>}, ahol \textit{len} az csomag hossza, és \textit{data} a csomag tartalma. A mikrokontrollert az UDP kapcsolat felállításáért felelős karaktertömb elküldésére, és az előző formátumban érkező adatok fogadására kell felkészítni. 
         
         \subsubsection{Mikrokontroller felkészítése az UART-on való kommunikálásra}
-            A folyamat hasonlóan néz ki, mint a PWM létrehozássa esetében. Engedélyeztem a lábakat tartalmazó portra és az AFIO-ra az órajelet. A TX lábat kimenetre, az RX lábat pedig bemenetre állítottam.
+            A folyamat hasonlóan néz ki, mint a PWM létrehozása esetében. Engedélyeztem a lábakat tartalmazó portra és az AFIO-ra az órajelet. A TX lábat kimenetre, az RX lábat pedig bemenetre állítottam.
             
-            A lábak felkonfigurálása után az UART periféria beállítása következett. Ugyan azokat a beállításokat alkalmaztam, mint ami a Wifi modul esetében: 115200 Baudrate, 8 bit szóhosszúság és 1 stop bit. Megint engedélyeztem a perifériának az órajelét és RX és TX módokat.  
+            A lábak felkonfigurálása után az UART periféria beállítása következett. Ugyanazokat a beállításokat alkalmaztam, mint ami a Wifi modul esetében: 115200 Baudrate, 8 bit szóhosszúság és 1 stop bit. Megint engedélyeztem a perifériának az órajelét és az RX és TX módokat (\ref{fig:uart_init}. ábra).  
             \begin{figure}[h!]
                 \centering
-                    \includegraphics[width=7cm]{mbed_res/uart_init_gpio}
-                    \includegraphics[width=7cm]{mbed_res/uart_init}
+                    \includegraphics[width=10.8cm]{mbed_res/uart_init_gpio}
+                    \includegraphics[width=10.8cm]{mbed_res/uart_init}
                 \caption{Képernyőképek az UART inicializásáról}
                 \label{fig:uart_init}
             \end{figure}
@@ -137,32 +133,32 @@
             \begin{figure}[h!]
                 \centering
                     \includegraphics[width=12cm]{mbed_res/dma_requests}
-                \caption{DMA hozzáférés csatornái //TODO ref RM}
+                \caption{DMA hozzáférés csatornái \cite{rm0008}}
                 \label{fig:dma_request}
             \end{figure}
             
-            Habár már a PWM jel generálása esetén engedélyeztem az órajelet DMA számára, itt is meg fogom tenni. Ennek az az oka, hogy a kódot igyekeztem minél modulárisabban megírni, hogy az UART és TIMER perifériák külön-külön is működőképesek legyenek. A TX-el csak egyetlen egyszer kell, egy ismert hosszúságú karaktertömböt kiküldeni, amivel létrehozzuk az UDP kapcsolatot. A DMA-nak ilyenkor a karaktertömb elemein kell végigmennie, és az UART periféria adatregiszterébe (USART1->DR) másolgatnia az adatokat. A RX-nél viszont folyamatosan kell fogadni az üzeneteket, és az UART adatregiszteréből másolgatni a fogadó adat területre. Az androidos applikációból ismert adatszerkezetű üzeneteket küldök, 5 bájtot. Ez az adat a következőképpen épül fel: az első bájt egy biztonsági funkciót tölt be, hogyha ez nem egyezik meg a mikrokontrollerbe beállított értékkel, akkor az eszközünk nem fog semmit csinálni. A második bájt a mód választó, ezzel választom ki, hogy sima színt, színpalettát, vagy animációt jelenítsek meg. A további három bájt különböző paramétereknek felel meg, például a sima szín esetében az R,G,B komponenseknek. A Wifi modul az érkező csomagot az ismert karakterekkel kiegészíti és így küldi tovább a mikrokontroller számára. Ezen információk birtokában, a DMA vezérlőn beállítottam a fogadandó karakterek számát, és a ciklikus üzemmódot, mert mindig ugyan ezt a hosszúságú adatot fogja a mikrokontroller megkapni. A DMA csatornáinak bekonfigurálása után, már csak a megszakításkezelő függvényeket kell engedélyezni és prioritásukat beállítani.
+            Habár már a PWM jel generálása esetén engedélyeztem az órajelet DMA számára, itt is meg fogom tenni. Ennek az az oka, hogy a kódot igyekeztem minél modulárisabban megírni, hogy az UART és TIMER perifériák külön-külön is működőképesek legyenek. A TX-el csak egyetlen egyszer kell, egy ismert hosszúságú karaktertömböt kiküldeni, amivel létrehozzuk az UDP kapcsolatot. A DMA-nak ilyenkor a karaktertömb elemein kell végigmennie, és az UART periféria adatregiszterébe (USART1->DR) másolgatnia az adatokat. A RX-nél viszont folyamatosan kell fogadni az üzeneteket, és az UART adatregiszteréből másolgatni a fogadó adat területre. Az androidos applikációból ismert adatszerkezetű üzeneteket küldök, 5 bájtot. Ez az adat a következőképpen épül fel: az első bájt biztonsági funkciót tölt be, hogyha ez nem egyezik meg a mikrokontrollerbe beállított értékkel, akkor az eszközünk nem fog semmit csinálni. A második bájt a mód választó, ezzel választom ki, hogy sima színt, színpalettát, vagy animációt jelenítsek meg. A további három bájt módonként különböző paramétereknek felel meg, például a sima szín esetében az R,G,B komponenseknek. A Wifi modul az érkező csomagot az ismert karakterekkel kiegészíti és így küldi tovább a mikrokontroller számára. Ezen információk birtokában, a DMA vezérlőn beállítottam a fogadandó karakterek számát, és a ciklikus üzemmódot, mert mindig ugyanezt a hosszúságú adatot fogja a mikrokontroller megkapni. A DMA csatornáinak bekonfigurálása után, már csak a megszakításkezelő függvényeket kell engedélyezni és prioritásukat beállítani.
             
     \subsection{Az ESP8266-os modulról érkező adatok és a LED sor vezérlés összekötése}
-        Az ESP8266-os inicializálása során átadásra kerül egy általam definiált \textit{callback} típusú függvénypointer (\ref{fig:callback_typedef}. ábra). A DMA RX megszakítás kezelő függvényben (\ref{fig:callback_call}. ábra), azaz ha egy csomag megérkezett, akkor a függvénypointer által mutatott függvény fog meghívásra kerülni. A meghívott függvény az \textit{OnUART_DataReceived()} (\ref{fig:callback_function}. ábra). Ebben kerül lekezelésre a csomag érterlmezése és a LED sor frissitésének elindítása. A LED sor frissítése jelenleg akkor kerül sor, ha új csomag érkezik. Ez a módszer viszont nem alkalmas animációk megjelenítése, mert ott folyamatosan változtatni kéne az értékeket.
+        Az ESP8266-os inicializálása során átadásra kerül egy általam definiált \textit{callback} típusú függvénypointer (\ref{fig:callback_typedef}. ábra). A DMA RX megszakítás kezelő függvényben (\ref{fig:callback_call}. ábra), azaz ha egy csomag megérkezett, akkor a függvénypointer által mutatott függvény fog meghívásra kerülni. A meghívott függvény az \textit{OnUART_DataReceived()} (\ref{fig:callback_function}. ábra). Ebben kerül lekezelésre a csomag értelmezése és a LED sor frissítésének elindítása. A LED sor frissítésére jelenleg akkor kerül sor, ha új csomag érkezik. Ez a módszer viszont nem alkalmas animációk megjelenítése, mert ott folyamatosan változtatni kéne az értékeket.
         
         \begin{figure}[h!]
             \centering
-                \includegraphics[width=12cm]{mbed_res/callback_typedef}
+                \includegraphics[width=11.5cm]{mbed_res/callback_typedef}
             \caption{\textit{callback} nevű függvénypointer definíciója}
             \label{fig:callback_typedef}
         \end{figure}
         
         \begin{figure}[h!]
             \centering
-                \includegraphics[width=12cm]{mbed_res/callback_dma.png}
+                \includegraphics[width=9.5cm]{mbed_res/callback_dma.png}
             \caption{A DMA megszakításkezelőjében a callback függvény hívása}
             \label{fig:callback_call}
         \end{figure}
         
         \begin{figure}[h!]
             \centering
-                \includegraphics[width=13cm]{mbed_res/callback_function}
+                \includegraphics[width=11.5cm]{mbed_res/callback_function}
             \caption{\textit{OnUART_DataReceived()} callback függvény}
             \label{fig:callback_function}
         \end{figure}

@@ -6,7 +6,8 @@
 \section{Androidos alkalmazás elkészítése}
     \subsection{Androidról általában}
         Az Android a világ legnépszerűbb mobil operációs rendszere. Több milliárd eszközön fut, mint például a telefonokon, órákon, táblagépeken, TV-ken, és még sok máson. 
-        Különböző alakú és méretű eszközökön egyaránt elfut, ezzel óriási flexibilitást biztosítva az alkalmazás fejlesztők számára. 
+        Különböző alakú és méretű eszközökön egyaránt elfut, ezzel óriási flexibilitást biztosítva az alkalmazás fejlesztők számára. \cite{android_about} 
+        
         A nemrégiben megjelent \textit{Android Things} lehetővé teszi az okos, internetre csatlakoztatott eszközök építését, nem csak általános, hanem kereskedelmi és ipari felhasználásra is. Egy ilyen fejlesztői készletet mutat be az \ref{fig:android_things}.~ábra. A meglévő Androidos fejlesztői eszközökön kívül elérhetővé válik az alacsony szintű I/O könyvtárak kezelése is. 
         
         Azért döntöttem az Android alapú vezérlés mellett, mert megbízható, biztonságos és olcsó eszközökön is tökéletesen működik. 
@@ -14,79 +15,85 @@
         \begin{figure}[h!] %https://shop.technexion.com/pico-pi-imx7-startkit-rainbow-hat.html
             \centering
             \includegraphics[height=9cm]{android_res/pico-pi-imx7-startkit.jpg}
-            \caption{PICO-PI-IMX7 Startkit}
+            \caption{PICO-PI-IMX7 Startkit\cite{android_starter_kit}}
             \label{fig:android_things}
         \end{figure}
-        
-    \subsection{Android Platform felépítése} %https://developer.android.com/guide/platform/
-        Az Android egy nyílt forráskódú, Linux alapú szoftvercsomag, amely számos eszköz és formai tényező számára készült. A ~\ref{fig:android_szoftvercsomag}. ábra mutatja a platform legfontosabb összetevőit.
-        \begin{figure}[h!]
-            \centering
-            \includegraphics[width=11cm]{android_res/android_szoftvercsomag.png}
-            \caption{Android szoftvercsomag}
-            \label{fig:android_szoftvercsomag}
-        \end{figure}
-        
-        \subsubsection{A Linux kernel}
-            Az Android platform alapja a Linux kernel. Többek között az Android Runtime (ART) is Linux kernelen alapszik, ami magában rejti az olyan funkciókat, mint a szálkezelés és az alacsonyszintű  memóriakezelés.
-            A Linux kernel segítségével az Android kihasználhatja a kulcsfontosságú biztonsági funkciókat, és lehetővé teszi az eszközgyártók számára, hogy egy jól ismert rendszermaghoz hardver-illesztőprogramokat fejlesszenek ki.
-            
-        \subsubsection{Hardware Abstacion Layer (HAL)}
-             A hardver absztrakciós réteg (HAL) egy olyan szabványos felület, amely a hardver képességeit a magasabb szintű Java API keretrendszer számára biztosítja. A HAL több könyvtármodulból áll,  amelyek mindegyike egy adott típusú hardverösszetevőhöz, például a kamerához vagy a bluetooth modulhoz, ad hozzáférést. Amikor egy API hívás érkezik egy adott hardverhez, akkor az Android rendszer betölti a megfelelő komponenshez tartozó könyvtár-modulokat.
-            
-        \subsubsection{Android Runtime (ART)}
-            Az Android 5.0-s verzióját (API-szint 21) vagy újabb verziót használó eszközök esetében minden alkalmazás saját folyamatában és a saját példányán fut. Az ART olyan virtuális gépek futtatására íródott, amelyek alacsony memóriájú eszközökön futtatnak DEX-fájlokat, speciálisan az Androidra tervezett bytecode formátumot, amely a minimális memóriahasználatra lett optimalizálva. A toolchainek lefordítják a Java forrásokat DEX bytecode-ba, amelyek már futtathatóak az Android platformon.
-            
-        \subsubsection{Natív C/C++ könyvtárak}
-            Számos fő Android rendszer komponens és szolgáltatás, mint például az ART és a HAL is natív kódokon alapuló könyvtárokon alapszanak. Az Android platform a Java keretrendszernek megadja a hozzáférést ezekhez a könyvtárakhoz. Például hozzáférhetünk az OpenGL ES-hez az Android keretrendszer Java OpenGL API-val és így 2D-s és 3D-s grafikákat készíthetünk az alkalmazásainkban.
-            
-            Ha olyan alkalmazást fejlesztünk, amiben C/C++ kód van, akkor használhatjuk az Android NDK-t hogy a natív kódból közvetlenül hozzáférhessünk ezekhez a könyvtárakhoz.
-            
-        \subsubsection{Java API keretrendszer //TODO}
-            
-            
-        \subsubsection{Rendszer alkalmazások //TODO}
-            
-        
-    \subsection{Android alkalmazások felépítése //TODO} %https://developer.android.com/guide/components/fundamentals
-        There are four different types of app components:
-
-            Activities
-            
-            Services
-            
-            Broadcast receivers
-            
-            Content providers
-
-        
     
+    \subsection{Android-os szoftverfejlesztés megismerése}
+        Az Android-os alkalmazások fejlesztéséhez elengedhetetlen a Java programozási nyelv, hiszen Java API keretrendszerre épít a platform. A platformmal először még 3. félévben egy villanykaros szabadon választható tárgy keretében találkoztam. Akkoriban még nem ismertem a Java-t, ezért ennek az elsajátosításával kezdtem el a tanulást\cite{b_java}. Az Android specifikus részek megismerésében nagyon nagy segítségemre volt a tantárgy maga, az Android Developer weboldal\cite{android_guides} és egy ismerősöm által ajánlott \textit{Android Programming: The Big Nerd Ranch Guide} című könyv\cite{b_android2}. Az alkalmazás fejlesztése során igyekeztem a tanultakon kívül a clean code elvek használatára\cite{android_clean_code}.
         
-        Felhasználói felület
-        A felhasználói felületet a manapság gyakori 5.5-inch-es, 16:9-es képarányú, FullHD (1920x1080) felbontású mobiltelefonokra terveztem és valósítottam meg, de ennél nagyobb kijelzőjű tableteken is elfut az alkalmazás.
+    % \subsection{Android Platform felépítése} %https://developer.android.com/guide/platform/
+    %     Az Android egy nyílt forráskódú, Linux alapú szoftvercsomag, amely számos eszköz és formai tényező számára készült. A ~\ref{fig:android_szoftvercsomag}. ábra mutatja a platform legfontosabb összetevőit.
+    %     \begin{figure}[h!]
+    %         \centering
+    %         \includegraphics[width=11cm]{android_res/android_szoftvercsomag.png}
+    %         \caption{Android szoftvercsomag}
+    %         \label{fig:android_szoftvercsomag}
+    %     \end{figure}
         
+    %     \subsubsection{A Linux kernel}
+    %         Az Android platform alapja a Linux kernel. Többek között az Android Runtime (ART) is Linux kernelen alapszik, ami magában rejti az olyan funkciókat, mint a szálkezelés és az alacsonyszintű  memóriakezelés.
+    %         A Linux kernel segítségével az Android kihasználhatja a kulcsfontosságú biztonsági funkciókat, és lehetővé teszi az eszközgyártók számára, hogy egy jól ismert rendszermaghoz hardver-illesztőprogramokat fejlesszenek ki.\cite{android_platform}
+            
+    %     \subsubsection{Hardware Abstraction Layer (HAL)}
+    %          A hardver absztrakciós réteg (HAL) egy olyan szabványos felület, amely a hardver képességeit a magasabb szintű Java API keretrendszer számára biztosítja. A HAL több könyvtármodulból áll,  amelyek mindegyike egy adott típusú hardverösszetevőhöz, például a kamerához vagy a bluetooth modulhoz, ad hozzáférést. Amikor egy API hívás érkezik egy adott hardverhez, akkor az Android rendszer betölti a megfelelő komponenshez tartozó könyvtár-modulokat.\cite{android_platform}
+            
+    %     \subsubsection{Android Runtime (ART)}
+    %         Az Android 5.0-s verzióját (API-szint 21) vagy újabb verziót használó eszközök esetében minden alkalmazás saját folyamatában és a saját példányán fut. Az ART olyan virtuális gépek futtatására íródott, amelyek alacsony memóriájú eszközökön futtatnak DEX-fájlokat, speciálisan az Androidra tervezett bytecode formátumot, amely a minimális memóriahasználatra lett optimalizálva. A toolchainek lefordítják a Java forrásokat DEX bytecode-ba, amelyek már futtathatóak az Android platformon.\cite{android_platform}
+            
+    %     \subsubsection{Natív C/C++ könyvtárak}
+    %         Számos fő Android rendszer komponens és szolgáltatás, mint például az ART és a HAL is natív kódokon alapuló könyvtárokon alapszanak. Az Android platform a Java keretrendszernek megadja a hozzáférést ezekhez a könyvtárakhoz. Például hozzáférhetünk az OpenGL ES-hez az Android keretrendszer Java OpenGL API-val és így 2D-s és 3D-s grafikákat készíthetünk az alkalmazásainkban.\cite{android_platform}
+            
+    %         Ha olyan alkalmazást fejlesztünk, amiben C/C++ kód van, akkor használhatjuk az Android NDK-t hogy a natív kódból közvetlenül hozzáférhessünk ezekhez a könyvtárakhoz.
+            
+    %     \subsubsection{Java API keretrendszer}
+    %         A teljes Android rendszer eszköztára elérhető Java-ban írt API-kon keresztül. Ezek az API-k az építőelemek - moduláris rendszerelemek, szolgáltatások - amikből felépíthetőek az Androidos alkalmazások. A fejlesztőknek teljes hozzáférése van az Android rendszer által használt összes API-hoz.\cite{android_platform}
+            
+    %     \subsubsection{Rendszer alkalmazások}
+    %         Az Androidba beépítve található egy sor alapvető alkalmazás az e-mailezéshez, az SMS-ezéshez, a naptárhoz, az interneten való szörfözéshez, stb. Ezeket később telepített, általunk előnyben részesített alkalmazásokkal lehet helyettesíteni. Nemcsak alkalmazásként használhatók, hanem kulcsfontosságú képességeket biztosítanak a fejlesztők számára is, amelyeket a saját alkalmazásukból elérhetnek. Például ha SMS-t szeretnénk küldeni, akkor nem kell saját magunknak leprogramozni, hanem helyette csak meghívni a már telepített SMS alkalmazások valamelyikét, hogy küldje el nekünk.\cite{android_platform}
         
+    \subsection{Android alkalmazás rövid felépítése} %https://developer.android.com/guide/components/fundamentals
+        Az android alkalmazások alapvetően négy fő komponensből épülnek fel, ahol a Content Providerek kivételével mind alkalmazásra került\cite{android_app_fund}:
+        \begin{enumerate}
+            \item Acitities - felületi (UI) elemek
+            \item Services - háttérben futó folyamatok
+            \item Content Providers - adat szolgáltók
+            \item Broadcast Receivers - rendszer szintű eseménykre reagálás
+        \end{enumerate}
+        
+        \subsubsection{Services}
+            Androidos környezetben a szolgáltatások egy hosszabb ideig, háttérben futó folyamatot jelképeznek. Nem rendelkeznek felhasználói felülettel és más komponensek elindíthatják vagy vezérlés céljából rácsatlakozhatnak. Az alkalmazásomban két darab ilyen Service is megtalálható: az egyik az UDP csomagok küldésért felelős, a másik az alkalmazásba belekódolt zeneszám lejátszásáért.
+        
+        \subsubsection{Activities}
+            Az Activity-k, pontosabban egy Activityre csatolt Fragment-ek, alkotják a felhasználói felületem. A felhasználói felületet a manapság gyakori 5.5-inch-es, 16:9-es képarányú, FullHD (1920x1080) felbontású mobiltelefonokra terveztem és valósítottam meg, de ennél nagyobb kijelzőjű tableteken is elfut az alkalmazás. Az Activity-k feladata Service-ek vezérlése a felhasználói felület (csúszka mozgatása, gomb megnyomása), illetve a gyorsulásérzékelő és magnetométer szenzoradatok változására. 
+            
+        \subsubsection{Broadcast Receivers}
+            Broadcast Receiver-ek segítségével iratkozhatunk fel rendszer szintű eseményekre. Ilyen események például az SMS és a bejövő telefonhívás, amiknek a bekövetkezésekor beállítható, hogy mit csináljon az alkalmazás. 
+    
+% \newpage
     \subsection{Az elkészült alkalmazás funkciói és felhasználói kézikönyv}
         Az alkalmazás indításakor szükséges, hogy valamilyen WiFi hálózathoz legyen csatlakoztatva az eszköz. Ekkor az
         alapértelmezett Simple Color Picker képernyő töltődik be, amit később a beállításokban módosíthatunk kedvünk szerint. Ha nincs WiFi hálózatra csatlakoztatva az eszköz, akkor egy hibát jelző oldal jelenik meg, amin a csatlakozás gombra kattintva eljuthatunk a készülék WiFi beállítás menüjébe, és ott csatlakozhatunk a hálózatra (\ref{fig:wifi_err_01}., \ref{fig:wifi_err_02}. és \ref{fig:wifi_err_03}. ábrák).
         
         %\subsubsection{Hibaelhárítás}
-             
+              
             \begin{figure}[h!]
                 \begin{floatrow}
-                    \ffigbox{\includegraphics[width=5cm]{android_res/screen_pictures/wifi_err_01.png}}{\caption{Koppintson a csatlakozás gombra!}\label{fig:wifi_err_01}}
-                    \ffigbox{\includegraphics[width=5cm]{android_res/screen_pictures/wifi_err_02.png}}{\caption{Majd a bekapcsolásra!}\label{fig:wifi_err_02}}
+                    \ffigbox{\includegraphics[width=4.6cm]{android_res/screen_pictures/wifi_err_01.png}}{\caption{Koppintson a csatlakozás gombra!}\label{fig:wifi_err_01}}
+                    \ffigbox{\includegraphics[width=4.6cm]{android_res/screen_pictures/wifi_err_02.png}}{\caption{Majd a bekapcsolásra!}\label{fig:wifi_err_02}}
                 \end{floatrow}
             \end{figure}
             \begin{figure}[!h]
                 \centering
-                \includegraphics[width=5cm]{android_res/screen_pictures/wifi_err_03.png}
+                \includegraphics[width=4.6cm]{android_res/screen_pictures/wifi_err_03.png}
                 \caption{Végül válaszza ki azt a hálózatot amire csatlakoztatva van a LED sor!}
                 \label{fig:wifi_err_03}
             \end{figure}
         
+% \newpage
         \subsubsection{Led sor IP-címének a beállítása}
-            A LED sor eredeti IP címe két módon szerezhető meg:
+            A LED sor %eredeti
+            IP címe két módon szerezhető meg (\ref{fig:ip_addres}. ábra):
             
             \begin{enumerate}
                 \item Mobiltelefonunkon a Fing nevű alkalmazással könnyedén felderíthetjük a lokális Wifi hálózaton található eszközöket IP címükkel együtt, ami innen egyszerűen kimásolható.
@@ -97,6 +104,7 @@
                 \includegraphics[height=7cm]{android_res/screen_pictures/ip_addr_fing}
                 \includegraphics[height=7cm]{android_res/screen_pictures/ip_addr_router}
                 \caption{LED sor IP címének felderítése Fing nevű alkalmazással és routerünk menüjéből}
+                \label{fig:ip_addres}
             \end{figure}
 
             Ezek után visszalépve az alkalmazásba, átnavigálva a beállítások menüre beállítható a LED sor IP címe:
@@ -107,77 +115,102 @@
                     Az alkalmazáson belül bármelyik képernyőről ezzel (\ref{fig:onMenu1}. és \ref{fig:onMenu2}. ábrák) a két módszerrel lehet előhozni a navigációs menüt:
                     \begin{figure}[!h]
                         \begin{floatrow}
-                            \ffigbox{\includegraphics[width=5cm]{android_res/screen_pictures/nav_menu_01.png}}{\caption{A menü gombra való kattintással}\label{fig:onMenu1}}
-                            \ffigbox{\includegraphics[width=5cm]{android_res/screen_pictures/nav_menu_02.png}}{\caption{˝Swipe gesture segítségével˝}\label{fig:onMenu2}}
+                            \ffigbox{\includegraphics[width=4.6cm]{android_res/screen_pictures/nav_menu_01.png}}{\caption{A menü gombra való kattintással}\label{fig:onMenu1}}
+                            \ffigbox{\includegraphics[width=4.6cm]{android_res/screen_pictures/nav_menu_02.png}}{\caption{˝Swipe gesture segítségével˝}\label{fig:onMenu2}}
                         \end{floatrow}
                     \end{figure}\\
                     
-                \item Beállítások fül kiválasztása
-                     \begin{figure}[!h]
-                        \includegraphics[height=7cm]{android_res/screen_pictures/tap_settings_menu}
-                        \caption{Koppintson a Beállítások fülre! //TODO}
+                \item Beállítások fül kiválasztása (\ref{fig:tap_settigs}. ábra)
+                    \begin{figure}[!h]
+                        \includegraphics[width=4.6cm]{android_res/screen_pictures/tap_settings_menu}
+                        \caption{Koppintson a Beállítások fülre!}
+                        \label{fig:tap_settigs}
                     \end{figure}
                     
                 \item Helyi hálózati IP cím beállítása (\ref{fig:tap_local_ip}. és \ref{fig:set_local_ip}. ábrák)
                     \begin{figure}[h!]
                         \begin{floatrow}
-                            \ffigbox{\includegraphics[width=5cm]{android_res/screen_pictures/tap_local_ip.png}}{\caption{Koppintson a helyi hálózati IP cím beállításra!}\label{fig:tap_local_ip}}
-                            \ffigbox{\includegraphics[width=5cm]{android_res/screen_pictures/set_local_ip.png}}{\caption{Állítsa be az IP címet, majd koppintson
+                            \ffigbox{\includegraphics[width=4.6cm]{android_res/screen_pictures/tap_local_ip.png}}{\caption{Koppintson a helyi hálózati IP cím beállításra!}\label{fig:tap_local_ip}}
+                            \ffigbox{\includegraphics[width=4.6cm]{android_res/screen_pictures/set_local_ip.png}}{\caption{Állítsa be az IP címet, majd koppintson
 az Ok gombra!}\label{fig:set_local_ip}}
                         \end{floatrow}
                     \end{figure}
                 
             \end{enumerate}
             
-            
-        
-%https://shop.technexion.com/pico-pi-imx7-startkit-rainbow-hat.html
-%https://developer.android.com/about/
+% \newpage            
         \subsubsection{Simple Color Picker mód} %https://github.com/LarsWerkman/HoloColorPicker
-            Ezen a képernyőn egy külső forrásból származó Color Picker található. A csúszkák mozgatásával tudjuk kiválasztani az adott színt, majd a \textit{Szín beállítása} gomb megnyomásával állíthatjuk be a LED sor színét (\ref{fig:s_cp_01}. és \ref{fig:s_cp_02}. ábrák).
+            Ezen a képernyőn egy külső forrásból származó Color Picker található\cite{holo_color_picker}. A csúszkák mozgatásával tudjuk kiválasztani az adott színt, majd a \textit{Szín beállítása} gomb megnyomásával állíthatjuk be a LED sor színét (\ref{fig:s_cp_01}. és \ref{fig:s_cp_02}. ábrák).
             
             \begin{figure}[h!]
                 \begin{floatrow}
-                    \ffigbox{\includegraphics[width=5cm]{android_res/screen_pictures/s_cp_01.png}}{\caption{A csúszkák mozgatásával változtathatjuk a megjelenítendő színt}\label{fig:s_cp_01}}
-                    \ffigbox{\includegraphics[width=5cm]{android_res/screen_pictures/s_cp_02.png}}{\caption{Szín beállítását a gombra koppintással végezhetjük el}\label{fig:s_cp_02}}
+                    \ffigbox{\includegraphics[width=4.6cm]{android_res/screen_pictures/s_cp_01.png}}{\caption{A csúszkák mozgatásával változtathatjuk a megjelenítendő színt}\label{fig:s_cp_01}}
+                    \ffigbox{\includegraphics[width=4.6cm]{android_res/screen_pictures/s_cp_02.png}}{\caption{Szín beállítását a gombra koppintással végezhetjük el}\label{fig:s_cp_02}}
                 \end{floatrow}
-            \end{figure}\\
+            \end{figure}
             
             A képernyőt személyre szabhatjuk a beállítások fülön lévő automata színválasztó funkció bekapcsolásával (\ref{fig:s_cp_03}. és \ref{fig:s_cp_04}. ábrák).
             
             \begin{figure}[h!]
                 \begin{floatrow}
-                    \ffigbox{\includegraphics[width=5cm]{android_res/screen_pictures/s_cp_03.png}}{\caption{Automatikus színválasztás funkció bekapcsolása}\label{fig:s_cp_03}}
-                    \ffigbox{\includegraphics[width=5cm]{android_res/screen_pictures/s_cp_04.png}}{\caption{Ezek után a csúszkákat mozgatva automatikusan változtatja a színt}\label{fig:s_cp_04}}
+                    \ffigbox{\includegraphics[width=4.6cm]{android_res/screen_pictures/s_cp_03.png}}{\caption{Automatikus színválasztás funkció bekapcsolása}\label{fig:s_cp_03}}
+                    \ffigbox{\includegraphics[width=4.6cm]{android_res/screen_pictures/s_cp_04.png}}{\caption{Ezek után a csúszkákat mozgatva automatikusan változtatja a színt}\label{fig:s_cp_04}}
                 \end{floatrow}
             \end{figure}
-        
-        \subsection{Party mód //TODO}
-            Ebben a módban a telefon mozgatásával állítható be a LED sor színe, vagyis ha táncolunk vagy ugrálunk akkor változik a szín. 
             
-        \subsection{Audio Visualizer //TODO}
-            //fft elméleti hátér
-            //api
-            //hogyan állítja be a színt
+        \subsection{Color Palette mód}
+            A gombokra való koppintással a LED sor vezérlőbe beleégetett színpaletták jeleníthetők meg (\ref{fig:color_palettes}. ábra).
+            \begin{figure}[h!]
+                \centering
+                    \includegraphics[width=4.6cm]{android_res/screen_pictures/color_palette_01}
+                    \includegraphics[width=4.6cm]{android_res/color_palette_11}
+                \caption{A \textit{Party Palette} gomb megnyomására megjelenő minta a LED soron}
+                \label{fig:color_palettes}
+            \end{figure}
         
+% \newpage        
+        \subsection{Party mód}
+            Ebben a módban a telefon orientációjával állítható be a LED sor színe (\ref{fig:party_mode}. ábra), vagyis ha táncolunk vagy ugrálunk akkor aszerint változik a szín. A fejlesztői beállításokban ki lehet választani, hogy 
+            melyik tengelyek körüli orientáció, melyik komponensnek feleljen meg a HSV (Hue Saturation Value) színtérből.
+            \begin{figure}[h!]
+                \centering
+                    \includegraphics[width=9cm]{android_res/screen_pictures/phone_orientation_01}
+                    \includegraphics[width=5cm]{android_res/screen_pictures/phone_orientation_11}
+                    \includegraphics[width=9cm]{android_res/screen_pictures/phone_orientation_02}
+                    \includegraphics[width=5cm]{android_res/screen_pictures/phone_orientation_22}
+                \caption{A telefon orientációja és a hatására megjelenő színek}
+                \label{fig:party_mode}
+            \end{figure}
+            
+%  \newpage           
+        \subsection{Audio Visualizer}
+            Az alkalmazásba hardcode-olt zeneszámot a Start/Stop gomb megnyomásával indítható el. Az zene elindításával körkörösen mozgó mély, közép, és magas értékek találhatóak, rendre a kör középpontjától kifelé haladva (\ref{fig:audio_visualizer}. ábra). Ezen adatokat az Androidba beépített Visualizer API FFT (Fast Fourier Transform) mintakódjával nyerem ki. A mély értékekből számítom a HSV színtér Value értékeit, ezzel a LED sor elsötétedését és felvillanását állítva. A megjelenítendő szín (Hue) a magas és mély adatok összekombinálásával határozom meg. 
+            \begin{figure}[h!]
+                \centering
+                    \includegraphics[width=4.6cm]{android_res/screen_pictures/audio_vis_01}
+                    \includegraphics[width=4.6cm]{android_res/screen_pictures/audio_vis_02}
+                \caption{Szín változtatás a zene spektruma alapján}
+                \label{fig:audio_visualizer}
+            \end{figure}
+%  \newpage       
         \subsection{Beállítások menü}
             Ezen a nézeten lehet testre szabni az alkalmazást.
-            
+%  \newpage           
             \subsubsection{Helyi hálózati IP cím beállítása}
                 \begin{figure}[h!]
                     \begin{floatrow}
-                        \ffigbox{\includegraphics[width=5cm]{android_res/screen_pictures/tap_local_ip.png}}{\caption{Koppintson a helyi hálózati IP cím beállításra!}\label{fig:tap_local_ip2}}
-                        \ffigbox{\includegraphics[width=5cm]{android_res/screen_pictures/set_local_ip.png}}{\caption{Állítsa be az IP címet, majd koppintson az Ok gombra!}\label{fig:set_local_ip2}}
+                        \ffigbox{\includegraphics[width=4.6cm]{android_res/screen_pictures/tap_local_ip.png}}{\caption{Koppintson a helyi hálózati IP cím beállításra!}\label{fig:tap_local_ip2}}
+                        \ffigbox{\includegraphics[width=4.6cm]{android_res/screen_pictures/set_local_ip.png}}{\caption{Állítsa be az IP címet, majd koppintson az Ok gombra!}\label{fig:set_local_ip2}}
                     \end{floatrow}
                 \end{figure}
-            
+% \newpage            
             \subsubsection{Vizuális értesítők bekapcsolása}
                 Ennek funkciónak a használatához el kell fogadni a megfelelő engedélyeket, különben nem fog működni.
                 
                 Amennyiben az engedélyeket nem adjuk meg, egy hiba üzenet ugrik fel (\ref{fig:permission_denied}. ábra).
                 \begin{figure}[h!]
                     \centering
-                    \includegraphics[width=5cm]{android_res/screen_pictures/visual_notification_02.png}
+                    \includegraphics[width=4.6cm]{android_res/screen_pictures/visual_notification_02.png}
                     \caption{Felugró hibaüzenet}
                     \label{fig:permission_denied}
                 \end{figure}
@@ -187,7 +220,7 @@ az Ok gombra!}\label{fig:set_local_ip}}
                 
                 \begin{figure}[!h]
                     \includegraphics[height=9.5cm]{android_res/screen_pictures/visual_notification_01.png}
-                    \caption{Az engedélyek elfogadása után elérhető új két beállítási lehetőség}
+                    \caption{Az engedélyek elfogadása után elérhető két új beállítási lehetőség}
                      \label{fig:vis_not_01}
                 \end{figure}
                 
@@ -198,13 +231,13 @@ az Ok gombra!}\label{fig:set_local_ip}}
                     \caption{Bal oldalt a jelenlegi, jobb oldalt a beállítani kívánt szín látható, amit az Ok gomb lenyomásával ment el az alkalmazás.}
                     \label{fig:vis_not_03}
                 \end{figure}
-            
+%  \newpage           
             \subsubsection{Automata színbeállítás a Simple Color Picker módhoz}
                 Az automata színválasztás bekapcsolása és a hatására változó Simple Color Picker mód ablak (~\ref{fig:s_cp_05}. és ~\ref{fig:s_cp_06}. ábrák).
                 \begin{figure}[h!]
                 \begin{floatrow}
-                    \ffigbox{\includegraphics[width=5cm]{android_res/screen_pictures/s_cp_03.png}}{\caption{Automatikus színválasztás funkció bekapcsolása}\label{fig:s_cp_05}}
-                    \ffigbox{\includegraphics[width=5cm]{android_res/screen_pictures/s_cp_04.png}}{\caption{Ezek után a csúszkákat mozgatva automatikusan változtatja a színt}\label{fig:s_cp_06}}
+                    \ffigbox{\includegraphics[width=4.6cm]{android_res/screen_pictures/s_cp_03.png}}{\caption{Automatikus színválasztás funkció bekapcsolása}\label{fig:s_cp_05}}
+                    \ffigbox{\includegraphics[width=4.6cm]{android_res/screen_pictures/s_cp_04.png}}{\caption{Ezek után a csúszkákat mozgatva automatikusan változtatja a színt}\label{fig:s_cp_06}}
                 \end{floatrow}
             \end{figure}
                 
