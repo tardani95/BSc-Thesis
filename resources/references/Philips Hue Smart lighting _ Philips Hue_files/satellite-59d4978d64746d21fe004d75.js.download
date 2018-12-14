@@ -1,0 +1,92 @@
+_satellite.pushAsyncScript(function(event, target, $variables){
+  !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;
+n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;
+t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,
+document,'script','https://connect.facebook.net/en_US/fbevents.js');
+
+if (/^\/content\/B2C\/en_US\/microsites\/meethue\/marketing-catalog\/huewireless_ca.*/i.test(_satellite.getVar("dlRepPath")) === true) {
+    // Measure pageview
+    fbq('init', '315746332204463');
+    fbq('track', 'PageView');
+
+    // add to cart
+    $("div.p-wtb-container.p-add-to-cart-container.p-wtb-ignore").on("click", function() {
+        fbq('init', '315746332204463');
+        fbq('track', 'AddToCart');
+    });
+}
+
+if (/^\/content\/B2C\/en_US\/microsites\/meethue\/marketing-catalog\/huewireless_ca/i.test(_satellite.getVar("dlRepPath")) === true) {
+    // white
+    $("a[href$='046677455286']").on("click", function() {
+        fbq('init', '315746332204463');
+        fbq('track', 'Lead');
+        fbq('trackCustom', 'White');
+    });
+
+    // white ambiance
+    $("a[href$='046677460983']").on("click", function() {
+        fbq('init', '315746332204463');
+        fbq('track', 'Lead');
+        fbq('trackCustom', 'WhiteAmbiance');
+    });
+
+    // white and color ambiance
+    $("a[href$='046677464479']").on("click", function() {
+        fbq('init', '315746332204463');
+        fbq('track', 'Lead');
+        fbq('trackCustom', 'WhiteColor');
+    });
+}
+
+if (/^\/content\/B2C\/en_US\/microsites\/meethue\/marketing-catalog\/huewireless_ca\/light-your-home-smarter.*/i.test(_satellite.getVar("dlRepPath")) === true) {
+    // video
+    $("div.p-youtube-container-inner").on("click", function() {
+        fbq('init', '315746332204463');
+        fbq('track', 'ViewContent');
+    });
+}
+
+if (/^\/content\/B2C\/en_US\/microsites\/meethue\/marketing-catalog\/huewireless_ca\/philips-hue-benefits/i.test(_satellite.getVar("dlRepPath")) === true) {
+    // Measure engagement
+    fbq('init', '315746332204463');
+	fbq('trackCustom', 'Engaged User Page Visit');
+}
+
+if (/^\/content\/B2C\/en_US\/microsites\/meethue\/marketing-catalog\/huewireless_ca\/friends-of-hue.*/i.test(_satellite.getVar("dlRepPath")) === true) {
+    // Measure engagement
+    fbq('init', '315746332204463');
+	fbq('trackCustom', 'Engaged User Page Visit');
+}
+
+if (/^\/content\/B2C\/en_US\/microsites\/meethue\/marketing-catalog\/huewireless_ca\/where-to-buy/i.test(_satellite.getVar("dlRepPath")) === true) {
+    // Measure engagement
+    fbq('init', '315746332204463');
+	fbq('trackCustom', 'Engaged User Page Visit');
+}
+
+if (/^\/content\/B2C\/en_US\/microsites\/meethue\/marketing-catalog\/huewireless_ca\/(philips-hue-benefits|personal-mood-lighting|smart-home-automation-light|entertainment.*|smart-outdoor-lighting|how-it-works|get-started|philips-hue-app|smart-voice-controlled-lights)/i.test(_satellite.getVar("dlRepPath")) === true) {
+    // Measure engagement
+    fbq('init', '315746332204463');
+	fbq('trackCustom', 'Engaged User Page Visit');
+}
+
+if (/^\/content\/B2C\/en_US\/microsites\/meethue\/product-catalog\/lighting_gr\/huewireless_ca\/decision/i.test(_satellite.getVar("dlRepPath")) === true) {
+    // Measure engagement
+    fbq('init', '315746332204463');
+	fbq('trackCustom', 'Engaged User Page Visit');
+}
+
+if (/^\/content\/B2C\/en_US\/microsites\/meethue\/product-catalog\/lighting_gr\/huewireless_ca\/lamps_su\/7820230U7/i.test(_satellite.getVar("dlRepPath")) === true) {
+    // Measure engagement
+    fbq('init', '315746332204463');
+	fbq('trackCustom', 'Engaged User Page Visit');
+}
+
+if (/^\/content\/B2C\/en_US\/microsites\/meethue\/product-catalog\/lighting_gr\/huewireless_ca\/lightstrips_su\/046677530938/i.test(_satellite.getVar("dlRepPath")) === true) {
+    // Measure engagement
+    fbq('init', '315746332204463');
+	fbq('trackCustom', 'Engaged User Page Visit');
+}
+});

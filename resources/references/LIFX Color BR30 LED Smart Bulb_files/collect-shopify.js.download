@@ -1,0 +1,263 @@
+﻿/// <reference path="lightgallery.min.js" />
+(function () {
+    function loadScript(url, callback) {
+        var script = document.createElement("script")
+        script.type = "text/javascript";
+
+        if (script.readyState) { //IE
+            script.onreadystatechange = function () {
+                if (script.readyState === "loaded" || script.readyState === "complete") {
+                    script.onreadystatechange = null;
+                    callback();
+                }
+            };
+        } else { //Others
+            script.onload = function () {
+                callback();
+            };
+        }
+
+        script.src = url;
+        var section = document.querySelector("head");
+        section.insertBefore(script, section.firstChild);
+    }
+
+    var retailerId = document.getElementById("collect-js").getAttribute("collect-id");
+    var labelText = document.getElementById("collect-js").getAttribute("label-text");
+    var labelStyle = document.getElementById("collect-js").getAttribute("label-style");
+    var collecturl = document.getElementById("collect-js").getAttribute("collect-url");
+    var widgetWidth = document.getElementById("collect-js").getAttribute("widget-width");
+    var widgetHeight = document.getElementById("collect-js").getAttribute("widget-height");
+    var widgetVisible = document.getElementById("collect-js").getAttribute("widget-visible");
+    var widgetTranslateEnabled = document.getElementById("collect-js").getAttribute("widget-translate-enabled");
+
+    function isAMobileDevice() {
+        var isMobile = (/Android|webOS|iPhone|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent));
+        return isMobile;
+    }
+
+    var windowWidth = window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth;
+    var windowHeight = window.innerHeight || document.documentElement.clientHeight || document.body.clientHeight;
+
+    if (isAMobileDevice()) {
+        widgetWidth = windowWidth;
+        widgetHeight = windowHeight;
+    }
+
+    window.collectloyalty = {};
+    window.collectloyalty.labelText = labelText;
+    window.collectloyalty.retailerId = retailerId;
+    window.collectloyalty.labelStyle = labelStyle;
+    window.collectloyalty.widgetWidth = widgetWidth;
+    window.collectloyalty.widgetHeight = widgetHeight;
+    window.collectloyalty.widgetVisible = widgetVisible;
+    window.collectloyalty.widgetTranslateEnabled = widgetTranslateEnabled;
+
+    domainUrl = collecturl + 'Portal/Custom';
+
+    loadScript(collecturl + "Content/widget/lightgallery.min.js", function () {
+
+        var url = '';
+
+
+        //iwish_cid 
+        if (typeof __st !== 'undefined' && __st && __st.cid) {
+            var shopifyCustomerId2 = __st.cid;
+            var shopifyCustomerId = __st.cid;
+            url = domainUrl + '/Rewards/' + window.collectloyalty.retailerId + '?sourceCustomerId=' + shopifyCustomerId2 + '&redirectToTiers=true';
+        }
+        else if (typeof iwish_cid !== 'undefined' && iwish_cid !== "") {
+            var shopifyCustomerId2 = iwish_cid;
+            var shopifyCustomerId = iwish_cid;
+            url = domainUrl + '/Rewards/' + window.collectloyalty.retailerId + '?sourceCustomerId=' + shopifyCustomerId2 + '&redirectToTiers=true';
+        }
+        else {
+            url = domainUrl + '/Welcome/' + window.collectloyalty.retailerId;
+        }
+
+        try {
+            lightGallery(document.getElementById('open-sesame'), {
+                selector: 'this',
+                iframeMaxWidth: widgetWidth + 'px',
+                mode: 'lg-fade',
+                addClass: 'fixed-size',
+                counter: false,
+                download: false,
+                startClass: '',
+                enableSwipe: false,
+                enableDrag: false,
+                speed: 5,
+                showAfterLoad: false
+            });
+        }
+        catch (err) {
+            console.log('ERROR: ' + err)
+            setTimeout(function () {
+                lightGallery(document.getElementById('open-sesame'), {
+                    selector: 'this',
+                    iframeMaxWidth: widgetWidth + 'px',
+                    mode: 'lg-fade',
+                    addClass: 'fixed-size',
+                    counter: false,
+                    download: false,
+                    startClass: '',
+                    enableSwipe: false,
+                    enableDrag: false,
+                    speed: 5,
+                    showAfterLoad: false
+                });
+            }, 1500);
+        }
+
+        // load up box if contains ce parameter
+        if (window.location.search.indexOf('?loyal') > -1) {
+            try {
+                lightGallery(document.getElementById('open-sesame2'), {
+                    selector: 'this',
+                    iframeMaxWidth: widgetWidth + 'px',
+                    mode: 'lg-fade',
+                    addClass: 'fixed-size',
+                    counter: false,
+                    download: false,
+                    startClass: '',
+                    enableSwipe: false,
+                    enableDrag: false,
+                    speed: 5,
+                    dynamic: true,
+                    dynamicEl: [{ "iframe": "true", "src": url }],
+                    showAfterLoad: false
+                });
+            } catch (err) {
+                setTimeout(function () {
+                    try {
+                        lightGallery(document.getElementById('open-sesame2'), {
+                            selector: 'this',
+                            iframeMaxWidth: widgetWidth + 'px',
+                            mode: 'lg-fade',
+                            addClass: 'fixed-size',
+                            counter: false,
+                            download: false,
+                            startClass: '',
+                            enableSwipe: false,
+                            enableDrag: false,
+                            speed: 5,
+                            showAfterLoad: false
+                        });
+                    } catch (err) {
+                        window.location = url;
+                    }
+                }, 1500);
+            }
+        }
+    });
+
+    function reviewRecorder() {
+        var reviewEmailNodes = document.querySelectorAll("input[name='review[email]']");
+        var reviewEmail = reviewEmailNodes[0].value;
+        var reviewTitleNodes = document.querySelectorAll("input[name='review[title]']");
+        var reviewTitle = reviewTitleNodes[0].value;
+        var reviewBodyNodes = document.querySelectorAll("textarea[name='review[body]']");
+        var reviewBody = reviewBodyNodes[0].value;
+        var productIdNodes = document.querySelectorAll("input[name=product_id]");
+        var productId = productIdNodes[0].value;
+        var reviewRatingNodes = document.querySelectorAll("input[name='review[rating]']");
+        var reviewRating = reviewRatingNodes[0].value;
+
+        var data = {
+            accountId: retailerId,
+            productId: productId,
+            reviewEmail: reviewEmail,
+            reviewTitle: reviewTitle,
+            reviewBody: reviewBody,
+            reviewRating: reviewRating
+        };
+
+        var reviewScript = document.createElement("script");
+        var reviewContent = collecturl + 'Manage/ProductReviews/SubmitReview?' +
+            'accountId=' + data.accountId + '&' +
+            'productId=' + data.productId + '&' +
+            'reviewEmail=' + encodeURIComponent(data.reviewEmail) + '&' +
+            'reviewTitle=' + encodeURIComponent(data.reviewTitle) + '&' +
+            'reviewBody=' + encodeURIComponent(data.reviewBody) + '&' +
+            'reviewRating=' + data.reviewRating;
+
+        if (reviewContent.length > 2000) {
+            var toDelete = reviewContent.length - 2000 - 12;//12 is the length of "[...]" after encode
+            var reviewBodyLength = data.reviewBody.length - toDelete;
+            data.reviewBody = data.reviewBody.slice(0, reviewBodyLength) + "[...]";
+            reviewContent = collecturl + 'Manage/ProductReviews/SubmitReview?' +
+                'accountId=' + data.accountId + '&' +
+                'productId=' + data.productId + '&' +
+                'reviewEmail=' + encodeURIComponent(data.reviewEmail) + '&' +
+                'reviewTitle=' + encodeURIComponent(data.reviewTitle) + '&' +
+                'reviewBody=' + encodeURIComponent(data.reviewBody) + '&' +
+                'reviewRating=' + data.reviewRating;
+        }
+
+        reviewScript.src = reviewContent;
+        console.log(reviewContent);
+
+        document.getElementsByTagName("head")[0].appendChild(reviewScript);
+    }
+    
+    document.addEventListener('click', function (e) {
+        if (e.target && e.target.classList.contains('spr-button')) {
+            reviewRecorder();
+        }
+    });
+
+    document.addEventListener('touchstart', function (e) {
+        if (e.target && e.target.classList.contains('spr-button')) {
+            reviewRecorder();
+        }
+    });
+
+    if (window.collectloyalty.widgetVisible === 'True') {
+
+        var fancyboxUrl = '';
+        if (typeof __st !== 'undefined' && __st && __st.cid) {
+            var shopifyCustomerId = __st.cid;
+            fancyboxUrl = domainUrl + '/Rewards/' + window.collectloyalty.retailerId + '?sourceCustomerId=' + shopifyCustomerId + '&redirectToTiers=true';
+        }
+        else if (typeof iwish_cid !== 'undefined' && iwish_cid !== "") {
+            var shopifyCustomerId = iwish_cid;
+            fancyboxUrl = domainUrl + '/Rewards/' + window.collectloyalty.retailerId + '?sourceCustomerId=' + shopifyCustomerId + '&redirectToTiers=true';
+        }
+        else {
+            fancyboxUrl = domainUrl + '/Welcome/' + window.collectloyalty.retailerId;
+        }
+
+        var tab = document.createElement('a');
+        tab.id = 'open-sesame';
+        tab.href = fancyboxUrl;
+        tab.setAttribute('data-iframe', 'true');
+        tab.setAttribute('style', window.collectloyalty.labelStyle);
+        tab.textContent = window.collectloyalty.labelText;
+        document.body.appendChild(tab);
+    }
+
+    var style = document.createElement('style'),
+        css = '.lg-outer .lg-video {padding-bottom: ' + widgetHeight + 'px !important; }';
+    style.type = 'text/css';
+    if (style.styleSheet) {
+        style.styleSheet.cssText = css;
+    } else {
+        style.appendChild(document.createTextNode(css));
+    }
+    document.body.appendChild(style);
+
+    var span = document.createElement('span');
+    span.id = 'open-sesame2';
+    document.body.appendChild(span);
+
+    var portalCss = document.createElement('link');
+    portalCss.href = '//d2pkcwbsyjj2rs.cloudfront.net/PortalModalCss.css';
+    portalCss.type = 'text/css';
+    portalCss.rel = 'stylesheet';
+    document.body.appendChild(portalCss);
+
+    function resizeModalOnMobile() {
+        document.querySelector('.fancybox-content').height(windowHeight);
+    }
+
+})();

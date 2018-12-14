@@ -1,0 +1,12 @@
+.spr-icon-star-empty:before {
+    content: '\e801';
+    color: #0087ff;
+}
+.spr-icon-star-half-alt:before {
+    content: '\e803';
+    color: #0087ff;
+}
+.spr-icon-star:before {
+    content: '\e800';
+    color: #0087ff;
+}

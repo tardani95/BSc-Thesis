@@ -4,7 +4,7 @@
 
 \section{Összefoglalás: Elkészült eszköz értékelése és költségterv számolása //TODO}
     \subsection{Az elkészült eszköz értékelése}
-        Összesen 5 eszközhöz elegendő alkatrészt rendeltem meg, amelyekből 3 kész LED sor vezérlő került sikeresen elkészítésre. Kettő javított verziójú NYÁK-kal és egy pedig az eredetileg elkészített NYÁK-kal működik. Mind a három egység stabil, üzembiztos viselkedést mutat. Az egyik egység az otthoni teraszunkra (\ref{fig:pic_terasz}. ábra), a másik a kollégiumi szobába került felszerelésre. A harmadik egység tartaléként működik. A eszköz tesztelve lett akkumulátorrol is, egy Halloween-i jelmez kellékeként. Három cellás (12V-os), 2200mAh-s LiPo (Lithium Polimer) akkumulátorról üzemeltetve 5 órán keresztül működött. 
+        Összesen 5 eszközhöz elegendő alkatrészt rendeltem meg, amelyekből 3 kész LED sor vezérlő került sikeresen elkészítésre. Kettő javított verziójú és egy pedig az eredetileg elkészített NYÁK-kal működik. Mind a három egység stabil, üzembiztos viselkedést mutat. Az egyik egység az otthoni teraszunkra (\ref{fig:pic_terasz}. ábra), a másik a kollégiumi szobába került felszerelésre. A harmadik egység tartalékként működik. A eszköz tesztelve lett akkumulátorról is, egy Halloween-i jelmez kellékeként. Három cellás (12V-os), 2200mAh-s LiPo (Lithium Polimer) akkumulátorról üzemeltetve 5 órán keresztül működött. Az elkészült Android-os alkalmazással és LED sor vezérlővel a feladat célkitűzéseit teljesítettem.
     
         \begin{figure}[h!]
             \centering
@@ -18,8 +18,14 @@
             \label{fig:pic_terasz}
         \end{figure}
 
-        A feladat során megtanultam a Git verzió kezelő rendszer használatát, elmélyítettem mind az objektumorientált Java, illetve hardver közeli C programozói tudásom is. Átismételtem, és kibővítettem a 3D-modellezési ismereteim. Új tapasztalatokat, ismereteket szereztem a forrasztás és a 3D nyomtatás területén. 
-    
+    % \subsubsection{Összegzés az elvégzett munkáról}
+        A feladat során megtanultam a Git verzió kezelő rendszer használatát, amivel többek között nyomon követhettem a haladási folyamatom.
+        Elmélyítettem az objektumorientált Java, Android, illetve a hardverközeli C programozói tudásom is. Megtanultam a \textit{datasheet}-et, \textit{reference manual}-ok, és \textit{application note}-ok segítségel megvalósítani a beágyazott szoftvert. Megterveztem és legyártattam a LED sor vezérlő NYÁK-om. Átismételtem, és kibővítettem paraméteres modellezési technikával a 3D-modellezési ismereteim.
+        És végső soron új tapasztalatokat, ismereteket szereztem a forrasztás és a 3D nyomtatás területén. 
+        
+        % elmélyítettem mind az objektumorientált Java, illetve hardver közeli C programozói tudásom is. Átismételtem, és kibővítettem a 3D-modellezési ismereteim. Új tapasztalatokat, ismereteket szereztem a forrasztás és a 3D nyomtatás területén. 
+        
+        % A munkám tartalmazza az elektronikai tervezést, alkatrészek méretezését, a NYÁK legyártatását, az elektronikai komponensek beültetését, beforrasztását, ezek védelméül szolgáló doboz megtervezését, 3D nyomtatását, a beágyazott szoftver megírását, külső hardverrel való összekötését, illetve az egész rendszer vezérléséért felelős Android-os alkalmazást is.
     
 
 Elegendő az elkészült utolsó eszköz költségtervét összeállítani
@@ -27,7 +33,12 @@ Szerepeljen itt még egy összegzés az elvégzett munkáról és a fejlesztési
     mennyibe kerult most az 5 db prototipus nyak legyartasa, illetve mennyibe kerulne ha a legolcsobb alkatreszekbol osszevalogatva, 10 000 darabot gyartanank le
     
     \subsection{Költségterv számolása}
+        A költségtervbe csak az elkészült eszközök alkatrész igényeit számoltam bele, illetve a működéshez szükséges perifériákat. Az feltüntetett árak csak körülbelüli értékek, illetve árfolyam függőek.
         \subsubsection{Ebay-ről rendelt eszközök}
+            \begin{itemize}
+                \item 5x 5m-es LED szalag - 4.500 Ft
+                \item 2x 12V-os 5A-es egyenáramú áramforrás - 3.300 Ft
+            \end{itemize}
         \subsubsection{NYÁK legyártatásának költségei}
         \subsubsection{Mouser Electronicstól rendelt alkatrészek}
         \subsubsection{3D nyomtatás költségei}
@@ -41,7 +52,7 @@ Szerepeljen itt még egy összegzés az elvégzett munkáról és a fejlesztési
         
         A beágyazott rendszer esetében fontosnak tartom egy erősebb mikrokontroller és egy mikrofon alkalmazását. Így nem kellene az Androidos alkalmazáson keresztül a zeneszámot Fourier transzformálni és 20-30 milliszekundumonként színeket küldözgetni a vezérlő egységnek, hanem saját magának számolná ki a szükséges adatokat. Ezzel jelentős mennyiségben lehetne a hálózati kommunikáció forgalmát csökkenteni és a telefon akkumlátoridejét növelni. A szoftvert fel lehetne készíteni komolyabb animációk megjelenítésére, folyamatok beütemezésére. Fejleszteni lehetne a zenére való színváltoztatást, kivilágosodást.
         
-        Az Android-os applikációban biztosítani lehetne a különböző zeneszámok lejátszását. Ki lehetne bővíteni hangvezérléssel, és egy olyan nézettel, ahol ledgroup csoportoknak, de akár egysesével is, lehetne változtanti a színét. Több nyelvű felhasználói felület megalkotása sem lenne utolsó szempont, az angolul nem tudó felhasználók számára. 
+        Az Android-os applikációban biztosítani lehetne a különböző zeneszámok lejátszását. Ki lehetne bővíteni hangvezérléssel, és egy olyan nézettel, ahol a ledgroup csoportoknak, de akár egyesével is, lehetne változtatni a színét. Több nyelvű felhasználói felület megalkotása sem lenne utolsó szempont, az angolul nem tudó felhasználók számára. 
         
         % Az vezélőegység további perifériák, szenzorok alkalmazásával és az Internetre való csatlakoztatásával az IoT (Internet of Things) eszközök világába is becsatlakozna\cite{a_iot}.
         

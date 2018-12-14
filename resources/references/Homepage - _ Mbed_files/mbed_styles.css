@@ -1,0 +1,41 @@
+body {
+    font-family: "Lato", sans-serif;
+    font-weight: 400;
+    font-size: 16px;
+    color: #333E48;
+}
+
+body h1, body h2, body h3, body h4, body h5, body h6 {
+    font-family: "Lato", sans-serif;
+    font-weight: 400;
+}
+
+body a {
+    color: #0091BD;
+    transition: all ease 0.3s;
+}
+
+body a:hover {
+    color: #002B49;
+}
+
+body p {
+    line-height: 1.4;
+    margin-bottom: 1rem;
+}
+
+body h1 {
+    font-size : 48px;
+}
+
+body h2 {
+    font-size: 38px;
+}
+
+body h3 {
+    font-size: 34px;
+}
+
+body h4 {
+    font-size: 30px;
+}

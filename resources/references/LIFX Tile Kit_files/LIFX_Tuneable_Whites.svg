@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="335px" height="240px" viewBox="0 0 335 240" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 52.2 (67145) - http://www.bohemiancoding.com/sketch -->
+    <title>LIFX_Tuneable_Whites</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <linearGradient x1="50%" y1="99.8809524%" x2="50%" y2="0%" id="linearGradient-1">
+            <stop stop-color="#FFFFFF" offset="0%"></stop>
+            <stop stop-color="#FFFDFA" offset="46%"></stop>
+            <stop stop-color="#FEE7C8" offset="59%"></stop>
+            <stop stop-color="#FED59D" offset="72%"></stop>
+            <stop stop-color="#FDC87E" offset="83%"></stop>
+            <stop stop-color="#FDC06C" offset="93%"></stop>
+            <stop stop-color="#FDBD65" offset="100%"></stop>
+        </linearGradient>
+    </defs>
+    <g id="LIFX_Tuneable_Whites" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="LIFX-Feature-Icons-Menu-TunableWhite" transform="translate(82.000000, 46.000000)" fill="url(#linearGradient-1)" fill-rule="nonzero">
+            <path d="M85.04,1.12 C38.648081,1.12 1.04,38.728081 1.04,85.12 C1.04,131.511919 38.648081,169.12 85.04,169.12 C131.431919,169.12 169.04,131.511919 169.04,85.12 C169.04,62.8418149 160.190025,41.4760862 144.43697,25.7230304 C128.683914,9.96997459 107.318185,1.12 85.04,1.12 Z M51.32,96.76 L37.1999999,96.76 C37.1995096,89.5739275 38.812514,82.479442 41.92,76 L54.92,82.44 C52.6045532,86.861517 51.3707893,91.7691557 51.32,96.76 Z M57.16,78.56 L45.16,70.56 C50.229397,62.7928987 57.4204632,56.6430101 65.88,52.84 L71.6,66 C65.7859349,68.8741497 60.8121706,73.2003602 57.16,78.56 Z M95.12,64.24 C88.843,62.1065169 82.037,62.1065169 75.76,64.24 L71.76,50.48 C80.6993414,47.8178259 90.2206586,47.8178259 99.16,50.48 L95.12,64.24 Z M99.12,65.96 L104.96,52.68 C113.430602,56.4823339 120.634746,62.6315355 125.72,70.4 L113.72,78.4 C110.068646,73.0697065 105.091966,68.7823171 99.28,65.96 L99.12,65.96 Z M119.44,96.76 C119.381886,91.739767 118.134443,86.8048277 115.8,82.36 L129,76 C132.119188,82.5037849 133.732492,89.6269287 133.720072,96.84 L119.44,96.76 Z" id="Shape"></path>
+        </g>
+    </g>
+</svg>

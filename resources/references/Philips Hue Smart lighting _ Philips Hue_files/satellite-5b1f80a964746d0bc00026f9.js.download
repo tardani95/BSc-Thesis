@@ -1,0 +1,17 @@
+_satellite.pushAsyncScript(function(event, target, $variables){
+  (function(w, doc) {
+
+    var addAmazon = function(ex_fargs, ex_src, ex_hargs) {
+        var newNode = new Image(1, 1);
+        newNode.style.display = "none";
+        newNode.alt = "Amazon";
+        newNode.src = "https://s.amazon-adsystem.com/iui3?d=forester-did&ex-fargs=" + ex_fargs + "&ex-fch=416613&ex-src=" + ex_src + "&ex-hargs=" + ex_hargs;
+        doc.body.appendChild(newNode);
+    };
+
+    if (/^\/content\/B2C\/en_US\/microsites\/meethue\/marketing-catalog\/huewireless_ca/i.test(_satellite.getVar("dlRepPath")) === true) {
+        addAmazon("%3Fid%3D0c1d0f4e-0768-80bb-2710-b94288a18155%26type%3D55%26m%3D1", "www.lighting.philips.com", "v%3D1.0%3Bc%3D2859240640201%3Bp%3D0C1D0F4E-0768-80BB-2710-B94288A18155");
+    }
+
+}(window, document));
+});

@@ -1,0 +1,8 @@
+_satellite.pushAsyncScript(function(event, target, $variables){
+  var newNode = new Image(0, 0);
+newNode.src = "//bat.bing.com/action/0?ti=5727196&Ver=2";
+newNode.style.display = "none";
+newNode.style.visibility = "hidden";
+newNode.alt = "Bing";
+document.body.appendChild(newNode);
+});

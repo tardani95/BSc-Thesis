@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="335px" height="240px" viewBox="0 0 335 240" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 52.2 (67145) - http://www.bohemiancoding.com/sketch -->
+    <title>LIFX_Color</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <linearGradient x1="50%" y1="99.8809524%" x2="50%" y2="0%" id="linearGradient-1">
+            <stop stop-color="#FFFFFF" offset="0%"></stop>
+            <stop stop-color="#FBAD18" offset="17%"></stop>
+            <stop stop-color="#F0494B" offset="38%"></stop>
+            <stop stop-color="#EE4E9C" offset="54%"></stop>
+            <stop stop-color="#715DA8" offset="70%"></stop>
+            <stop stop-color="#3F5DAB" offset="84%"></stop>
+            <stop stop-color="#0AB5E3" offset="100%"></stop>
+        </linearGradient>
+    </defs>
+    <g id="LIFX_Color" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="LIFX-Feature-Icons-Menu-FullColor" transform="translate(82.000000, 46.000000)" fill="url(#linearGradient-1)" fill-rule="nonzero">
+            <path d="M85.04,1.12 C38.648081,1.12 1.04,38.728081 1.04,85.12 C1.04,131.511919 38.648081,169.12 85.04,169.12 C131.431919,169.12 169.04,131.511919 169.04,85.12 C169.04,62.8418149 160.190025,41.4760862 144.43697,25.7230304 C128.683914,9.96997459 107.318185,1.12 85.04,1.12 Z M107.68,98.6 C107.68,86.0962735 97.5437265,75.9600005 85.04,75.9600005 C72.5362735,75.9600005 62.4000003,86.0962735 62.4,98.6 L57.2,98.6 C57.7617579,83.4081642 70.0045276,71.2528428 85.2,70.8 C100.469975,71.2586145 112.741385,83.5300247 113.2,98.8 L107.68,98.6 Z M119.12,98.6 C117.893129,80.7259538 103.036103,66.8537523 85.12,66.8537523 C67.2038972,66.8537523 52.3468705,80.7259538 51.12,98.6 L45.8,98.6 C46.3468016,77.1589227 63.5989227,59.9068016 85.04,59.36 C106.481077,59.9068016 123.733198,77.1589227 124.28,98.6 L119.12,98.6 Z M129.48,98.6 C129.48,74.0564657 109.583534,54.16 85.04,54.16 C60.4964657,54.16 40.6,74.0564657 40.6,98.6 L35.4,98.6 C35.9727336,71.4253542 57.8653542,49.5327336 85.04,48.96 C112.214646,49.5327336 134.107266,71.4253542 134.68,98.6 L129.48,98.6 Z" id="Shape"></path>
+        </g>
+    </g>
+</svg>

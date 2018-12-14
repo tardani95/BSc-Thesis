@@ -1,0 +1,48 @@
+_satellite.pushAsyncScript(function(event, target, $variables){
+  function AddMediaMath(mt_id, mt_adid) {
+    var newNode = document.createElement("script");
+    newNode.src = "//pixel.mathtag.com/event/js?mt_id=" + mt_id + "&mt_adid=" + mt_adid + "&mt_exem=&mt_excl=&v1=&v2=&v3=&s1=&s2=&s3=";
+    newNode.async = true;
+    document.body.appendChild(newNode);
+}
+
+if (_satellite.getVar("dlPageName") === "homepage") {
+        // Measure pageview
+        AddMediaMath('1249247', '150621');
+
+        // white
+        $("a[href$='046677455286']").on("click", function () {
+            AddMediaMath("1249249", "150621");
+        });
+
+        // white ambiance
+        $("a[href$='046677460983']").on("click", function () {
+            AddMediaMath("1249250", "150621");
+        });
+
+        // white and color ambiance
+        $("a[href$='046677464479']").on("click", function () {
+            AddMediaMath("1249251", "150621");
+        });
+} else if (_satellite.getVar("dlPageName") === "light_your_home_smarter") {
+        // Measure pageview
+        AddMediaMath('1249252', '150621');
+
+        // video
+        $("div.p-youtube-container-inner").on("click", function() {
+            AddMediaMath('1249253', '150621');
+        });
+} else if (_satellite.getVar("dlPageName") === "light_your_home_smarter:what_mess_light") {
+        // Measure pageview
+        AddMediaMath('1293480', '150621');
+} else if (_satellite.getVar("dlPageName") === "light_your_home_smarter:our_house_light") {
+        // Measure pageview
+        AddMediaMath('1293480', '150621');
+} else if (_satellite.getVar("dlPageName") === "light_your_home_smarter:daddys_home_light") {
+        // Measure pageview
+        AddMediaMath('1293480', '150621');
+} else if (_satellite.getVar("dlPageName") === "light_your_home_smarter:deep_sea_light") {
+        // Measure pageview
+        AddMediaMath('1293480', '150621');
+};
+});

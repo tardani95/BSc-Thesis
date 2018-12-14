@@ -1,0 +1,340 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<!-- saved from url=(0041)https://www.purplealienplanet.com/node/61 -->
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en" class="js"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+  <title>Standard Peripherals Library vs CMSIS vs HAL vs Low Level Library | PurpleAlienPlanet</title>
+  
+<link rel="shortcut icon" href="https://www.purplealienplanet.com/sites/default/files/acquia_slate_favicon.ico" type="image/x-icon">
+<link rel="schema.dc" href="http://purl.org/dc/elements/1.1/">
+<meta name="description" content="PurpleAlienPlanet.com - Johan Dams - Welcome to my blog about programming, electronics, security, cryptography and more...">
+<meta name="dcterms.description" content="Johan Dams - My Blog">
+<meta name="keywords" content="Johan Dams,Blog,ARM,C,Electronics,Embedded,Programming">
+<meta name="dcterms.date" content="2016-10-16T00:00:00Z">
+<meta name="dcterms.creator" content="Johan Dams">
+<meta name="dcterms.contributor" content="Johan Dams">
+<meta name="copyright" content="©2013 Johan Dams">
+<link rel="canonical" href="https://www.purplealienplanet.com/node/61">
+<meta name="revisit-after" content="1 day">
+<meta name="dcterms.publisher" content="Johan Dams">
+  <meta name="description" content="Standard Peripherals Library vs CMSIS vs HAL vs Low Level Library | PurpleAlienPlanet">
+  <link type="text/css" rel="stylesheet" media="all" href="./Standard Peripherals Library vs CMSIS vs HAL vs Low Level Library _ PurpleAlienPlanet_files/css_695e3f8c2efd2867c4db78aa916d8e3a.css">
+  <link type="text/css" rel="stylesheet" media="all" href="./Standard Peripherals Library vs CMSIS vs HAL vs Low Level Library _ PurpleAlienPlanet_files/grid16-fluid.css">
+  <!--[if IE 8]>
+  <link type="text/css" rel="stylesheet" media="all" href="/sites/all/themes/fusion/fusion_core/css/ie8-fixes.css?G" />
+  <![endif]-->
+  <!--[if IE 7]>
+  <link type="text/css" rel="stylesheet" media="all" href="/sites/all/themes/fusion/fusion_core/css/ie7-fixes.css?G" />
+<link type="text/css" rel="stylesheet" media="all" href="/sites/all/themes/acquia_slate/css/ie7-fixes.css?G" />
+  <![endif]-->
+  <!--[if lte IE 6]>
+  <link type="text/css" rel="stylesheet" media="all" href="/sites/all/themes/fusion/fusion_core/css/ie6-fixes.css?G"/>
+<link type="text/css" rel="stylesheet" media="all" href="/sites/all/themes/acquia_slate/css/ie6-fixes.css?G"/>
+  <![endif]-->
+    <link type="text/css" rel="stylesheet" media="all" href="./Standard Peripherals Library vs CMSIS vs HAL vs Low Level Library _ PurpleAlienPlanet_files/local.css">
+    <script type="text/javascript" id="async-buttons" src="./Standard Peripherals Library vs CMSIS vs HAL vs Low Level Library _ PurpleAlienPlanet_files/async-buttons.js.download"></script><script async="" src="./Standard Peripherals Library vs CMSIS vs HAL vs Low Level Library _ PurpleAlienPlanet_files/analytics.js.download"></script><script type="text/javascript" src="./Standard Peripherals Library vs CMSIS vs HAL vs Low Level Library _ PurpleAlienPlanet_files/js_b415e465a1770cf8042c62e41cf95c3c.js.download"></script>
+<script type="text/javascript">
+<!--//--><![CDATA[//><!--
+jQuery.extend(Drupal.settings, { "basePath": "/", "lightbox2": { "rtl": 0, "file_path": "/(\\w\\w/)sites/default/files", "default_image": "/sites/all/modules/lightbox2/images/brokenimage.jpg", "border_size": 10, "font_color": "000", "box_color": "fff", "top_position": "", "overlay_opacity": "0.8", "overlay_color": "000", "disable_close_click": 1, "resize_sequence": 0, "resize_speed": 400, "fade_in_speed": 400, "slide_down_speed": 600, "use_alt_layout": 0, "disable_resize": 0, "disable_zoom": 1, "force_show_nav": 0, "show_caption": 1, "loop_items": 0, "node_link_text": "View Image Details", "node_link_target": 0, "image_count": "Image !current of !total", "video_count": "Video !current of !total", "page_count": "Page !current of !total", "lite_press_x_close": "press \x3ca href=\"#\" onclick=\"hideLightbox(); return FALSE;\"\x3e\x3ckbd\x3ex\x3c/kbd\x3e\x3c/a\x3e to close", "download_link_text": "", "enable_login": false, "enable_contact": false, "keys_close": "c x 27", "keys_previous": "p 37", "keys_next": "n 39", "keys_zoom": "z", "keys_play_pause": "32", "display_image_size": "original", "image_node_sizes": "()", "trigger_lightbox_classes": "", "trigger_lightbox_group_classes": "", "trigger_slideshow_classes": "", "trigger_lightframe_classes": "", "trigger_lightframe_group_classes": "", "custom_class_handler": 0, "custom_trigger_classes": "", "disable_for_gallery_lists": true, "disable_for_acidfree_gallery_lists": true, "enable_acidfree_videos": true, "slideshow_interval": 5000, "slideshow_automatic_start": true, "slideshow_automatic_exit": true, "show_play_pause": true, "pause_on_next_click": false, "pause_on_previous_click": true, "loop_slides": false, "iframe_width": 600, "iframe_height": 400, "iframe_border": 1, "enable_video": 0 }, "cron": { "basePath": "/poormanscron", "runNext": 1544753454 }, "googleanalytics": { "trackOutbound": 1, "trackMailto": 1, "trackDownload": 1, "trackDownloadExtensions": "7z|aac|arc|arj|asf|asx|avi|bin|csv|doc|exe|flv|gif|gz|gzip|hqx|jar|jpe?g|js|mp(2|3|4|e?g)|mov(ie)?|msi|msp|pdf|phps|png|ppt|qtm?|ra(m|r)?|sea|sit|tar|tgz|torrent|txt|wav|wma|wmv|wpd|xls|xml|z|zip|c|cpp" } });
+//--><!]]>
+</script>
+<script type="text/javascript">
+<!--//--><![CDATA[//><!--
+window.google_analytics_uacct = "UA-77811-9";
+//--><!]]>
+</script>
+<script type="text/javascript">
+<!--//--><![CDATA[//><!--
+(function(i,s,o,g,r,a,m){i["GoogleAnalyticsObject"]=r;i[r]=i[r]||function(){(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)})(window,document,"script","/sites/default/files/googleanalytics/analytics.js?G","ga");ga("create", "UA-77811-9", { "cookieDomain": "auto" });ga("send", "pageview");
+//--><!]]>
+</script>
+<link rel="stylesheet" type="text/css" href="./Standard Peripherals Library vs CMSIS vs HAL vs Low Level Library _ PurpleAlienPlanet_files/buttons-secure.css"><script type="text/javascript" src="https://count-server.sharethis.com/v2.0/get_counts?url=https%3A%2F%2Fwww.purplealienplanet.com%2Fnode%2F61&amp;cb=stButtons.processCB&amp;wd=true"></script></head>
+
+<body id="pid-node-61" class="not-front not-logged-in page-node node-type-story no-sidebars full-node layout-first-main sidebars-split font-size-13 grid-type-fluid grid-width-16 fluid-100  lightbox-processed cron-check-processed">
+  <div id="page" class="page">
+    <div id="page-inner" class="page-inner">
+      <div id="skip">
+        <a href="https://www.purplealienplanet.com/node/61#main-content-area">Skip to Main Content Area</a>
+      </div>
+
+      <!-- header-top row: width = grid_width -->
+      
+      <!-- header-group row: width = grid_width -->
+      <div id="header-group-wrapper" class="header-group-wrapper without-preface-top full-width">
+        <div id="header-group" class="header-group row grid16-16">
+          <div id="header-group-inner" class="header-group-inner inner clearfix">
+            <div id="primary-menu" class="primary-menu block">
+<div id="primary-menu-inner" class="primary-menu-inner inner clearfix">
+<ul class="menu sf-menu sf-js-enabled"><li class="leaf first"><a href="https://www.purplealienplanet.com/node/36" title="About">About Me</a></li>
+<li class="leaf"><a href="https://www.purplealienplanet.com/node/2" title="Other Sites">Other Sites</a></li>
+<li class="leaf last"><a href="https://www.purplealienplanet.com/contact" title="">Contact</a></li>
+</ul></div><!-- /primary-menu-inner -->
+</div><!-- /primary-menu -->
+                        <div id="header-site-info" class="header-site-info without-preface-top block">
+              <div id="header-site-info-inner" class="header-site-info-inner inner clearfix" style="border-radius: 10px;">
+                <div id="search-box" class="search-box block">
+<div id="search-box-inner" class="search-box-inner inner clearfix">
+<form action="https://www.purplealienplanet.com/node/61" accept-charset="UTF-8" method="post" id="search-theme-form">
+<div>
+
+<div id="search">
+  <div id="search-input">
+    <input type="text" maxlength="128" name="search_theme_form" id="edit-search-theme-form-header" size="15" title="Enter the terms you wish to search for." value="Search..." onblur="if(this.value==&#39;&#39;) this.value=&#39;Search...&#39;;" onfocus="if(this.value==&#39;Search...&#39;) this.value=&#39;&#39;;" class="form-text">
+  </div>
+
+  <div id="search-button">
+    <input type="image" name="op" value="search" id="edit-submit-2" src="./Standard Peripherals Library vs CMSIS vs HAL vs Low Level Library _ PurpleAlienPlanet_files/search-arrow.png" class="searchButtonPng" alt="Search">
+  </div>
+
+  <input type="hidden" name="form_build_id" id="form-qBSIqa4OTx2ZoGFfn-0Wbf6yd694i0ACbU1kKudSJZ0" value="form-qBSIqa4OTx2ZoGFfn-0Wbf6yd694i0ACbU1kKudSJZ0">
+<input type="hidden" name="form_id" id="edit-search-theme-form" value="search_theme_form">
+</div>
+</div></form>
+</div><!-- /search-box-inner -->
+</div><!-- /search-box -->
+                                <div id="logo">
+                  <a href="https://www.purplealienplanet.com/" title="Home"><img src="./Standard Peripherals Library vs CMSIS vs HAL vs Low Level Library _ PurpleAlienPlanet_files/acquia_slate_logo.png" alt="Home"></a>
+                </div>
+                                                <div id="site-name-wrapper" class="clearfix">
+                                    <span id="site-name"><a href="https://www.purplealienplanet.com/" title="Home"><span class="first-word">PurpleAlienPlanet</span></a></span>
+                                                    </div><!-- /site-name-wrapper -->
+                                              </div><!-- /header-site-info-inner -->
+            </div><!-- /header-site-info -->
+                      </div><!-- /header-group-inner -->
+
+          <!-- preface-top row: width = grid_block -->
+                    
+        </div><!-- /header-group -->
+      </div><!-- /header-group-wrapper -->
+
+      <!-- main row: width = grid_width -->
+      <div id="main-wrapper" class="main-wrapper full-width">
+        <div id="main" class="main row grid16-16">
+          <div id="main-inner" class="main-inner inner clearfix">
+            <div id="sidebar-first" class="sidebar-first row nested grid16-4">
+<div id="sidebar-first-inner" class="sidebar-first-inner inner clearfix">
+
+<div id="block-user-0" class="block block-user odd first rounded-corners-gradient-background grid16-16">
+  <div class="inner clearfix">
+    <div class="corner-top"><div class="corner-top-right corner"></div><div class="corner-top-left corner"></div></div>
+    <div class="inner-inner">
+                  <h2 class="title block-title">User login</h2>
+            <div class="content clearfix">
+        <form action="https://www.purplealienplanet.com/node/61?destination=node%2F61" accept-charset="UTF-8" method="post" id="user-login-form">
+<div><div class="form-item" id="edit-name-wrapper">
+ <label for="edit-name">Username: <span class="form-required" title="This field is required.">*</span></label>
+ <input type="text" maxlength="60" name="name" id="edit-name" size="15" value="" class="form-text required">
+</div>
+<div class="form-item" id="edit-pass-wrapper">
+ <label for="edit-pass">Password: <span class="form-required" title="This field is required.">*</span></label>
+ <input type="password" name="pass" id="edit-pass" maxlength="60" size="15" class="form-text required">
+</div>
+<div class="item-list"><ul><li class="first"><a href="https://www.purplealienplanet.com/user/register" title="Create a new user account.">Create new account</a></li>
+<li class="last"><a href="https://www.purplealienplanet.com/user/password" title="Request new password via e-mail.">Request new password</a></li>
+</ul></div><input type="hidden" name="form_build_id" id="form-TrmbOQQ-dCP1wcxZkLBfC7-7AfVqTRUYYezSRQvootQ" value="form-TrmbOQQ-dCP1wcxZkLBfC7-7AfVqTRUYYezSRQvootQ">
+<input type="hidden" name="form_id" id="edit-user-login-block" value="user_login_block">
+<div class="edit-mail-user-wrapper"><div class="form-item" id="edit-mail-user-wrapper">
+ <input type="text" maxlength="128" name="mail_user" id="edit-mail-user" size="20" value="" class="form-text">
+ <div class="description">To prevent automated spam submissions leave this field empty.</div>
+</div>
+</div><span class="button-wrapper"><span class="button"><span><input type="submit" name="op" id="edit-submit" value="Log in" class="form-submit"></span></span></span>
+
+</div></form>
+      </div><!-- /content -->
+    </div><!-- /inner-inner -->
+    <div class="corner-bottom"><div class="corner-bottom-right corner"></div><div class="corner-bottom-left corner"></div></div>
+  </div><!-- /block-inner -->
+</div><!-- /block -->
+
+<div id="block-sna-sna-node-story" class="block block-sna even  rounded-corners-gradient-background grid16-16">
+  <div class="inner clearfix">
+    <div class="corner-top"><div class="corner-top-right corner"></div><div class="corner-top-left corner"></div></div>
+    <div class="inner-inner">
+                  <h2 class="title block-title">Archive</h2>
+            <div class="content clearfix">
+        <!--[if IE]><div class="ie"><![endif]--><ul class="menu jquerymenu jquerymenu-processed"><li class="parent closed"><span class="parent closed"></span><a href="https://www.purplealienplanet.com/sna/2018/00/story/all">2018 (1)</a><ul><li class="parent closed"><span class="parent closed"></span><a href="https://www.purplealienplanet.com/sna/2018/05/story/all">May (1)</a><ul><li><a href="https://www.purplealienplanet.com/node/69">STM32 Minimal Development Environment</a></li></ul></li></ul></li><li class="parent closed"><span class="parent closed"></span><a href="https://www.purplealienplanet.com/sna/2017/00/story/all">2017 (4)</a><ul><li class="parent closed"><span class="parent closed"></span><a href="https://www.purplealienplanet.com/sna/2017/12/story/all">December (1)</a><ul><li><a href="https://www.purplealienplanet.com/node/68">Season's Greetings</a></li></ul></li><li class="parent closed"><span class="parent closed"></span><a href="https://www.purplealienplanet.com/sna/2017/07/story/all">July (1)</a><ul><li><a href="https://www.purplealienplanet.com/node/66">Progress!</a></li></ul></li><li class="parent closed"><span class="parent closed"></span><a href="https://www.purplealienplanet.com/sna/2017/04/story/all">April (1)</a><ul><li><a href="https://www.purplealienplanet.com/node/65">Getting started with LoRa(WAN)</a></li></ul></li><li class="parent closed"><span class="parent closed"></span><a href="https://www.purplealienplanet.com/sna/2017/02/story/all">February (1)</a><ul><li><a href="https://www.purplealienplanet.com/node/64">Slightly Smaller Still...</a></li></ul></li></ul></li><li class="parent open active-trail"><span class="parent open active-trail"></span><a href="https://www.purplealienplanet.com/sna/2016/00/story/all">2016 (5)</a><ul><li class="parent closed"><span class="parent closed"></span><a href="https://www.purplealienplanet.com/sna/2016/12/story/all">December (1)</a><ul><li><a href="https://www.purplealienplanet.com/node/63">Season's Greetings and Best Wishes for 2017!</a></li></ul></li><li class="parent closed"><span class="parent closed"></span><a href="https://www.purplealienplanet.com/sna/2016/11/story/all">November (1)</a><ul><li><a href="https://www.purplealienplanet.com/node/62">Some Thoughts on Securing IoT Devices</a></li></ul></li><li class="parent open active-trail"><span class="parent open active-trail"></span><a href="https://www.purplealienplanet.com/sna/2016/10/story/all">October (1)</a><ul><li class="active"><a href="https://www.purplealienplanet.com/node/61" class="active">Standard Peripherals Library vs CMSIS vs HAL vs Low Level Library</a></li></ul></li><li class="parent closed"><span class="parent closed"></span><a href="https://www.purplealienplanet.com/sna/2016/06/story/all">June (1)</a><ul><li><a href="https://www.purplealienplanet.com/node/60">Anyone Can Code...</a></li></ul></li><li class="parent closed"><span class="parent closed"></span><a href="https://www.purplealienplanet.com/sna/2016/01/story/all">January (1)</a><ul><li><a href="https://www.purplealienplanet.com/node/59">This Is How We Build It</a></li></ul></li></ul></li><li class="parent closed"><span class="parent closed"></span><a href="https://www.purplealienplanet.com/sna/2015/00/story/all">2015 (5)</a><ul><li class="parent closed"><span class="parent closed"></span><a href="https://www.purplealienplanet.com/sna/2015/12/story/all">December (1)</a><ul><li><a href="https://www.purplealienplanet.com/node/58">Holiday Wishes</a></li></ul></li><li class="parent closed"><span class="parent closed"></span><a href="https://www.purplealienplanet.com/sna/2015/08/story/all">August (1)</a><ul><li><a href="https://www.purplealienplanet.com/node/57">Mushroom Season</a></li></ul></li><li class="parent closed"><span class="parent closed"></span><a href="https://www.purplealienplanet.com/sna/2015/07/story/all">July (1)</a><ul><li><a href="https://www.purplealienplanet.com/node/56">Flashing STM32L15X EEPROM with STLink under Linux</a></li></ul></li><li class="parent closed"><span class="parent closed"></span><a href="https://www.purplealienplanet.com/sna/2015/03/story/all">March (1)</a><ul><li><a href="https://www.purplealienplanet.com/node/55">Solar Eclipse</a></li></ul></li><li class="parent closed"><span class="parent closed"></span><a href="https://www.purplealienplanet.com/sna/2015/02/story/all">February (1)</a><ul><li><a href="https://www.purplealienplanet.com/node/54">SuperFish - The Saga Continues</a></li></ul></li></ul></li><li class="parent closed"><span class="parent closed"></span><a href="https://www.purplealienplanet.com/sna/2014/00/story/all">2014 (6)</a><ul><li class="parent closed"><span class="parent closed"></span><a href="https://www.purplealienplanet.com/sna/2014/12/story/all">December (1)</a><ul><li><a href="https://www.purplealienplanet.com/node/53">Happy Holidays</a></li></ul></li><li class="parent closed"><span class="parent closed"></span><a href="https://www.purplealienplanet.com/sna/2014/09/story/all">September (2)</a><ul><li><a href="https://www.purplealienplanet.com/node/52">How Small?</a></li><li><a href="https://www.purplealienplanet.com/node/51">Autumn</a></li></ul></li><li class="parent closed"><span class="parent closed"></span><a href="https://www.purplealienplanet.com/sna/2014/07/story/all">July (1)</a><ul><li><a href="https://www.purplealienplanet.com/node/50">On Processes and Threads</a></li></ul></li><li class="parent closed"><span class="parent closed"></span><a href="https://www.purplealienplanet.com/sna/2014/02/story/all">February (1)</a><ul><li><a href="https://www.purplealienplanet.com/node/49">Kickstarter - Part Deux</a></li></ul></li><li class="parent closed"><span class="parent closed"></span><a href="https://www.purplealienplanet.com/sna/2014/01/story/all">January (1)</a><ul><li><a href="https://www.purplealienplanet.com/node/48">New Horizons for Embedded</a></li></ul></li></ul></li><li class="parent closed"><span class="parent closed"></span><a href="https://www.purplealienplanet.com/sna/2013/00/story/all">2013 (9)</a><ul><li class="parent closed"><span class="parent closed"></span><a href="https://www.purplealienplanet.com/sna/2013/12/story/all">December (2)</a><ul><li><a href="https://www.purplealienplanet.com/node/47">Happy Holidays</a></li><li><a href="https://www.purplealienplanet.com/node/46">It's been a while...</a></li></ul></li><li class="parent closed"><span class="parent closed"></span><a href="https://www.purplealienplanet.com/sna/2013/06/story/all">June (2)</a><ul><li><a href="https://www.purplealienplanet.com/node/45">Midsummer</a></li><li><a href="https://www.purplealienplanet.com/node/44">Web Proxy</a></li></ul></li><li class="parent closed"><span class="parent closed"></span><a href="https://www.purplealienplanet.com/sna/2013/05/story/all">May (2)</a><ul><li><a href="https://www.purplealienplanet.com/node/43">Smart Grid Security</a></li><li><a href="https://www.purplealienplanet.com/node/42">For your future career</a></li></ul></li><li class="parent closed"><span class="parent closed"></span><a href="https://www.purplealienplanet.com/sna/2013/04/story/all">April (1)</a><ul><li><a href="https://www.purplealienplanet.com/node/41">Tips for the security minded traveler - and others</a></li></ul></li><li class="parent closed"><span class="parent closed"></span><a href="https://www.purplealienplanet.com/sna/2013/03/story/all">March (1)</a><ul><li><a href="https://www.purplealienplanet.com/node/40">The Cloud Again...</a></li></ul></li><li class="parent closed"><span class="parent closed"></span><a href="https://www.purplealienplanet.com/sna/2013/02/story/all">February (1)</a><ul><li><a href="https://www.purplealienplanet.com/node/39">GPS Tracker and Kickstarter</a></li></ul></li></ul></li><li class="parent closed"><span class="parent closed"></span><a href="https://www.purplealienplanet.com/sna/2012/00/story/all">2012 (11)</a><ul><li class="parent closed"><span class="parent closed"></span><a href="https://www.purplealienplanet.com/sna/2012/12/story/all">December (1)</a><ul><li><a href="https://www.purplealienplanet.com/node/38">Season's Greetings</a></li></ul></li><li class="parent closed"><span class="parent closed"></span><a href="https://www.purplealienplanet.com/sna/2012/10/story/all">October (1)</a><ul><li><a href="https://www.purplealienplanet.com/node/37">Back home</a></li></ul></li><li class="parent closed"><span class="parent closed"></span><a href="https://www.purplealienplanet.com/sna/2012/08/story/all">August (1)</a><ul><li><a href="https://www.purplealienplanet.com/node/35">Kids these days...</a></li></ul></li><li class="parent closed"><span class="parent closed"></span><a href="https://www.purplealienplanet.com/sna/2012/06/story/all">June (2)</a><ul><li><a href="https://www.purplealienplanet.com/node/34">Dealing with Passwords</a></li><li><a href="https://www.purplealienplanet.com/node/33">LinkedIn leak</a></li></ul></li><li class="parent closed"><span class="parent closed"></span><a href="https://www.purplealienplanet.com/sna/2012/05/story/all">May (1)</a><ul><li><a href="https://www.purplealienplanet.com/node/31">The Cloud...</a></li></ul></li><li class="parent closed"><span class="parent closed"></span><a href="https://www.purplealienplanet.com/sna/2012/03/story/all">March (2)</a><ul><li><a href="https://www.purplealienplanet.com/node/30">Porting wpa_supplicant</a></li><li><a href="https://www.purplealienplanet.com/node/29">San Antonio Storm</a></li></ul></li><li class="parent closed"><span class="parent closed"></span><a href="https://www.purplealienplanet.com/sna/2012/02/story/all">February (3)</a><ul><li><a href="https://www.purplealienplanet.com/node/27">An Introduction to Elliptic Curve Cryptography</a></li><li><a href="https://www.purplealienplanet.com/node/25">Transparent Caching Proxy with Squid and Just One Ethernet Port</a></li><li><a href="https://www.purplealienplanet.com/node/24">Qt and Web Content</a></li></ul></li></ul></li><li class="parent closed"><span class="parent closed"></span><a href="https://www.purplealienplanet.com/sna/2011/00/story/all">2011 (11)</a><ul><li class="parent closed"><span class="parent closed"></span><a href="https://www.purplealienplanet.com/sna/2011/12/story/all">December (1)</a><ul><li><a href="https://www.purplealienplanet.com/node/23">A Ray Tracer - Part 2</a></li></ul></li><li class="parent closed"><span class="parent closed"></span><a href="https://www.purplealienplanet.com/sna/2011/11/story/all">November (2)</a><ul><li><a href="https://www.purplealienplanet.com/node/20">A Ray Tracer - Part 1</a></li><li><a href="https://www.purplealienplanet.com/node/22">Sabayon Linux and an HP Laptop</a></li></ul></li><li class="parent closed"><span class="parent closed"></span><a href="https://www.purplealienplanet.com/sna/2011/10/story/all">October (2)</a><ul><li><a href="https://www.purplealienplanet.com/node/21">MIPS 101</a></li><li><a href="https://www.purplealienplanet.com/node/19">RoboCup</a></li></ul></li><li class="parent closed"><span class="parent closed"></span><a href="https://www.purplealienplanet.com/sna/2011/09/story/all">September (1)</a><ul><li><a href="https://www.purplealienplanet.com/node/18">Clickatell with Qt</a></li></ul></li><li class="parent closed"><span class="parent closed"></span><a href="https://www.purplealienplanet.com/sna/2011/06/story/all">June (1)</a><ul><li><a href="https://www.purplealienplanet.com/node/17">FTF 2011</a></li></ul></li><li class="parent closed"><span class="parent closed"></span><a href="https://www.purplealienplanet.com/sna/2011/05/story/all">May (2)</a><ul><li><a href="https://www.purplealienplanet.com/node/16">Last Class</a></li><li><a href="https://www.purplealienplanet.com/node/15">Just Married</a></li></ul></li><li class="parent closed"><span class="parent closed"></span><a href="https://www.purplealienplanet.com/sna/2011/03/story/all">March (2)</a><ul><li><a href="https://www.purplealienplanet.com/node/14">Retro Gaming</a></li><li><a href="https://www.purplealienplanet.com/node/13">C: Structs and Pointers</a></li></ul></li></ul></li><li class="parent closed"><span class="parent closed"></span><a href="https://www.purplealienplanet.com/sna/2010/00/story/all">2010 (9)</a><ul><li class="parent closed"><span class="parent closed"></span><a href="https://www.purplealienplanet.com/sna/2010/12/story/all">December (1)</a><ul><li><a href="https://www.purplealienplanet.com/node/12">Season's Greetings</a></li></ul></li><li class="parent closed"><span class="parent closed"></span><a href="https://www.purplealienplanet.com/sna/2010/08/story/all">August (1)</a><ul><li><a href="https://www.purplealienplanet.com/node/11">UAV Prototype </a></li></ul></li><li class="parent closed"><span class="parent closed"></span><a href="https://www.purplealienplanet.com/sna/2010/07/story/all">July (1)</a><ul><li><a href="https://www.purplealienplanet.com/node/9">4th of July</a></li></ul></li><li class="parent closed"><span class="parent closed"></span><a href="https://www.purplealienplanet.com/sna/2010/06/story/all">June (2)</a><ul><li><a href="https://www.purplealienplanet.com/node/8">This was FTF Orlando, Florida 2010</a></li><li><a href="https://www.purplealienplanet.com/node/7">Freescale Technology Forum</a></li></ul></li><li class="parent closed"><span class="parent closed"></span><a href="https://www.purplealienplanet.com/sna/2010/05/story/all">May (1)</a><ul><li><a href="https://www.purplealienplanet.com/node/6">Future Electronics AEU</a></li></ul></li><li class="parent closed"><span class="parent closed"></span><a href="https://www.purplealienplanet.com/sna/2010/04/story/all">April (1)</a><ul><li><a href="https://www.purplealienplanet.com/node/5">GPS Tracker - Update</a></li></ul></li><li class="parent closed"><span class="parent closed"></span><a href="https://www.purplealienplanet.com/sna/2010/03/story/all">March (1)</a><ul><li><a href="https://www.purplealienplanet.com/node/4">GPS Tracker</a></li></ul></li><li class="parent closed"><span class="parent closed"></span><a href="https://www.purplealienplanet.com/sna/2010/01/story/all">January (1)</a><ul><li><a href="https://www.purplealienplanet.com/node/1">Welcome</a></li></ul></li></ul></li></ul><!--[if IE]></div><![endif]-->      </div><!-- /content -->
+    </div><!-- /inner-inner -->
+    <div class="corner-bottom"><div class="corner-bottom-right corner"></div><div class="corner-bottom-left corner"></div></div>
+  </div><!-- /block-inner -->
+</div><!-- /block -->
+
+<div id="block-tagadelic-1" class="block block-tagadelic odd  rounded-corners-gradient-background grid16-16">
+  <div class="inner clearfix">
+    <div class="corner-top"><div class="corner-top-right corner"></div><div class="corner-top-left corner"></div></div>
+    <div class="inner-inner">
+                  <h2 class="title block-title">Tag Cloud</h2>
+            <div class="content clearfix">
+        <a href="https://www.purplealienplanet.com/taxonomy/term/41" class="tagadelic level4" rel="tag" title="">Network</a> 
+<a href="https://www.purplealienplanet.com/taxonomy/term/27" class="tagadelic level1" rel="tag" title="">Gaming</a> 
+<a href="https://www.purplealienplanet.com/taxonomy/term/17" class="tagadelic level1" rel="tag" title="">Robots</a> 
+<a href="https://www.purplealienplanet.com/taxonomy/term/47" class="tagadelic level3" rel="tag" title="">Wireless</a> 
+<a href="https://www.purplealienplanet.com/taxonomy/term/48" class="tagadelic level3" rel="tag" title="">Cloud</a> 
+<a href="https://www.purplealienplanet.com/taxonomy/term/7" class="tagadelic level2" rel="tag" title="">Graphics</a> 
+<a href="https://www.purplealienplanet.com/taxonomy/term/6" class="tagadelic level4" rel="tag" title="C programming language">C</a> 
+<a href="https://www.purplealienplanet.com/taxonomy/term/12" class="tagadelic level1" rel="tag" title="">MIPS</a> 
+<a href="https://www.purplealienplanet.com/taxonomy/term/5" class="tagadelic level3" rel="tag" title="">Qt</a> 
+<a href="https://www.purplealienplanet.com/taxonomy/term/55" class="tagadelic level1" rel="tag" title="">Fiinland</a> 
+<a href="https://www.purplealienplanet.com/taxonomy/term/46" class="tagadelic level1" rel="tag" title="">San Antonio</a> 
+<a href="https://www.purplealienplanet.com/taxonomy/term/43" class="tagadelic level5" rel="tag" title="">Cryptography</a> 
+<a href="https://www.purplealienplanet.com/taxonomy/term/3" class="tagadelic level3" rel="tag" title="Freescale Technology Forum">FTF</a> 
+<a href="https://www.purplealienplanet.com/taxonomy/term/2" class="tagadelic level2" rel="tag" title="">Ray Tracing</a> 
+<a href="https://www.purplealienplanet.com/taxonomy/term/51" class="tagadelic level4" rel="tag" title="">Electronics</a> 
+<a href="https://www.purplealienplanet.com/taxonomy/term/34" class="tagadelic level3" rel="tag" title="">Tracker</a> 
+<a href="https://www.purplealienplanet.com/taxonomy/term/31" class="tagadelic level3" rel="tag" title="http://www.futureelectronics.com/">Future Electronics</a> 
+<a href="https://www.purplealienplanet.com/taxonomy/term/24" class="tagadelic level3" rel="tag" title="http://www.genesi-usa.com">Genesi</a> 
+<a href="https://www.purplealienplanet.com/taxonomy/term/50" class="tagadelic level5" rel="tag" title="">Embedded</a> 
+<a href="https://www.purplealienplanet.com/taxonomy/term/52" class="tagadelic level3" rel="tag" title="">Computer</a> 
+<a href="https://www.purplealienplanet.com/taxonomy/term/32" class="tagadelic level1" rel="tag" title="">First Post</a> 
+<a href="https://www.purplealienplanet.com/taxonomy/term/29" class="tagadelic level1" rel="tag" title="Unmanned Aerial Vehicle">UAV</a> 
+<a href="https://www.purplealienplanet.com/taxonomy/term/39" class="tagadelic level1" rel="tag" title="">Efika</a> 
+<a href="https://www.purplealienplanet.com/taxonomy/term/37" class="tagadelic level1" rel="tag" title="">Squid</a> 
+<a href="https://www.purplealienplanet.com/taxonomy/term/26" class="tagadelic level1" rel="tag" title="">Retro</a> 
+<a href="https://www.purplealienplanet.com/taxonomy/term/21" class="tagadelic level1" rel="tag" title="">SMS</a> 
+<a href="https://www.purplealienplanet.com/taxonomy/term/16" class="tagadelic level1" rel="tag" title="http://robotics.puv.fi">Botnia</a> 
+<a href="https://www.purplealienplanet.com/taxonomy/term/33" class="tagadelic level4" rel="tag" title="">GPS</a> 
+<a href="https://www.purplealienplanet.com/taxonomy/term/54" class="tagadelic level1" rel="tag" title="">Finland</a> 
+<a href="https://www.purplealienplanet.com/taxonomy/term/49" class="tagadelic level5" rel="tag" title="">Security</a> 
+<a href="https://www.purplealienplanet.com/taxonomy/term/15" class="tagadelic level1" rel="tag" title="">RoboCup</a> 
+<a href="https://www.purplealienplanet.com/taxonomy/term/13" class="tagadelic level2" rel="tag" title="">Computer Architecture</a> 
+<a href="https://www.purplealienplanet.com/taxonomy/term/36" class="tagadelic level1" rel="tag" title="Advanced Engineering University">AEU</a> 
+<a href="https://www.purplealienplanet.com/taxonomy/term/9" class="tagadelic level3" rel="tag" title="">Mathematics</a> 
+<a href="https://www.purplealienplanet.com/taxonomy/term/35" class="tagadelic level2" rel="tag" title="">Hardware</a> 
+<a href="https://www.purplealienplanet.com/taxonomy/term/8" class="tagadelic level6" rel="tag" title="">Programming</a> 
+<a href="https://www.purplealienplanet.com/taxonomy/term/1" class="tagadelic level3" rel="tag" title="Linux operating system">Linux</a> 
+<a href="https://www.purplealienplanet.com/taxonomy/term/23" class="tagadelic level1" rel="tag" title="">Neon</a> 
+<a href="https://www.purplealienplanet.com/taxonomy/term/22" class="tagadelic level4" rel="tag" title="">ARM</a> 
+<a href="https://www.purplealienplanet.com/taxonomy/term/25" class="tagadelic level3" rel="tag" title="">School</a> 
+<a href="https://www.purplealienplanet.com/taxonomy/term/45" class="tagadelic level1" rel="tag" title="">Lightning</a> 
+<a href="https://www.purplealienplanet.com/taxonomy/term/53" class="tagadelic level6" rel="tag" title="">Other</a> 
+      </div><!-- /content -->
+    </div><!-- /inner-inner -->
+    <div class="corner-bottom"><div class="corner-bottom-right corner"></div><div class="corner-bottom-left corner"></div></div>
+  </div><!-- /block-inner -->
+</div><!-- /block -->
+
+<div id="block-mobile_tools-mobile_tools_message" class="block block-mobile_tools even  rounded-corners-gradient-background grid16-16">
+  <div class="inner clearfix">
+    <div class="corner-top"><div class="corner-top-right corner"></div><div class="corner-top-left corner"></div></div>
+    <div class="inner-inner">
+                  <div class="content clearfix">
+        <a href="https://www.purplealienplanet.com/mt/mobile/node/61">View mobile site</a>      </div><!-- /content -->
+    </div><!-- /inner-inner -->
+    <div class="corner-bottom"><div class="corner-bottom-right corner"></div><div class="corner-bottom-left corner"></div></div>
+  </div><!-- /block-inner -->
+</div><!-- /block -->
+
+<div id="block-block-4" class="block block-block odd   grid16-16">
+  <div class="inner clearfix">
+    <div class="corner-top"><div class="corner-top-right corner"></div><div class="corner-top-left corner"></div></div>
+    <div class="inner-inner">
+                  <div class="content clearfix">
+        <p class="rtecenter">&nbsp;<a href="https://twitter.com/intent/user?screen_name=_PurpleAlien_"><img src="./Standard Peripherals Library vs CMSIS vs HAL vs Low Level Library _ PurpleAlienPlanet_files/pa_twitter.png" alt="Follow on Twitter" width="100" height="48"></a></p>
+      </div><!-- /content -->
+    </div><!-- /inner-inner -->
+    <div class="corner-bottom"><div class="corner-bottom-right corner"></div><div class="corner-bottom-left corner"></div></div>
+  </div><!-- /block-inner -->
+</div><!-- /block -->
+
+<div id="block-block-1" class="block block-block even  last  grid16-16">
+  <div class="inner clearfix">
+    <div class="corner-top"><div class="corner-top-right corner"></div><div class="corner-top-left corner"></div></div>
+    <div class="inner-inner">
+                  <div class="content clearfix">
+        <p class="rtecenter">
+<script async="" src="./Standard Peripherals Library vs CMSIS vs HAL vs Low Level Library _ PurpleAlienPlanet_files/f.txt"></script>
+<!-- 160x600, created 13/07/10 -->
+<ins class="adsbygoogle" style="display:inline-block;width:160px;height:600px" data-ad-client="ca-pub-6819414378032423" data-ad-slot="8229293429"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+</p>      </div><!-- /content -->
+    </div><!-- /inner-inner -->
+    <div class="corner-bottom"><div class="corner-bottom-right corner"></div><div class="corner-bottom-left corner"></div></div>
+  </div><!-- /block-inner -->
+</div><!-- /block -->
+</div><!-- /sidebar-first-inner -->
+</div><!-- /sidebar-first -->
+
+            <!-- main group: width = grid_width - sidebar_first_width -->
+            <div id="main-group" class="main-group row nested grid16-12">
+              <div id="main-group-inner" class="main-group-inner inner clearfix">
+                
+                <div id="main-content" class="main-content row nested">
+                  <div id="main-content-inner" class="main-content-inner inner clearfix">
+                    <!-- content group: width = grid_width - (sidebar_first_width + sidebar_last_width) -->
+                    <div id="content-group" class="content-group row nested " style="width:100%">
+                      <div id="content-group-inner" class="content-group-inner inner clearfix">
+                                                                                                                        <div id="content-region" class="content-region row nested">
+                          <div id="content-region-inner" class="content-region-inner inner clearfix">
+                            <a name="main-content-area" id="main-content-area"></a>
+                                                        <div id="content-inner" class="content-inner block">
+                              <div id="content-inner-inner" class="content-inner-inner inner clearfix">
+                                                                <h1 class="title">Standard Peripherals Library vs CMSIS vs HAL vs Low Level Library</h1>
+                                                                                                <div id="content-content" class="content-content">
+                                  
+<div id="node-61" class="node odd full-node node-type-story">
+  <div class="inner">
+    
+    
+        <div class="meta">
+      <span class="submitted">Submitted by PurpleAlien on Sun, 10/16/2016 - 02:58</span>
+    </div>
+    
+    
+    <div class="content clearfix">
+      <h3 class="title">Tags: <a href="https://www.purplealienplanet.com/taxonomy/term/22">ARM</a>, <a href="https://www.purplealienplanet.com/taxonomy/term/6">C</a>, <a href="https://www.purplealienplanet.com/taxonomy/term/51">Electronics</a>, <a href="https://www.purplealienplanet.com/taxonomy/term/50">Embedded</a>, <a href="https://www.purplealienplanet.com/taxonomy/term/8">Programming</a></h3><p>The STM32 line of microcontrollers offer a bunch of features in a nice package at reasonable cost, something I&nbsp;like. What I&nbsp;don't like as much are the development libraries around it provided by ST. For this reason, most of the time I stick&nbsp;to writing code using the '<a href="http://www.arm.com/products/processors/cortex-m/cortex-microcontroller-software-interface-standard.php">Cortex Microcontroller Software Interface Standard</a>' (CMSIS) and the datasheet, and this works nicely but can be slow to develop. While it's still my personal favorite, I recently checked out the other options to see where things are going&nbsp;to do the prep work for some ports of older projects built using the 'Standard Peripherals Library' to newer processors such as the <a href="http://www.st.com/en/microcontrollers/stm32-l4-series.html">STM32L4</a>.</p>
+<p>&nbsp;</p>
+<p class="rtecenter"><img alt="Microcontroller" src="./Standard Peripherals Library vs CMSIS vs HAL vs Low Level Library _ PurpleAlienPlanet_files/microcontroller_simple_scheme-500px.png" style="height:240px; width:300px"></p>
+<p>&nbsp;</p>
+<p>So, why not stick to the&nbsp;Standard Peripherals Library? Simply because ST decided to discontinue this library for future processors like the STM32L4. Instead, ST is pushing their HAL to provide a standardized API across the devices&nbsp;in combination with the STM32CubeMX tool for code generation for clock settings, pin muxing, peripheral settings, etc. While this sounds nice in theory, it expects a certain IDE for the generated project files, but also hides a lot of the complexities and details behind abstraction layers. The latter means that a) your code gets bigger (substantially so) and b) hand editing and verification becomes a lot harder. The documentation is also not the best to say the least, and seems I'm <a href="http://electronics.stackexchange.com/questions/225568/stm32f4-and-hal">not the only one</a> noticing&nbsp;these&nbsp;issues.</p>
+<p>It's the verification part in particular that keeps me from using it. The HAL can be buggy (and <a href="http://electronics.stackexchange.com/questions/199138/stm32f4-cube-hal-uart-is-it-a-bug-or-am-i-missing-something">has been</a> in the past). This means spending a lot more time verifying all the layers for correctness&nbsp;in critical applications. The project generation sounds nice, and probably is when you use the supported IDE. I tend to use the GCC compiler and Makefiles, because it integrates nicely with the way we do our production. It also means we can easily run a build process on a remote machine without a GUI getting in the way, again, to integrate with the rest. While I'm sure you can convert some of those project files to a Makefile, it would still need manual tweaking to the particular project at hand every time a change is made using CubeMX. The way I see it, CubeMX is nice for those new to STM microcontrollers, people doing hobby projects, makers, etc., but I don't see this work in professional environments where you usually want full control over what goes on under the hood&nbsp;and resource use is&nbsp;optimized. Then again, maybe I'm in the minority here?</p>
+<p>At one point, ST planned on ditching the&nbsp;<span style="font-size:12px">Standard Peripherals Library altogether and going with HAL all the way. Luckily they came back from that, and created the '</span>Low Level Library​'. This thing is much better (although it could definitely use improvements). It's pretty close to the way the&nbsp;<span style="font-size:12px">Standard Peripherals Library worked, but it's in my opinion cleaner, and definitely results in smaller, more optimized, code. One of the reasons is that you can disable the 'full' version of this library that does away with the more complex functions (think about the way GPIO is set up with a struct) and&nbsp;can just use what are basically simple CMSIS&nbsp;wrappers in the form of inlined functions to perform these tasks. This makes it a lot easier to verify the correctness of it all.</span></p>
+<p>In short the Low Level Library is small, clean and and it's also easily built using a Makefile, in that you can just build a library with all the *_ll_*.c named&nbsp;files and link it in your project just like the&nbsp;Standard Peripherals Library used to work. This also means that any custom linker files migrate along nicely. I've ported a reasonable sized project that used to use the&nbsp;Standard Peripherals Library to the new&nbsp;Low Level Library over a weekend. Let's hope improvements will continue to be made, and that this (or the direct&nbsp;CMSIS way) will become the standard way STM&nbsp;microcontrollers are programmed in more serious environments.</p>
+<p>&nbsp;</p>
+<span st_url="https://www.purplealienplanet.com/node/61" st_title="Standard Peripherals Library vs CMSIS vs HAL vs Low Level Library" class="st_twitter_hcount" displaytext="Twitter" st_processed="yes"><span style="text-decoration:none;color:#000000;display:inline-block;cursor:pointer;" class="stButton"><span><span class="stMainServices st-twitter-counter" style="background-image: url(&quot;https://ws.sharethis.com/images/2017/twitter_counter.png&quot;);">&nbsp;</span><span class="stArrow"><span class="stButton_gradient stHBubble"><span class="stBubble_hcount"></span></span></span></span></span></span><span st_url="https://www.purplealienplanet.com/node/61" st_title="Standard Peripherals Library vs CMSIS vs HAL vs Low Level Library" class="st_facebook_hcount" displaytext="Facebook" st_processed="yes"><span style="text-decoration:none;color:#000000;display:inline-block;cursor:pointer;" class="stButton"><span><span class="stMainServices st-facebook-counter" style="background-image: url(&quot;https://ws.sharethis.com/images/2017/facebook_counter.png&quot;);">&nbsp;</span><span class="stArrow"><span class="stButton_gradient stHBubble"><span class="stBubble_hcount"></span></span></span></span></span></span><span st_url="https://www.purplealienplanet.com/node/61" st_title="Standard Peripherals Library vs CMSIS vs HAL vs Low Level Library" class="st_linkedin_hcount" displaytext="LinkedIn" st_processed="yes"><span style="text-decoration:none;color:#000000;display:inline-block;cursor:pointer;" class="stButton"><span><span class="stMainServices st-linkedin-counter" style="background-image: url(&quot;https://ws.sharethis.com/images/2017/linkedin_counter.png&quot;);">&nbsp;</span><span class="stArrow"><span class="stButton_gradient stHBubble"><span class="stBubble_hcount"></span></span></span></span></span></span><span st_url="https://www.purplealienplanet.com/node/61" st_title="Standard Peripherals Library vs CMSIS vs HAL vs Low Level Library" class="st_google_bmarks_hcount" displaytext="Bookmarks" st_processed="yes"><span style="text-decoration:none;color:#000000;display:inline-block;cursor:pointer;" class="stButton"><span><span class="stButton_gradient"><span class="chicklets google_bmarks">Bookmarks</span></span><span class="stArrow"><span class="stButton_gradient stHBubble"><span class="stBubble_hcount"></span></span></span></span></span></span><span st_url="https://www.purplealienplanet.com/node/61" st_title="Standard Peripherals Library vs CMSIS vs HAL vs Low Level Library" class="st_sharethis_hcount" displaytext="ShareThis" st_processed="yes"><span style="text-decoration:none;color:#000000;display:inline-block;cursor:pointer;" class="stButton"><span><span class="stMainServices st-sharethis-counter" style="background-image: url(&quot;https://ws.sharethis.com/images/2017/sharethis_counter.png&quot;);">&nbsp;</span><span class="stArrow"><span class="stButton_gradient stHBubble"><span class="stBubble_hcount"></span></span></span></span></span></span><script type="text/javascript">var switchTo5x=true;</script>
+    <script type="text/javascript" src="./Standard Peripherals Library vs CMSIS vs HAL vs Low Level Library _ PurpleAlienPlanet_files/buttons.js.download"></script>
+    <script type="text/javascript">stLight.options({publisher:'c9fa7c74-43c0-4a46-965d-4e990e91d7f0'});</script>    </div>
+
+    
+        <div class="links" style="border-radius: 7px;">
+      <div class="links-inner">
+        <ul class="links inline"><li class="comment_add first last"><a href="https://www.purplealienplanet.com/comment/reply/61#comment-form" title="Share your thoughts and opinions related to this posting.">Add new comment</a></li>
+</ul>      </div>
+    </div>
+      </div><!-- /inner -->
+
+  </div><!-- /node-61 -->
+                                                                  </div><!-- /content-content -->
+                                                              </div><!-- /content-inner-inner -->
+                            </div><!-- /content-inner -->
+                          </div><!-- /content-region-inner -->
+                        </div><!-- /content-region -->
+
+                                              </div><!-- /content-group-inner -->
+                    </div><!-- /content-group -->
+
+                                      </div><!-- /main-content-inner -->
+                </div><!-- /main-content -->
+
+                              </div><!-- /main-group-inner -->
+            </div><!-- /main-group -->
+          </div><!-- /main-inner -->
+        </div><!-- /main -->
+      </div><!-- /main-wrapper -->
+
+      <!-- postscript-bottom row: width = grid_width -->
+      
+      <!-- footer row: width = grid_width -->
+      
+      <!-- footer-message row: width = grid_width -->
+      <div id="footer-message-wrapper" class="footer-message-wrapper full-width">
+        <div id="footer-message" class="footer-message row grid16-16">
+          <div id="footer-message-inner" class="footer-message-inner inner clearfix">
+                      </div><!-- /footer-message-inner -->
+        </div><!-- /footer-message -->
+      </div><!-- /footer-message-wrapper -->
+
+    </div><!-- /page-inner -->
+  </div><!-- /page -->
+  
+
+<div id="lightbox2-overlay" style="display: none;"></div>      <div id="lightbox" style="display: none;" class="lightbox2-orig-layout">        <div id="outerImageContainer" style="background-color: rgb(255, 255, 255); color: rgb(0, 0, 0);"><div id="modalContainer" style="display: none; padding: 10px;"></div><div id="frameContainer" style="display: none; padding: 10px;"></div><div id="imageContainer" style="display: none; padding: 10px;"><img id="lightboxImage" alt=""><div id="hoverNav"><a id="prevLink" title="Previous" href="https://www.purplealienplanet.com/node/61#" style="padding-top: 10px;"></a><a id="nextLink" title="Next" href="https://www.purplealienplanet.com/node/61#" style="padding-top: 10px;"></a></div></div><div id="loading"><a href="https://www.purplealienplanet.com/node/61#" id="loadingLink"></a></div></div>        <div id="imageDataContainer" class="clearfix" style="background-color: rgb(255, 255, 255); color: rgb(0, 0, 0);">          <div id="imageData"><div id="imageDetails"><span id="caption"></span><span id="numberDisplay"></span></div><div id="bottomNav"><div id="frameHoverNav"><a id="framePrevLink" title="Previous" href="https://www.purplealienplanet.com/node/61#" style="padding-top: 10px;"></a><a id="frameNextLink" title="Next" href="https://www.purplealienplanet.com/node/61#" style="padding-top: 10px;"></a></div><a id="bottomNavClose" title="Close" href="https://www.purplealienplanet.com/node/61#" style="background-color: rgb(255, 255, 255); color: rgb(0, 0, 0);"></a><a id="bottomNavZoom" href="https://www.purplealienplanet.com/node/61#"></a><a id="bottomNavZoomOut" href="https://www.purplealienplanet.com/node/61#"></a><a id="lightshowPause" title="Pause Slideshow" href="https://www.purplealienplanet.com/node/61#" style="display: none;"></a><a id="lightshowPlay" title="Play Slideshow" href="https://www.purplealienplanet.com/node/61#" style="display: none;"></a></div></div>        </div>      </div><iframe src="./Standard Peripherals Library vs CMSIS vs HAL vs Low Level Library _ PurpleAlienPlanet_files/portal.html" id="st_gdpr_iframe" style="width: 0px; height: 0px; position: absolute; left: -5000px;"></iframe><div id="stcpDiv" style="position: absolute; top: -1999px; left: -1988px;">ShareThis Copy and Paste</div><div id="stwrapper" class="stwrapper stwrapper5x stwrapper5x" style="display: none;"><iframe allowtransparency="true" id="stLframe" class="stLframe" name="stLframe" frameborder="0" scrolling="no" src="./Standard Peripherals Library vs CMSIS vs HAL vs Low Level Library _ PurpleAlienPlanet_files/index.html"></iframe></div><div id="stOverlay" onclick="javascript:stWidget.closeWidget();"></div></body></html>

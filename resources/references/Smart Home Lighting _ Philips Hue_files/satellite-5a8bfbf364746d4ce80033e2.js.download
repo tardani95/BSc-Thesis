@@ -1,0 +1,21 @@
+_satellite.pushAsyncScript(function(event, target, $variables){
+  // Get configIds which are set in the custom condition.
+var configIds = _satellite.getVar("gtagIDs") || [];
+if (configIds.length > 0){
+    // Load script  
+    var script = document.createElement('script');
+    script.src = "https://www.googletagmanager.com/gtag/js?id="+configIds[0]; // Init with first from the list.
+    document.head.appendChild(script); 
+
+    // Create the command queue.
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+
+    // Put initializations of configurations in the command queue.
+    gtag('js', new Date());
+    // Run config for each configId
+    for (var i=0,j=configIds.length; i<j; i++) {
+        gtag('config', configIds[i]);
+    }
+}
+});

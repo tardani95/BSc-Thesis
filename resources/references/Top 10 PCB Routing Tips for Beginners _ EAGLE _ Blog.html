@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<!-- saved from url=(0079)https://www.autodesk.com/products/eagle/blog/top-10-pcb-routing-tips-beginners/ -->
+<html lang="en-US" prefix="og: http://ogp.me/ns#"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+		
+		<meta name="viewport" content="width=device-width">
+		<link rel="stylesheet" type="text/css" href="http://static-dc.autodesk.net/etc/designs/v201701091407/templates-general/structure/fonts/frutiger/clientlibs/frutiger.css">
+		<link rel="stylesheet" type="text/css" href="https://www.autodesk.com/products/eagle/blog/wp-content/themes/eagle/style.css?timestamp=235235666">
+		<script type="text/javascript">
+			var baseURL = "https://www.autodesk.com/products/eagle/blog";
+		</script>
+		<style>
+			.wp-social-login-widget {
+				display: none;
+			}
+		</style>
+		<title>Top 10 PCB Routing Tips for Beginners | EAGLE | Blog</title>
+
+<!-- This site is optimized with the Yoast SEO plugin v4.4 - https://yoast.com/wordpress/plugins/seo/ -->
+<meta name="description" content="Learn how to make an easy job of your printed circuit board (PCB) layout with our top 10 tips for traces, ground planes, vias, and more.">
+<meta name="robots" content="noodp">
+<link rel="canonical" href="https://www.autodesk.com/products/eagle/blog/top-10-pcb-routing-tips-beginners/">
+<meta property="og:locale" content="en_US">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Top 10 PCB Routing Tips for Beginners | EAGLE | Blog">
+<meta property="og:description" content="Learn how to make an easy job of your printed circuit board (PCB) layout with our top 10 tips for traces, ground planes, vias, and more.">
+<meta property="og:url" content="https://www.autodesk.com/products/eagle/blog/top-10-pcb-routing-tips-beginners/">
+<meta property="og:site_name" content="Eagle Blog">
+<meta property="article:section" content="How To">
+<meta property="article:published_time" content="2017-05-11T08:00:43-08:00">
+<meta property="article:modified_time" content="2017-05-09T14:11:08-08:00">
+<meta property="og:updated_time" content="2017-05-09T14:11:08-08:00">
+<meta property="og:image" content="https://www.autodesk.com/products/eagle/blog/wp-content/uploads/2017/05/high-speed-design-large-1152x774.jpg">
+<meta property="og:image:width" content="1112">
+<meta property="og:image:height" content="688">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:description" content="Learn how to make an easy job of your printed circuit board (PCB) layout with our top 10 tips for traces, ground planes, vias, and more.">
+<meta name="twitter:title" content="Top 10 PCB Routing Tips for Beginners | EAGLE | Blog">
+<meta name="twitter:image" content="https://www.autodesk.com/products/eagle/blog/wp-content/uploads/2017/05/high-speed-design-large-1152x774.jpg">
+<!-- / Yoast SEO plugin. -->
+
+<link rel="dns-prefetch" href="https://www.autodesk.com/">
+<link rel="dns-prefetch" href="https://s.w.org/">
+<link rel="alternate" type="application/rss+xml" title="Eagle Blog » Feed" href="https://www.autodesk.com/products/eagle/blog/feed/">
+<link rel="alternate" type="application/rss+xml" title="Eagle Blog » Comments Feed" href="https://www.autodesk.com/products/eagle/blog/comments/feed/">
+<link rel="alternate" type="application/rss+xml" title="Eagle Blog » The Top 10 PCB Routing Tips for Beginners Comments Feed" href="https://www.autodesk.com/products/eagle/blog/top-10-pcb-routing-tips-beginners/feed/">
+		<script type="text/javascript">
+			window._wpemojiSettings = {"baseUrl":"https:\/\/s.w.org\/images\/core\/emoji\/11\/72x72\/","ext":".png","svgUrl":"https:\/\/s.w.org\/images\/core\/emoji\/11\/svg\/","svgExt":".svg","source":{"concatemoji":"https:\/\/www.autodesk.com\/products\/eagle\/blog\/wp-includes\/js\/wp-emoji-release.min.js?ver=4.9.8"}};
+			!function(a,b,c){function d(a,b){var c=String.fromCharCode;l.clearRect(0,0,k.width,k.height),l.fillText(c.apply(this,a),0,0);var d=k.toDataURL();l.clearRect(0,0,k.width,k.height),l.fillText(c.apply(this,b),0,0);var e=k.toDataURL();return d===e}function e(a){var b;if(!l||!l.fillText)return!1;switch(l.textBaseline="top",l.font="600 32px Arial",a){case"flag":return!(b=d([55356,56826,55356,56819],[55356,56826,8203,55356,56819]))&&(b=d([55356,57332,56128,56423,56128,56418,56128,56421,56128,56430,56128,56423,56128,56447],[55356,57332,8203,56128,56423,8203,56128,56418,8203,56128,56421,8203,56128,56430,8203,56128,56423,8203,56128,56447]),!b);case"emoji":return b=d([55358,56760,9792,65039],[55358,56760,8203,9792,65039]),!b}return!1}function f(a){var c=b.createElement("script");c.src=a,c.defer=c.type="text/javascript",b.getElementsByTagName("head")[0].appendChild(c)}var g,h,i,j,k=b.createElement("canvas"),l=k.getContext&&k.getContext("2d");for(j=Array("flag","emoji"),c.supports={everything:!0,everythingExceptFlag:!0},i=0;i<j.length;i++)c.supports[j[i]]=e(j[i]),c.supports.everything=c.supports.everything&&c.supports[j[i]],"flag"!==j[i]&&(c.supports.everythingExceptFlag=c.supports.everythingExceptFlag&&c.supports[j[i]]);c.supports.everythingExceptFlag=c.supports.everythingExceptFlag&&!c.supports.flag,c.DOMReady=!1,c.readyCallback=function(){c.DOMReady=!0},c.supports.everything||(h=function(){c.readyCallback()},b.addEventListener?(b.addEventListener("DOMContentLoaded",h,!1),a.addEventListener("load",h,!1)):(a.attachEvent("onload",h),b.attachEvent("onreadystatechange",function(){"complete"===b.readyState&&c.readyCallback()})),g=c.source||{},g.concatemoji?f(g.concatemoji):g.wpemoji&&g.twemoji&&(f(g.twemoji),f(g.wpemoji)))}(window,document,window._wpemojiSettings);
+		</script><script src="https://www.autodesk.com/products/eagle/blog/wp-includes/js/wp-emoji-release.min.js?ver=4.9.8" type="text/javascript" defer=""></script>
+		<style type="text/css">
+img.wp-smiley,
+img.emoji {
+	display: inline !important;
+	border: none !important;
+	box-shadow: none !important;
+	height: 1em !important;
+	width: 1em !important;
+	margin: 0 .07em !important;
+	vertical-align: -0.1em !important;
+	background: none !important;
+	padding: 0 !important;
+}
+</style>
+<link rel="stylesheet" id="wsl-widget-css" href="https://www.autodesk.com/products/eagle/blog/wp-content/plugins/wordpress-social-login/assets/css/style.css?ver=4.9.8" type="text/css" media="all">
+<script type="text/javascript" src="https://www.autodesk.com/products/eagle/blog/wp-includes/js/jquery/jquery.js?ver=1.12.4"></script>
+<script type="text/javascript" src="https://www.autodesk.com/products/eagle/blog/wp-includes/js/jquery/jquery-migrate.min.js?ver=1.4.1"></script>
+<script type="text/javascript" src="https://www.autodesk.com/products/eagle/blog/wp-content/plugins/wordpress-social-login/assets/js/widget.js?ver=4.9.8"></script>
+<link rel="https://api.w.org/" href="https://www.autodesk.com/products/eagle/blog/wp-json/">
+<link rel="EditURI" type="application/rsd+xml" title="RSD" href="https://www.autodesk.com/products/eagle/blog/xmlrpc.php?rsd">
+<link rel="wlwmanifest" type="application/wlwmanifest+xml" href="https://www.autodesk.com/products/eagle/blog/wp-includes/wlwmanifest.xml"> 
+<link rel="shortlink" href="https://www.autodesk.com/products/eagle/blog/?p=990">
+<link rel="alternate" type="application/json+oembed" href="https://www.autodesk.com/products/eagle/blog/wp-json/oembed/1.0/embed?url=https%3A%2F%2Fwww.autodesk.com%2Fproducts%2Feagle%2Fblog%2Ftop-10-pcb-routing-tips-beginners%2F">
+<link rel="alternate" type="text/xml+oembed" href="https://www.autodesk.com/products/eagle/blog/wp-json/oembed/1.0/embed?url=https%3A%2F%2Fwww.autodesk.com%2Fproducts%2Feagle%2Fblog%2Ftop-10-pcb-routing-tips-beginners%2F&amp;format=xml">
+		<style type="text/css">.recentcomments a{display:inline !important;padding:0 !important;margin:0 !important;}</style>
+				<style type="text/css" id="wp-custom-css">
+			  .wp-fprod-nav .local-navigation .nav-item summary.nav-link:hover:after {
+    content: "";
+    display: block;
+    height: 5px;
+    width: 100%;
+    display: block;
+    background-color: #ee8822;
+    margin: 10px 0 -15px; 
+}
+
+[open] .nav-link-toggle {
+    transform: rotate(180deg) translateY(2px);
+}
+
+.nav-link-toggle i {
+	font-size: 12px;
+}		</style>
+	
+<!--
+	wsl_render_auth_widget
+	WordPress Social Login 2.3.0.
+	http://wordpress.org/plugins/wordpress-social-login/
+-->
+
+<style type="text/css">
+.wp-social-login-connect-with{}.wp-social-login-provider-list{}.wp-social-login-provider-list a{}.wp-social-login-provider-list img{}.wsl_connect_with_provider{}</style>
+
+</head><body class="post-template-default single single-post postid-990 single-format-standard js"><div class="wp-social-login-widget">
+
+	<div class="wp-social-login-connect-with">Connect with:</div>
+
+	<div class="wp-social-login-provider-list">
+
+		<a rel="nofollow" href="javascript:void(0);" title="Connect with Autodesk" class="wp-social-login-provider wp-social-login-provider-autodesk" data-provider="Autodesk">
+			Autodesk
+		</a>
+
+	</div>
+
+	<div class="wp-social-login-widget-clearing"></div>
+
+</div>
+
+<input type="hidden" id="wsl_popup_base_url" value="https://www.autodesk.com/products/eagle/blog/wp-login.php?wpe-login=true&amp;action=wordpress_social_authenticate&amp;mode=login&amp;">
+<input type="hidden" id="wsl_login_form_uri" value="https://www.autodesk.com/products/eagle/blog/wp-login.php?wpe-login=true">
+
+<!-- wsl_render_auth_widget -->
+
+		
+	
+	
+	
+		
+		<header class="header">
+    <div class="container content-wrapper ">
+        <a class="logo" href="http://autodesk.com/">
+            <img src="https://www.autodesk.com/products/eagle/blog/wp-content/themes/eagle/images/logo.png" alt="Autodesk">
+        </a>
+    </div>
+</header>    <div class="decorative-box section"><div class="wp-fprod-nav"><div class="box-content parsys"><div class="local-navigation navigation section"><div class="clearfix local-navigation-outer  " data-wat-link-section="contextnav"><div class="local-navigation-container"><div class="local-navigation-name"><div class="row"><a href="https://www.autodesk.com/products/eagle/overview" class="local-nav-home">Eagle</a><a href="https://www.autodesk.com/products/eagle/blog/top-10-pcb-routing-tips-beginners/#eagle-navigation" data-visibility-target=".local-navigation-links" class="js:DropDown__control nav-toggle nav-toggle-primary visibility-hidden nav-toggle-authoredTitle"><span class="screenreader">Open Navigation Menu</span><i class="icon-arrow-dropdown" aria-hidden="true"></i></a></div></div><div id="eagle-navigation" class="local-navigation-links visibility-target-visible"><div class="row"><nav><ul><li class="nav-item"><a class="nav-link" href="https://www.autodesk.com/products/eagle/features">
+                                                            FEATURES
+                                                        </a></li><li class="nav-item"><a class="nav-link" href="https://www.autodesk.com/products/eagle/compare">
+                                                            COMPARE
+                                                        </a></li><li class="nav-item"><a class="nav-link" href="https://www.autodesk.com/products/eagle/free-download">
+                                                            FREE DOWNLOAD
+                                                        </a></li><li class="nav-item"><a class="nav-link" href="https://www.autodesk.com/products/eagle/subscribe">
+                                                            SUBSCRIBE
+                                                        </a></li><li class="nav-item"><details><summary class="nav-link">
+                                                                SUPPORT &amp; LEARNING
+                                                                <div class="nav-link-toggle" aria-hidden="true"><i class="icon-arrow-dropdown"></i></div></summary><ul class="nav-list"><li><a class="nav-link nav-link-submenu" href="https://www.autodesk.com/products/eagle/learning-center">
+                                                                            Learning Center
+                                                                        </a></li><li><a class="nav-link nav-link-submenu" href="http://eagle.autodesk.com/eagle/events">
+                                                                            Webinars &amp; Events
+                                                                        </a></li><li><a class="nav-link nav-link-submenu" href="https://www.autodesk.com/products/eagle/blog">
+                                                                            Blog
+                                                                        </a></li><li><a class="nav-link nav-link-submenu" href="http://www.autodesk.com/eagle-support">
+                                                                            Support
+                                                                        </a></li><li><a class="nav-link nav-link-submenu" href="https://forums.autodesk.com/t5/eagle-forum/bd-p/3500">
+                                                                            Forum
+                                                                        </a></li></ul></details></li></ul></nav></div></div></div></div></div></div></div></div><div class="eagle-header article-header" style="background-image:url(&#39;https://www.autodesk.com/products/eagle/blog/wp-content/uploads/2017/05/high-speed-design-large-1152x774-1112x352.jpg&#39;);">
+	<div class="eagle-header-inner">
+		<div class="eagle-header-content">			
+						<h1>
+				The Top 10 PCB Routing Tips for Beginners			</h1>
+			<h3>
+				Sam Sattel			</h3>
+		</div>
+	</div>
+</div>
+
+<section class="blog-entry" id="content" role="main">
+	
+		
+	<ul class="category-list">
+								<li>
+				<a href="https://www.autodesk.com/category/how-to">
+					How To				</a>
+			</li>	
+											<li>
+				<a href="https://www.autodesk.com/category/tips-and-tricks">
+					Tips and Tricks				</a>
+			</li>	
+						</ul>
+	
+	<article id="post-990" class="post-990 post type-post status-publish format-standard has-post-thumbnail hentry category-how-to category-tips-and-tricks">
+	<img width="1112" height="688" src="https://www.autodesk.com/products/eagle/blog/wp-content/uploads/2017/05/high-speed-design-large-1152x774.jpg" class="attachment-post-thumbnail size-post-thumbnail wp-post-image" alt="eagle-routing-tips" srcset="https://www.autodesk.com/products/eagle/blog/wp-content/uploads/2017/05/high-speed-design-large-1152x774.jpg 1112w, https://www.autodesk.com/products/eagle/blog/wp-content/uploads/2017/05/high-speed-design-large-1152x774-300x186.jpg 300w, https://www.autodesk.com/products/eagle/blog/wp-content/uploads/2017/05/high-speed-design-large-1152x774-768x475.jpg 768w, https://www.autodesk.com/products/eagle/blog/wp-content/uploads/2017/05/high-speed-design-large-1152x774-1024x634.jpg 1024w" sizes="(max-width: 1112px) 100vw, 1112px"><section class="entry-content">
+	<h1><span style="font-weight: 400;">The Top 10 PCB Routing Tips for the Beginner</span></h1>
+<p><span style="font-weight: 400;">There’s an old saying that goes something like this – PCB design is 90% placement and 10% routing. This is still true today, and the placement of your components will end up deciding how much time your routing will take, but that doesn’t mean that routing your PCB is any less important. It’s simply a matter of how much time you spend on each activity.</span></p>
+<p><span style="font-weight: 400;">If this is your first time doing a PCB layout, then seeing a chaotic looking ratsnest might be a little intimidating. Use these top 10 PCB routing tips and also our </span><a href="https://www.autodesk.com/products/eagle/blog/top-10-pcb-component-placement-tips-pcb-beginner/"><span style="font-weight: 400;">top 10 component placement tips</span></a><span style="font-weight: 400;"> to make your first PCB layout a success.</span></p>
+<h2>Tip #1 – Don’t Rely On Your Autorouter</h2>
+<p><span style="font-weight: 400;">There’s a tool tucked into nearly every PCB design software out there called the autorouter, and as a beginner, your eyes might light up thinking this is an easy way to solve your routing problems. But wait! Autorouters, as good as they can be, are never a replacement for routing yourself, and should only be used for a few reasons, including:</span></p>
+<ul>
+<li style="font-weight: 400;"><b>Precision</b><span style="font-weight: 400;">. You can use the autorouter after you place all of your components to see what completion rating you get. If it’s below 85%, then this is an indication that you need to make some adjustments to your part placement.</span></li>
+<li style="font-weight: 400;"><b>Bottlenecks</b><span style="font-weight: 400;">. You can also use the autorouter to discover bottlenecks and other critical connection points that you might not have seen during your component placement process. </span></li>
+<li style="font-weight: 400;"><b>Inspiration</b><span style="font-weight: 400;">. Lastly, you can use the autorouter as a source of inspiration for how you might want to route some traces that you just can’t complete. A quick run through the autorouter might show you a new path that you hadn’t considered before.</span></li>
+</ul>
+<p><span style="font-weight: 400;">Outside of these three reasons, we’d recommend not relying on your autorouting to complete all of the routing on your board layout. Why? It’s not always the most accurate, and if you’re a fan of symmetry, then your autorouter will most likely disappoint. And most importantly, you’re the master of your design, and you’ll be able to produce way better results by doing the routing process yourself. It’s a carefully crafted process that requires some love and attention to get the results you want.</span></p>
+<div id="attachment_991" style="width: 1122px" class="wp-caption aligncenter"><img class="wp-image-991 size-full" src="https://www.autodesk.com/products/eagle/blog/wp-content/uploads/2017/05/high-speed-design-large-1152x774.jpg" alt="eagle-routing-tips" width="1112" height="688" srcset="https://www.autodesk.com/products/eagle/blog/wp-content/uploads/2017/05/high-speed-design-large-1152x774.jpg 1112w, https://www.autodesk.com/products/eagle/blog/wp-content/uploads/2017/05/high-speed-design-large-1152x774-300x186.jpg 300w, https://www.autodesk.com/products/eagle/blog/wp-content/uploads/2017/05/high-speed-design-large-1152x774-768x475.jpg 768w, https://www.autodesk.com/products/eagle/blog/wp-content/uploads/2017/05/high-speed-design-large-1152x774-1024x634.jpg 1024w" sizes="(max-width: 1112px) 100vw, 1112px"><p class="wp-caption-text"><em>Avoid the temptation to rely on your autorouter. There’s nothing more satisfying than designing a beautiful board like this one. </em></p></div>
+<h2>Tip #2 – Understand Your Manufacturer’s Specifications</h2>
+<p><span style="font-weight: 400;">Before you start laying down a copper trace, first take the time to give your manufacturer a call or shoot them an email to see if they have any specific requirements on minimum trace widths, trace spacing, and the number of layers they can handle on a board (for the right price) </span></p>
+<p><span style="font-weight: 400;">Why? By knowing this information up front, you can set your trace width and spacing values in your design rules and avoid having to re-route your entire board layout down the line. And by using trace widths and spacing that your manufacturer can produce, you’ll make everyone’s life easier when it comes time to make your board.</span></p>
+<h2>Tip #3 – Figure Out Your Trace Widths</h2>
+<p><span style="font-weight: 400;">When you have electricity cruising through all of your copper traces, it’s going to produce some serious heat, and this is always a concern with electronics. Controlling the width of your traces is one of many ways to reduce how much heat builds up on your board, and the wider your traces, the less resistance that electricity will encounter when flowing through your circuit.</span></p>
+<p><span style="font-weight: 400;">To determine the thickness of your traces, you can use a handy </span><a href="http://www.4pcb.com/trace-width-calculator.html"><span style="font-weight: 400;">trace width calculator like this one from Advanced Circuits</span></a><span style="font-weight: 400;"> that will allow you to plug in your estimated current and thickness and get a trace width value in return for internal and external layers. A word of advice – if you have the opportunity to use larger trace widths than what your calculator shows, go for it! So long as you meet your manufacturer’s requirements then the larger your traces are, the less likely you are to get a board back with broken connections.</span></p>
+<div id="attachment_992" style="width: 1023px" class="wp-caption aligncenter"><img class="size-full wp-image-992" src="https://www.autodesk.com/products/eagle/blog/wp-content/uploads/2017/05/pcb-trace-geometry-2.png" alt="pcb-trace-thickness-calculation" width="1013" height="602" srcset="https://www.autodesk.com/products/eagle/blog/wp-content/uploads/2017/05/pcb-trace-geometry-2.png 1013w, https://www.autodesk.com/products/eagle/blog/wp-content/uploads/2017/05/pcb-trace-geometry-2-300x178.png 300w, https://www.autodesk.com/products/eagle/blog/wp-content/uploads/2017/05/pcb-trace-geometry-2-768x456.png 768w" sizes="(max-width: 1013px) 100vw, 1013px"><p class="wp-caption-text"><em>Knowing the thickness and current needed for your PCB makes finding out your trace width easy. (<a href="http://circuitcalculator.com/wordpress/2006/01/31/pcb-trace-width-calculator/">Image source</a>)</em></p></div>
+<h2>Tip #4 – Leave Enough Space Between Traces</h2>
+<p><span style="font-weight: 400;">It’s important to leave enough room between all of the traces and pads on your PCB layout. Why? If you pack things too close together, then you’ll run the risk of a short circuit developing when your board gets manufactured and traces unintentionally connect.</span></p>
+<p><span style="font-weight: 400;">Remember, the PCB manufacturing process isn’t 100% precise, so you always need to leave some leeway in spacing between components pads and traces to stay safe. As a bare minimum, we recommend always leaving a gap of <strong>0.007” to 0.010”</strong> between all adjacent pads and traces on your board.</span></p>
+<h2>Tip #5 – Make Your Job Easier with the Snap Grid</h2>
+<p>In Autodesk EAGLE you have complete control over your snap grid settings, which comes in handy during both your component placement and routing process. There’s no reason to not turn on your visible grid snap, and you’ll thank yourself later when you start to work with denser board layouts that need precise placement of traces and parts.</p>
+<p>As a guiding rule, we recommend setting your snap grid spacing to 0.050” for your routing process. You can also set your alternative spacing to 0.025” when you need to design a tightly spaced connection between components. And of course, always have your visible grid set to On!</p>
+<h2>Tip #6 – Avoid Using 90 Degree Trace Angles</h2>
+<p><span style="font-weight: 400;">You’ll hear this time and time again if you talk to engineers and manufacturers, don’t use 90-degree trace angles. Why? When you have a bunch of traces that have a sharp, right angle turn on your board, the outside corner of that 90-degree angle has the likelihood of being etched narrower than your standard trace width. And at its worst, you might get a bunch of 90-degree traces back that aren’t fully etched, resulting in shorts.</span></p>
+<div id="attachment_993" style="width: 1212px" class="wp-caption aligncenter"><img class="size-full wp-image-993" src="https://www.autodesk.com/products/eagle/blog/wp-content/uploads/2017/05/Screenshot_1.png" alt="avoid-90-degree-angles" width="1202" height="536" srcset="https://www.autodesk.com/products/eagle/blog/wp-content/uploads/2017/05/Screenshot_1.png 1202w, https://www.autodesk.com/products/eagle/blog/wp-content/uploads/2017/05/Screenshot_1-300x134.png 300w, https://www.autodesk.com/products/eagle/blog/wp-content/uploads/2017/05/Screenshot_1-768x342.png 768w, https://www.autodesk.com/products/eagle/blog/wp-content/uploads/2017/05/Screenshot_1-1024x457.png 1024w" sizes="(max-width: 1202px) 100vw, 1202px"><p class="wp-caption-text"><em>Avoid using </em>90-degree<em> trace angles, opt for 45 degrees, with a smooth angle being the best.</em></p></div>
+<p><span style="font-weight: 400;">As a solution to this problem, try to use 45-degree angle traces. This will produce some beautiful PCB layouts while also making your manufacturer’s life easier by being able to easily etch away all of the copper on your board. </span></p>
+<h2>Tip #7 – Leave Room Between Traces and Mounting Holes</h2>
+<p><span style="font-weight: 400;">In your component placement process, you likely placed all of your mounting holes first, but did you toss them down leaving enough room between other components and all of the traces that will connect them together? If you didn’t, you might run the risk of creating a shock hazard on your board, and relying on the soldermask as your one and the only insulator isn’t a guarantee of safety. So when working with mounting holes, always remember to leave a ring of space beyond the physical dimensions of the mounting hole to protect it from other components and traces nearby.</span></p>
+<div id="attachment_994" style="width: 510px" class="wp-caption aligncenter"><img class="size-full wp-image-994" src="https://www.autodesk.com/products/eagle/blog/wp-content/uploads/2017/05/x99_ud5_wifi_22.jpg" alt="distance-around-mounting-holes" width="500" height="267" srcset="https://www.autodesk.com/products/eagle/blog/wp-content/uploads/2017/05/x99_ud5_wifi_22.jpg 500w, https://www.autodesk.com/products/eagle/blog/wp-content/uploads/2017/05/x99_ud5_wifi_22-300x160.jpg 300w" sizes="(max-width: 500px) 100vw, 500px"><p class="wp-caption-text"><em>Keep traces and components away from mounting holes to avoid shock hazards.</em></p></div>
+<h2>Tip #8 – Always Create a Ground Plane</h2>
+<p><span style="font-weight: 400;">Having a common ground on your PCB is imperative as it gives all of your traces the same reference point for measuring voltage. This comes in handy if you’re working with an analog circuit as your first design. If you use traces to route to ground instead of using a ground plane, you’ll find yourself with a multitude of different ground connections on your board, all with their own resistance values and voltage drops, which can be a nightmare.</span></p>
+<p><span style="font-weight: 400;">To avoid all of this nonsense, we always recommend creating a dedicated ground plane on your PCB layout. This can be a large copper area on a single layer board or even an entire layer dedicated as a ground plane on multilayer boards. And once your ground plane has been added, it’s simply a matter of connecting all of your components that need to go to ground with vias.</span></p>
+<div id="attachment_995" style="width: 449px" class="wp-caption aligncenter"><img class="size-full wp-image-995" src="https://www.autodesk.com/products/eagle/blog/wp-content/uploads/2017/05/Eagle_polygon-polygon_highlight.png" alt="eagle-ground-plane" width="439" height="281" srcset="https://www.autodesk.com/products/eagle/blog/wp-content/uploads/2017/05/Eagle_polygon-polygon_highlight.png 439w, https://www.autodesk.com/products/eagle/blog/wp-content/uploads/2017/05/Eagle_polygon-polygon_highlight-300x192.png 300w" sizes="(max-width: 439px) 100vw, 439px"><p class="wp-caption-text"><em>An excellent example of a solid ground plane in Autodesk EAGLE shown in the solid red color. All of the vias can easily connect to this large surface area. (<a href="http://dangerousprototypes.com/blog/2012/07/18/eagle-polygons/">Image source</a>)</em></p></div>
+<h2>Tip #9 – Make Your Power and Ground Traces Wider</h2>
+<p><span style="font-weight: 400;">Not all of the traces on your PCB layout are created equal, and you’ll want to make sure that you increase the width of your traces that are going to serve as your power and ground paths. Why? Both power and ground traces will have more current flowing through them, and if you don’t make them wider than average, you’ll get a ton of heat trying to flow through those skinny spaces, which can end up burning wires and ruining your board.</span></p>
+<div id="attachment_996" style="width: 692px" class="wp-caption aligncenter"><img class="size-full wp-image-996" src="https://www.autodesk.com/products/eagle/blog/wp-content/uploads/2017/05/arduino-power-signal.png" alt="arduino-power-signal" width="682" height="689" srcset="https://www.autodesk.com/products/eagle/blog/wp-content/uploads/2017/05/arduino-power-signal.png 682w, https://www.autodesk.com/products/eagle/blog/wp-content/uploads/2017/05/arduino-power-signal-297x300.png 297w" sizes="(max-width: 682px) 100vw, 682px"><p class="wp-caption-text"><em>Check out this Arduino Mega 2560 reference design. You can see the larger width of the +5V power trace compared to all the signal traces connecting to the integrated circuit.</em></p></div>
+<p><span style="font-weight: 400;">By making your power and ground traces as thick as possible, you’ll also be able to quickly recognize them if you ever need to review and make adjustments to your design in the future.</span></p>
+<h2>Tip #10 – Use Vias to Remove Heat</h2>
+<p><span style="font-weight: 400;">Our last and final tip has to do with vias, which seem to be the jack of all trades on a PCB layout. Not only are vias ideal for providing electrical connectivity between layers, but they’re also the perfect tool to use when you need to move heat from one side of your board.</span></p>
+<p><span style="font-weight: 400;">This comes in handy if you ever need to channel heat away from one of your super powered components, like an integrated circuit (IC). By placing multiple vias below the die of an IC, you’ll be able to lower the operating temperature of a component, which will, in turn, make your design all that more reliable in the long run.</span></p>
+<div id="attachment_997" style="width: 510px" class="wp-caption aligncenter"><img class="size-full wp-image-997" src="https://www.autodesk.com/products/eagle/blog/wp-content/uploads/2017/05/thermal-vias.jpg" alt="thermal-vias" width="500" height="237" srcset="https://www.autodesk.com/products/eagle/blog/wp-content/uploads/2017/05/thermal-vias.jpg 500w, https://www.autodesk.com/products/eagle/blog/wp-content/uploads/2017/05/thermal-vias-300x142.jpg 300w" sizes="(max-width: 500px) 100vw, 500px"><p class="wp-caption-text"><em>Use a set of vias under the die of an integrated circuit to move heat from one side of your board to the other. (<a href="http://www.edn.com/electronics-blogs/the-workbench/4421218/PCB-layout-tips-for-thermal-vias">Image source</a>)</em></p></div>
+<h2>Route On!</h2>
+<p><span style="font-weight: 400;">Even the best component placement can become unraveled if you don’t take the time to think about how you plan to route all of your traces. Did you remember to give all of your integrated circuits enough room to have all of their pins connected? And do those mounting holes have enough space? Considering all of these questions and more will help to turn your first PCB design process into a success. Just like the component placement process, you’ll likely find that PCB routing is just as creative and artistic, and there’s nothing like seeing a gorgeous PCB layout with 45-degree traces dancing all over the place. But remember, that sought-after symmetry will come at a cost to your time, but it’s worth it. So remember to avoid that itch of using the autorouter and route your board manually!</span></p>
+<p><span style="font-weight: 400;">Ready to start your first PCB design project? </span><a href="https://www.autodesk.com/products/eagle/free-download"><span style="font-weight: 400;">Try Autodesk EAGLE for free today! </span></a></p>
+</section>	<div class="share-area">
+	<h3>Share</h3>
+	<a href="https://www.facebook.com/sharer/sharer.php?u=https://www.autodesk.com/products/eagle/blog/top-10-pcb-routing-tips-beginners/" target="_blank" class="ss-icon"></a>
+	<a href="https://twitter.com/home?status=https://www.autodesk.com/products/eagle/blog/top-10-pcb-routing-tips-beginners/" target="_blank" class="ss-icon"></a>
+	<a href="https://www.linkedin.com/shareArticle?mini=true&amp;url=https://www.autodesk.com/products/eagle/blog/top-10-pcb-routing-tips-beginners/" target="_blank" class="ss-icon"></a>
+	<a href="mailto:?body=https://www.autodesk.com/products/eagle/blog/top-10-pcb-routing-tips-beginners/" class="ss-icon ss-mail"></a>
+</div>
+
+</article>	
+	<div class="subscribe-banner">
+		<h3>Subscribe to Autodesk EAGLE</h3>
+		<h4>For as low as $15 a month.</h4>
+		<div class="subscribe-cta cta-button">Get EAGLE Now</div>
+	</div>
+	
+</section>
+
+
+<section class="comments-section" id="comments">
+    			<div id="respond" class="comment-respond">
+				<div class="comment-form">
+					<h3 id="reply-title" class="comment-reply-title homepage-section-label">POST A COMMENT</h3>
+					<div class="adk-bcomments-add">
+						<div class="adk-comment-form-wrapper adk-comment-disabled">
+							<div class="adk-bcomments-logged-out-overlay">
+								<a rel="nofollow" href="javascript:void(0);" title="Connect with Autodesk" class="wp-social-login-provider wp-social-login-provider-autodesk" data-provider="Autodesk">Log In to leave a comment</a>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+	</section>
+<div class="related-posts">
+	<div class="content-wrapper cf">
+		<h2 class="homepage-section-label">Related Articles</h2>
+		<div class="post-grid">
+		
+<div class="post" data-id="2578">
+	<a href="https://www.autodesk.com/products/eagle/blog/wind-energy/">
+		<div class="post-header" style="background-image: url(&#39;https://www.autodesk.com/products/eagle/blog/wp-content/uploads/2018/11/Screen-Shot-2018-11-26-at-2.08.46-PM.png&#39;)"></div>
+		<div class="post-content">
+			<h3>The History of Wind Energy</h3>
+			<p>The first windmill cropped up in Roman Egypt, and ever since, it’s been a hot topic. Are wind farms worth the investment, or are they eyesores in natural landscapes?</p>
+		</div>
+	</a>
+</div>
+<div class="post" data-id="2479">
+	<a href="https://www.autodesk.com/products/eagle/blog/eagle-libraries-ui-ux/">
+		<div class="post-header" style="background-image: url(&#39;https://www.autodesk.com/products/eagle/blog/wp-content/uploads/2018/08/libray.ioBIG_.png&#39;)"></div>
+		<div class="post-content">
+			<h3>EAGLE Libraries UI/UX Improvements</h3>
+			<p>Be sure to stay up-to-date with your EAGLE version in order to take advantage of all the improvements we make! Check out our Desktop Library updates. </p>
+		</div>
+	</a>
+</div>
+<div class="post" data-id="2403">
+	<a href="https://www.autodesk.com/products/eagle/blog/top-10-manufacturing-mistakes/">
+		<div class="post-header" style="background-image: url(&#39;https://www.autodesk.com/products/eagle/blog/wp-content/uploads/2018/05/2018-05-14_10-30-44-1024x458.png&#39;)"></div>
+		<div class="post-content">
+			<h3>Top 10 Design for Manufacturing Mistakes</h3>
+			<p>Ever wonder what kind of DFM mistakes you can make that will drive your  PCB manufacturer absolutely crazy? Learn about the top 10 DFM mistakes now, so you don’t make them in the future!</p>
+		</div>
+	</a>
+</div>		</div>
+	</div>
+</div>
+
+
+<div class="clear"></div>
+		
+	
+	
+	
+	
+	<div class="parsys iparsys legalfooter-content">
+		<div class="decorative-box">
+		    <div class="legal-footer wd-pv-20">
+		        <div class="parsys box-content">
+		            <div class="responsive-grid section">
+		                <div class="row">
+		                    <div class="grid-columns">
+		                        <div class="responsive-column-0 responsive-column">
+		                            <div class="parsys column-content">
+		                                <div class="text section">
+		                                    <p><a href="http://www.autodesk.com/company/legal-notices-trademarks/privacy-statement">Privacy/Cookies (Updated)</a> | <a href="http://www.autodesk.com/company/legal-notices-trademarks">Legal Notices &amp; Trademarks</a> | <a href="http://www.autodesk.com/reportpiracy">Report Noncompliance</a> | <a href="http://www.autodesk.com/sitemap">Site map</a> | © 2016 Autodesk Inc. All rights reserved</p>
+		                                </div>
+		                            </div>
+		                        </div>
+		                    </div>
+		                </div>
+		            </div>
+		        </div>
+		    </div>
+		</div>
+	</div>
+	
+	<script type="text/javascript" src="https://www.autodesk.com/products/eagle/blog/wp-content/themes/eagle/scripts/dist/all.js?timestamp=9999"></script>
+	<script type="text/javascript" src="https://www.autodesk.com/products/eagle/blog/wp-includes/js/wp-embed.min.js?ver=4.9.8"></script>
+	
+</body></html>

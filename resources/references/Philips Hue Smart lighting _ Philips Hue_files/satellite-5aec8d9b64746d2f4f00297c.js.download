@@ -1,0 +1,208 @@
+_satellite.pushAsyncScript(function(event, target, $variables){
+  (function () {
+    var trackBlueKai = function (item) {
+        if (item && item.command === "ADD EVENT" && item.name && typeof (item.data) === "object") {
+
+            // Configuration bluekai pixel
+            var tagBase = "//tags.bluekai.com/site/",
+                siteID = "60232",
+                pixelLimit = "1";
+
+            // Configuration cookiename pagecount
+            var pageCountCookie = "li_bk_pc";
+            var eventTrackedCookie = "li_bk_et";
+
+            // Set cookie function - needed to set cookie on correct domain (this function will always set a session cookie!)
+            var setCookie = function (cname, cvalue) {
+                document.cookie = cname + "=" + cvalue + ";domain=" + _satellite.getVar("cookieDomainLI") + ";path=/";
+            };
+
+            // Fire Pixel function
+            function fireBlueKai(phint) {
+                // Create phint parameter
+                var phintStr = "";
+                Object.keys(phint).forEach(function (key) {
+                    phintStr += (phintStr ? "&" : "") + key + "=" + phint[key];
+                });
+
+                // Set URL
+                var uri = tagBase + siteID + "?limit=" + pixelLimit + "&phint=" + encodeURIComponent(phintStr);
+
+                // Fire the pixel
+                var img = document.createElement("img");
+                img.setAttribute("src", uri);
+                img.setAttribute("style", "display:none");
+                document.body.appendChild(img);
+                // console && console.log && console.log("BlueKai pixel:", uri);
+            }
+
+            var siteSector = (_satellite.getVar("dlSector") || "").toUpperCase();
+
+            function fireLandingPixel() {
+                switch (siteSector) {
+                    case "LI":
+                        fireBlueKai({
+                            lal: 1
+                        });
+                        break;
+                    case "CP":
+                        fireBlueKai({
+                            lal: 4
+                        });
+                        break;
+                    case "CO":
+                        fireBlueKai({
+                            lal: 7
+                        });
+                        break;
+                }
+            }
+
+            function fireSecondPagePixel() {
+                switch (siteSector) {
+                    case "LI":
+                        fireBlueKai({
+                            lal: 2
+                        });
+                        break;
+                    case "CP":
+                        fireBlueKai({
+                            lal: 5
+                        });
+                        break;
+                    case "CO":
+                        fireBlueKai({
+                            lal: 8
+                        });
+                        break;
+                }
+            }
+
+            function fireInteractionPixel() {
+                switch (siteSector) {
+                    case "LI":
+                        fireBlueKai({
+                            lal: 3
+                        });
+                        break;
+                    case "CP":
+                        fireBlueKai({
+                            lal: 6
+                        });
+                        break;
+                    case "CO":
+                        fireBlueKai({
+                            lal: 9
+                        });
+                        break;
+                }
+            }
+
+            // Function that checks what to do on a pageview
+            function checkPageViewPixel() {
+                // Determine pagecount
+                var pageCount = (Number(_satellite.readCookie(pageCountCookie)) || 0) + 1;
+                setCookie(pageCountCookie, pageCount.toString());
+
+                if (pageCount === 1) {
+                    fireLandingPixel();
+                } else if (pageCount === 2) {
+                    fireSecondPagePixel();
+                }
+            }
+
+            function checkEventPixel(data) {
+                // Track only once
+                var eventTracked = !!_satellite.readCookie(eventTrackedCookie);
+                if (eventTracked) {
+                    // Do not continue if an event is already tracked
+                    return;
+                }
+
+                var eventsMapping = {
+                    // "prodview": "prodview",
+                    // "scopen": "cart_open",
+                    "scadd": "add_to_cart",
+                    //"scremove": "remove_from_cart",
+                    "scview": "cart_view",
+                    "sccheckout": "checkout",
+                    "purchase": "order",
+                    "event1": "find_retail_store",
+                    "event2": "find_online_store",
+                    // "event3": "retail_store_results",
+                    // "event4": "online_store_results",
+                    // "event7": "visit_start",
+                    "event11": "user_registration",
+                    "event13": "product_registration",
+                    "event14": "share",
+                    "event16": "download",
+                    // "event20": "sales_lead",
+                    // "event21": "buy",
+                    "event22": "buy_at_philips",
+                    "event23": "buy_at_others",
+                    // "event31": "compare_products",
+                    "event34": "info_request",
+                    "event36": "login",
+                    // "event46": "interaction",
+                    // "event47": "ext_campaign_landing",
+                    //"event18": "video_0",
+                    // "event70": "video_25",
+                    //"event49": "video_50",
+                    "event71": "video_75",
+                    "event50": "video_100",
+                    // "event51": "social_like",
+                    "event52": "phone_call"
+                    // "event53": "follow_us",
+                    // "event54": "internal_search_1",
+                    // "event56": "internal_search_0",
+                    // "event55": "exit_link",
+                    // "event57": "exit_link_b2c",
+                    // "event75": "not_in_stock"
+                };
+
+                var interaction = (data.v77 || "").split(":", 1)[0];
+                var events = data.events ? data.events.toLowerCase().split(",") : [];
+                if (interaction) {
+                    events.push(interaction);
+                }
+
+                var event, i, j;
+                for (i = 0, j = events.length; i < j; i++) {
+                    event = events[i].split(":", 1)[0]; // Remove any serialization if needed.
+                    if (eventsMapping.hasOwnProperty(event)) {
+                        setCookie(eventTrackedCookie, "1"); // Register that we have tracked an event.
+                        fireInteractionPixel();
+                        return;
+                    }
+                }
+            }
+
+            // function that checks what to do on an event
+
+            // Break up adobe pixel
+            var data = item.data;
+            
+
+            // Determine adobe tracked action
+            var adobeTrackedAction = data.pe ? (data.pe === "lnk_o" ? "event" : "") : "pageview";
+
+            // Determine what to do next
+            switch (adobeTrackedAction) {
+                case "pageview":
+                    checkPageViewPixel();
+                    break;
+                case "event":
+                    checkEventPixel(data);
+                    break;
+                default:
+                    return;
+            }
+        }
+    };
+
+
+var aaResponder = _satellite.getVar("Utils-Responder");
+    aaResponder.registerCallback(trackBlueKai);
+    aaResponder.activate();
+})();
+});

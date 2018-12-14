@@ -1,0 +1,15 @@
+_satellite.pushAsyncScript(function(event, target, $variables){
+  // Add GTM alike datalayer
+(function(d,a,c){a=d[a]=d[a]||[];var g=d[c]=new function(a){function c(b){if("object"!==typeof b||!b.callback)return!1;(b.noHistory=b.noHistory||!1)||e.forEach(function(a){b.callback.call(b.scope||d,a)});return g.push(b)?!0:!1}var e=[],g=[];Object.defineProperty(e,"push",{configurable:!1,enumerable:!1,writable:!1,value:function(){for(var b,a,f=0,c=arguments.length;f<c;f++)b=e.length,a=arguments[f],e[b]=a,g.forEach(function(b){try{b.callback.call(b.scope||d,a)}catch(m){}})}});Object.defineProperty(this,
+    "push",{configurable:!1,enumerable:!1,writable:!1,value:function(){for(var b=0,a=0,f=arguments.length;a<f;a++)try{c(arguments[a])&&b++}catch(l){}return b}});Object.defineProperty(this,"events",{configurable:!1,enumerable:!1,get:function(){return e.slice()},set:function(a){if(a&&0<a.length)for(var b=0,c=a.length;b<c;b++)e.push(a[b])}});if(a&&0<a.length)for(var h=0,k=a.length;h<k;h++)try{c(a[h])}catch(b){}}(d[c]||[]);g.events=a;for(a.push=function(){g.events=arguments};0<a.length;)a.push.apply(a,a.shift())})(window,
+    "customDLSignify","customDLSignifyHandler");
+
+// BlueConic
+(function() {
+    var firstScriptTag, newNode = document.createElement("script");
+    newNode.src = "//cdn.blueconic.net/phl.js";
+    newNode.async = true;
+    firstScriptTag = document.getElementsByTagName("script")[0];
+    firstScriptTag.parentNode.insertBefore(newNode, firstScriptTag);
+})();
+});

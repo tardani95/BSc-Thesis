@@ -1,0 +1,77 @@
+_satellite.pushAsyncScript(function(event, target, $variables){
+  (function(w, doc) {
+
+    addAppNexusSegment = function(add) {
+        var newNode = new Image(1, 1);
+        newNode.style.display = "none";
+        newNode.alt = "AppNexus";
+        newNode.src = "//secure.adnxs.com/seg?add=" + add + "&t=2";
+        doc.body.appendChild(newNode);
+    },
+
+    addAppNexus = function(id, seg) {
+        var newNode = new Image(1, 1);
+        newNode.style.display = "none";
+        newNode.alt = "AppNexus";
+        newNode.src = "https://secure.adnxs.com/px?id=" + id + "&seg=" + seg + "&t=2";
+        doc.body.appendChild(newNode);
+    };
+
+    if (/^\/content\/B2C\/en_US\/microsites\/meethue\/marketing-catalog\/huewireless_ca\/friends-of-hue/i.test(_satellite.getVar("dlRepPath")) === true) {
+        addAppNexusSegment("14618386");
+    }
+
+    if (/^\/content\/B2C\/en_US\/microsites\/meethue\/marketing-catalog\/huewireless_ca\/where-to-buy/i.test(_satellite.getVar("dlRepPath")) === true) {
+        addAppNexusSegment("14618414");
+    }
+
+    if (/^\/content\/B2C\/en_US\/microsites\/meethue\/marketing-catalog\/huewireless_ca\/philips-hue-benefits/i.test(_satellite.getVar("dlRepPath")) === true) {
+        addAppNexusSegment("14618423");
+    }
+
+    if (/^\/content\/B2C\/en_US\/microsites\/meethue\/marketing-catalog\/huewireless_ca\/entertainment/i.test(_satellite.getVar("dlRepPath")) === true) {
+        addAppNexusSegment("14618424");
+    }
+
+    if (_satellite.getVar("dlPageName") === "homepage") {
+        // Measure pageview
+        addAppNexus('911023', '10347047');
+
+        // white
+        $("a[href$='046677455286']").on("click", function() {
+            addAppNexus("911026", "10347024");
+        });
+
+        // white ambiance
+        $("a[href$='046677460983']").on("click", function() {
+            addAppNexus("911033", "10347062");
+        });
+
+        // white and color ambiance
+        $("a[href$='046677464479']").on("click", function() {
+            addAppNexus("911035", "10347068");
+        });
+    } else if (_satellite.getVar("dlPageName") === "light_your_home_smarter") {
+        // Measure pageview
+        addAppNexus('911037', '10347077');
+
+        // video
+        $("div.p-youtube-container-inner").on("click", function() {
+            addAppNexus('911038', '10347085');
+        });
+    } else if (_satellite.getVar("dlPageName") === "light_your_home_smarter:what_mess_light") {
+        // Measure pageview
+        addAppNexus('958727', '11422547');
+    } else if (_satellite.getVar("dlPageName") === "light_your_home_smarter:our_house_light") {
+        // Measure pageview
+        addAppNexus('958727', '11422547');
+    } else if (_satellite.getVar("dlPageName") === "light_your_home_smarter:daddys_home_light") {
+        // Measure pageview
+        addAppNexus('958727', '11422547');
+    } else if (_satellite.getVar("dlPageName") === "light_your_home_smarter:deep_sea_light") {
+        // Measure pageview
+        addAppNexus('958727', '11422547');
+    };
+
+}(window, document))
+});

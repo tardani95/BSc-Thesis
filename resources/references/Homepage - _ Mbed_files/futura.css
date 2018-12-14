@@ -1,0 +1,35 @@
+/*
+This CSS resource incorporates links to font software which is the valuable copyrighted
+property of Monotype Imaging and/or its suppliers. You may not attempt to copy, install,
+redistribute, convert, modify or reverse engineer this font software. Please contact Monotype
+Imaging with any questions regarding Web Fonts:  http://www.fonts.com
+*/
+
+@import url("https://fast.fonts.net/t/1.css?apiType=css&projectid=531df303-da6d-4e1e-934d-ec3ecdc164a9");
+@font-face{
+    font-family:"Futura PT W01 Light";
+    src:url("/static/css/fonts/9869762c-2f06-40c3-929e-2d412d64cd87.eot?#iefix"); /* IE9 Compat Modes */
+    src:url("/static/css/fonts/9869762c-2f06-40c3-929e-2d412d64cd87.eot?#iefix") format("eot"), /* IE6-IE8 */
+        url("/static/css/fonts/9ad55860-bbe2-4e51-be58-08b45bdda354.woff2") format("woff2"), /* Super Modern Browsers */
+        url("/static/css/fonts/eceb6e13-403b-4d2b-af74-c05bc9c2535e.woff") format("woff"), /* Pretty Modern Browsers */
+        url("/static/css/fonts/956fd236-834e-4736-91af-a04cadf17544.ttf") format("truetype"), /* Safari, Android, iOS */
+        url("/static/css/fonts/88e3bfcb-64f4-4e6f-9785-472510bd5208.svg#88e3bfcb-64f4-4e6f-9785-472510bd5208") format("svg"); /* Legacy iOS */
+}
+@font-face{
+    font-family:"Futura PT W01 Book";
+    src:url("/static/css/fonts/17abcb18-cb81-4d9c-b55c-5ded2109e506.eot?#iefix"); /* IE9 Compat Modes */
+    src:url("/static/css/fonts/17abcb18-cb81-4d9c-b55c-5ded2109e506.eot?#iefix") format("eot"), /* IE6-IE8 */
+    url("/static/css/fonts/aafdd021-88d4-41d8-8e15-fe91f83e4b17.woff2") format("woff2"), /* Super Modern Browsers */
+    url("/static/css/fonts/81d44d4b-ac07-4ad4-8cdd-4df771a3c1c3.woff") format("woff"), /* Pretty Modern Browsers */
+    url("/static/css/fonts/f47c9a36-7884-483a-80d7-57f9ee691407.ttf") format("truetype"), /* Safari, Android, iOS */
+    url("/static/css/fonts/b6a5374f-5656-4627-b423-1ba121767464.svg#b6a5374f-5656-4627-b423-1ba121767464") format("svg"); /* Legacy iOS */
+}
+@font-face{
+    font-family:"Futura PT W01 Demi";
+    src:url("/static/css/fonts/fa09a53f-1925-44fc-a00b-a133fa6e7e23.eot?#iefix"); /* IE9 Compat Modes */
+    src:url("/static/css/fonts/fa09a53f-1925-44fc-a00b-a133fa6e7e23.eot?#iefix") format("eot"), /* IE6-IE8 */
+    url("/static/css/fonts/848602e3-bda3-4b1c-976b-fe26eecfab31.woff2") format("woff2"), /* Super Modern Browsers */
+    url("/static/css/fonts/e4eacf8d-aba1-40d4-9597-1198e91dcf00.woff") format("woff"), /* Pretty Modern Browsers */
+    url("/static/css/fonts/0274b668-7ceb-4cae-96cf-eeeec93f3254.ttf") format("truetype"), /* Safari, Android, iOS */
+    url("/static/css/fonts/d6f7bb1f-4174-4eb7-b0eb-6eec4e96b2af.svg#d6f7bb1f-4174-4eb7-b0eb-6eec4e96b2af") format("svg"); /* Legacy iOS */
+}

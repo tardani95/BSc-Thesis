@@ -1,0 +1,40 @@
+_satellite.pushAsyncScript(function(event, target, $variables){
+  (function () {
+    var callback = function (item) {
+        if (item && item.command === "ADD EVENT" && item.name && typeof (item.data) === "object") {
+            var strEvents = item.data.events || "",
+                arrTemp = strEvents.toLowerCase().split(","),
+                AddImgPixel = function (strLabel) {
+                    var newNode = new Image(1, 1);
+                    newNode.src = "//www.googleadservices.com/pagead/conversion/862037194/?label=" + strLabel + "&guid=ON&script=0";
+                    newNode.style.display = "none";
+                    newNode.alt = "Google";
+                    document.body.appendChild(newNode);
+                };
+
+            if (arrTemp.indexOf("event22") >= 0) {
+                // Hue: shop now
+                AddImgPixel("KcxICKP-920QysmGmwM");
+            } else if (arrTemp.indexOf("event18") >= 0) {
+                // Hue: video start
+                AddImgPixel("3cBgCJqN-G0QysmGmwM");
+            } else if (arrTemp.indexOf("scadd") >= 0) {
+                if (window.location.hostname === "www.store.meethue.com") {
+                    // Hue store: add to cart
+                    AddImgPixel("V4oYCJfHsG8QysmGmwM");
+                } else {
+                    // Hue: add to cart
+                    AddImgPixel("viYECJiB820QysmGmwM");
+                }
+            } else if (arrTemp.indexOf("purchase") >= 0) {
+                // Hue: order confirmation
+                AddImgPixel("RD7mCLLA3m0QysmGmwM");
+            }
+        }
+    }
+
+    var aaResponder = _satellite.getVar("Utils-Responder");
+    aaResponder.registerCallback(callback);
+    aaResponder.activate();
+})()
+});

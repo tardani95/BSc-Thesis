@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="335px" height="240px" viewBox="0 0 335 240" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 52.2 (67145) - http://www.bohemiancoding.com/sketch -->
+    <title>LIFX_Modular</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <linearGradient x1="14.6904762%" y1="14.6428571%" x2="85.3095238%" y2="85.2619048%" id="linearGradient-1">
+            <stop stop-color="#FFFFFF" offset="0%"></stop>
+            <stop stop-color="#FEF5F9" offset="0%"></stop>
+            <stop stop-color="#F04C61" offset="57%"></stop>
+            <stop stop-color="#6BCCE0" offset="75%"></stop>
+        </linearGradient>
+    </defs>
+    <g id="LIFX_Modular" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="LIFX-Feature-Icons-Menu-Zoned" transform="translate(81.000000, 46.000000)" fill="url(#linearGradient-1)" fill-rule="nonzero">
+            <path d="M85.04,1.12 C38.648081,1.12 1.04,38.728081 1.04,85.12 C1.04,131.511919 38.648081,169.12 85.04,169.12 C131.431919,169.12 169.04,131.511919 169.04,85.12 C169.04,62.8418149 160.190025,41.4760862 144.43697,25.7230304 C128.683914,9.96997459 107.318185,1.12 85.04,1.12 Z M102.28,107.6 L68,107.6 L68,100.32 L92,69.76 L68.2,69.76 L68.2,62.48 L101.88,62.48 L101.88,69.76 L77.6,100.32 L102.28,100.32 L102.28,107.6 Z" id="Shape"></path>
+        </g>
+    </g>
+</svg>

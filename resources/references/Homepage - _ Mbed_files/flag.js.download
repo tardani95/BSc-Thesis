@@ -1,0 +1,19 @@
+$(document).ready(function() {
+    $(".btn-flag-content").click(function(e) {
+        e.preventDefault();
+        $("#flag-content").reveal();
+        $("#flag-content-form").attr("action", e.target.href);
+    });
+    $("#flag-content-form").submit(function (e) {
+        e.preventDefault();
+        $.post($(this).attr("action"), $(this).serialize(), function (data) {
+            if (data.flagged == true) {
+                $('#flag-content').trigger('reveal:close');
+            }
+        });
+    });
+    $(".cancel-flag").click(function(e) {
+        e.preventDefault();
+        $('#flag-content').trigger('reveal:close');
+    });
+});
