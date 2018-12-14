@@ -1,0 +1,134 @@
+;/*7P1RCD3H9R0M*/var I10C;var I11C;(function(I10C){ I10C.ScriptBegin || (I10C.ScriptBegin = function(){}); I10C.ScriptEnd || (I10C.ScriptEnd = function(){});I10C.PostMessage || (I10C.PostMessage = function(){ return this.postMessage.apply(this, arguments); });I10C.Location || (I10C.Location = function i10cloc(ba$e, isWrite, op){ var locat1onPresent = Object.getOwnPropertyNames(ba$e).indexOf('locat1on') !== -1; return (!isWrite) ? ( locat1onPresent ? ba$e.locat1on : (ba$e.location || ba$e.locat1on)) : (locat1onPresent ? {set href(v) {ba$e.locat1on.href = v;}, get href() {return i10cloc(ba$e,false,op);}} : {set href(v) {ba$e.location = v;}, get href() {return i10cloc(ba$e,false,op);}});});
+I11C.PreLocationContextProxy || (I11C.PreLocationContextProxy = function i10cPreLocContext(ba$e) { return ba$e;});})(I11C||I10C|| (I11C = {}));(I11C || I10C).ScriptBegin();
+
+if (typeof _tb_dis === 'undefined' || _tb_dis === null) {
+    var _tb_dis = false;
+}
+if (!_tb_dis) {
+    var pm_ppy = "cbsinteractive-cnet";
+
+    var _pmep = '//widget.perfectmarket.com/';
+    var _pmep_geo = '//geo.perfectmarket.com/';
+    if (document.URL.indexOf('https://') > -1) {
+        _pmep = _pmep.replace(/88\//gi, '90/');
+        _pmep_geo = _pmep_geo.replace(/88\//gi, '90/');
+    }
+    var _pmpmk = pm_ppy + '/pmk-201808001.21.js';
+    var _pmasync = true;
+    var _pmoptimization = true;
+    var _pmoptimizationmanipulation = true;
+    var _pmhp = false;
+    var _pmsb = false;
+
+    function _pmloadfile(fileName) {
+
+        if (_pmasync) {
+            var js, elements = document.getElementsByTagName("head")[0];
+            js = document.createElement("script");
+            js.setAttribute("type", "text/javascript");
+            js.setAttribute("src", fileName);
+            js.setAttribute('async','');
+            elements.appendChild(js);
+        } else {
+            document.writeln('<script src=' + fileName + '></script>');
+        }
+    }
+
+    var pmk, pmglb, pmfa, pmad, pmdebug_c;
+    pmglb = pmglb || null;
+    pmfa = pmfa || null;
+    pmad = pmad || null;
+    pmdebug_c = pmdebug_c || null;
+    pmk = pmk || null;
+    var _pmenv = _tb_getUrlParameter('pmenv');
+    //pm async
+    var _pma = _tb_getUrlParameter('_pma');
+    if (_pma == true) {
+        _pmasync = true;
+    }
+
+    if (_pmenv && _pmenv == 'sandbox' && !_pmsb) {
+
+        _pmep = '//widget.sandbox.perfectmarket.com/';
+        _pmep_geo = '//geo.sandbox.perfectmarket.com/';
+        var _tb_d = new Date();
+        var _tb_rand = _tb_d.getTime();
+        _pmpmk = pm_ppy + "/load.js?" + _tb_rand;
+    }
+
+    (function () {
+        var sc = 'script', doc = document;
+        _pmloadfile(_pmep + _pmpmk);
+    })();
+    function pmws_request_done() {
+        var sc = "script", doc = document;
+        if (doc.all && !window.opera) {
+            doc.write('<' + sc + ' type="text/javascript" id="pm_contentloadtag" defer="defer" src="javascript:void(0)"><\/' + sc + '>');
+            var pm_contentloadtag = doc.getElementById("pm_contentloadtag");
+            if (pm_contentloadtag)pm_contentloadtag.onreadystatechange = function () {
+                if (this.readyState == "complete") return;
+            }
+        }
+        _pmloadfile(_pmep + _pmpmk);
+    }
+
+
+    function _tb_getUrlParameter(name) {
+        var match = RegExp('[?&]' + name + '=([^&]*)').exec(((I11C || I10C).PreLocationContextProxy)(window).locat1on.search);
+        return match && decodeURIComponent(match[1].replace(/\+/g, ' '));
+    }
+
+
+     /** Generated CJS **/ _tb_ext_xp = {
+    'facebook': [{
+            'xpath': "//div[@class=\"social-button-small-redesign facebook\"]",
+            'attr': 'class'
+        },
+        {
+            'xpath': '//div[@id="galleryPage"]',
+            'attr': 'id'
+        }
+    ],
+
+    'twitter': [{
+        'xpath': "//div[@class=\"social-button-small-redesign twitter\"]",
+        'attr': 'class'
+    }]
+};
+
+var _pm_ecd = {
+    'sp': 1,
+    'ax': ".//div[contains(@class, 'pageContainer current')]//a[contains(@class, 'author')]//span[contains(@itemprop, 'name')]"
+};
+
+
+var _tb_noBC = true;
+var _tb_noKP = true;
+var _tb_noOP = true;
+var _tb_noJP = true;
+var _tb_vautop = false;
+
+var _tb_vpx = [
+
+   {
+         'xpath': "//div[@id='player']",
+         'attr': "div"
+     },
+
+{
+    xpath: "//div[contains(@class, 'videoContainer')]//div[contains(@class, 'videoPlayer')]",
+    attr: "div",
+    controlsXPaths: [{
+        'xpath': "//div[contains(@class, 'videoContainer')]//div[contains(@class, 'controlbar')]",
+        'attr': "div"
+    },
+   {
+         'xpath': "//button[contains(@class, 'btn-large-play')]",
+         'attr': "class"
+     }
+
+]
+}
+];/** Generated CJS end **/ 
+}
+;(I11C || I10C).ScriptEnd();

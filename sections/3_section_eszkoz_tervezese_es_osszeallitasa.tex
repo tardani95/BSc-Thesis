@@ -39,7 +39,7 @@
             \label{fig:schematic_v01}
         \end{figure}
         
-        Az elkészült kapcsolási rajz ( \ref{fig:schematic_v01}. ábra) alapján elhelyeztem és összekötöttem az alkatrészeket a NYÁK-on. Ezen a verzión bekötésre került egy extra gomb (BUTTON) és egy extra csatlakozó (LED\_CON1), hogy 2 LED sort legyen képes vezérelni az eszköz párhuzamosan. A \ref{fig:board_v01}. ábra szemlélteti az így összehuzalozott NYÁK-ot.
+        Az elkészült kapcsolási rajz (\ref{fig:schematic_v01}. ábra) alapján elhelyeztem és összekötöttem az alkatrészeket a NYÁK-on. Ezen a verzión bekötésre került egy extra gomb (BUTTON) és egy extra csatlakozó (LED\_CON1), hogy 2 LED sort legyen képes vezérelni az eszköz párhuzamosan. A \ref{fig:board_v01}. ábra szemlélteti az így összehuzalozott NYÁK-ot.
         
         \begin{figure}[h!]
             \centering
@@ -169,7 +169,7 @@
             
             Többféleképpen is felprogramozható (UART-on keresztül bootloader segítségével, JTAG-en vagy pedig SWD-n) a mikrokontroller, viszont DEBUG-olni csak JTAG-en és SWD-n (Serial Wire Debug) lehet. A kettő közül az utóbbit választottam, mert rendelkezésemre állt egy USB-s SWD programozó. Ahhoz, hogy a mikrokontrollert SWD-n keresztül programozhassuk, ki kell vezetni a SWCLK (Serial Wire Clock), illetve SWDIO lábakat egy csatlakozóra. A kétirányú kommunikáció miatt (programozás, debuggolás), az SWDIO vezetéket egy 100[k$\Omega$]-os ellenállással ajánlott felhúzni a tápfeszültségre \cite{rm0008}. 
             
-            %//TODO boot pinek kimaradtak - sumákoljuk el?
+            % boot pinek kimaradtak - sumákoljuk el?
             Három különböző helyről képes a mikrokontroller bootolni. Az alapértelmezett fő flash memóriából való bootolást a boot lábak földre húzásával valósítottam meg.
             
             A maximális, 72MHz-es, órajellel való működéshez külső oszcillátor áramkörre is szükség van, anélkül csak 64MHz lenne elérhető. A referencia terv (\ref{fig:hse_ref_des}. ábra) alapján egy 8MHz-es kristály oszcillátort és két 20pF-os kerámiakondenzátort használtam a megvalósításhoz. 

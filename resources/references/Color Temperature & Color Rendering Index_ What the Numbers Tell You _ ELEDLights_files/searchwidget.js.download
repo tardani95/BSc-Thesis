@@ -1,0 +1,261 @@
+/*
+ * Rebate Bus client scripts - export MidstreamWidget object with configure function to set up the verification widget
+
+*/
+
+
+var initWidget = function(ctr, ifrm) {
+	ctr.setAttribute('id', 'busctr'); // assign an id
+	ctr.style.position = "fixed";
+	ctr.style.left = 0;
+	ctr.style.right = 0;
+	ctr.style.top = 0;
+	ctr.style.height = "100%";
+	ctr.style['z-index'] = 8192;
+	ifrm.allowtransparency="true";
+	ifrm.style.height = "100%";
+	ifrm.style.width = "100%";
+	ifrm.style['text-align'] = "center"
+	ifrm.style['margin-right'] = "auto";
+}
+
+
+var closeFrame = function() {
+	var ifrm = document.getElementById("busctr");
+	if (ifrm != null) 
+		document.body.removeChild(ifrm);
+}
+
+var getCookie = function(cname) {
+    var name = cname + "=";
+    var ca = document.cookie.split(';');
+    for(var i=0; i<ca.length; i++) {
+        var c = ca[i];
+        while (c.charAt(0)==' ') c = c.substring(1);
+        if (c.indexOf(name) == 0) return c.substring(name.length, c.length);
+    }
+    return "";
+}
+
+// for some reason the gotzip event gets caught twice - use this flag to ignore the second event
+var gotzipFlag = 0;
+
+var getBusFn = function(options) {
+	return function(event) {
+		if (event.data.type == "removebusfrm") {
+			closeFrame();
+		} if (event.data.type == "gotzip" && !gotzipFlag) {
+			gotzipFlag = 1;
+			document.cookie = "busfrm-rebatezip=" + event.data.zip + "; expires=Thu, 18 Dec 2022 12:00:00 UTC; path=/";
+			document.cookie = "busfrm-propertytype=" + event.data.propertytype + "; expires=Thu, 18 Dec 2022 12:00:00 UTC; path=/";
+			options.createZipBar(event.data.zip, event.data.propertytype, options);
+			loadRebates(options, event.data.propertytype, event.data.zip);
+			closeFrame();
+			
+		}
+	}
+}
+
+ 
+var defaultCreateZipBar = function(zip, propertytype, options) {
+	var bar = document.createElement('div');
+	var span = document.createElement('span');
+	var mapicon = document.createElement('i');
+	var pencilicon = document.createElement('i');
+	var curBar = document.getElementById("busbar");
+	if (curBar != null)
+		document.body.removeChild(curBar);
+	bar.setAttribute('id', 'busbar'); // assign an id
+	bar.style.position = "fixed";
+	bar.style.right = "40px";
+	bar.style.padding = "5px 5px 5px 5px";
+	bar.style.top = 0;
+	bar.style['background-color'] = "#e4e4e4";	
+	bar.style['border-bottom-left-radius'] = "5px";
+	bar.style['border-bottom-left-radius'] = "5px";
+	bar.style['cursor'] = "pointer";
+	bar.style['z-index'] = "99999999";
+	span.style['font-size'] = "large";
+	mapicon.className = "fa fa-map-marker";
+	pencilicon.className = "fa fa-pencil";
+	span.appendChild(mapicon);
+	span.appendChild(document.createTextNode(" Utility Zip: " + zip + " ")); 
+	span.appendChild(pencilicon);
+	bar.appendChild(span);
+	pencilicon.addEventListener("click", 
+		function() {
+			gotzipFlag = 0;
+			createWidget(options, propertytype, zip);
+		}
+	);
+	document.body.appendChild(bar); // to place at end of document
+}
+
+var createWidget = function(options, curtype, curzip,fixedtype) {
+	var ifrm = document.createElement('iframe');
+	var container = document.createElement('div');
+	var server = "https://www.rebatebus.com/";
+	var fixedtype;
+	initWidget(container, ifrm);	
+	if (options.server) {
+		server = options.server;	
+	} else {
+		options.server = "https://www.rebatebus.com/";
+	}
+	if (options.fixedtype) {
+		fixedtype = 1;
+	} else {
+		fixedtype = 0;
+	}
+	ifrm.onload = function() {
+		window.addEventListener("message", getBusFn(options), false);
+	};
+	document.body.appendChild(container); // to place at end of document
+	container.appendChild(ifrm);
+	if (curtype && curzip) {
+		ifrm.setAttribute('src', server + "searchwidget" + "?apikey=" + options.apikey + "&uid=" + options.uid +
+		"&curzip=" + curzip + "&curtype=" + curtype + "&fixedtype=" + fixedtype);
+	}
+	else {
+		ifrm.setAttribute('src', server + "searchwidget" + "?apikey=" + options.apikey + "&uid=" + options.uid + "&fixedtype=" + fixedtype);
+	}
+}
+
+var loadRebates = function(options, viewingtype, viewingzip) {
+	var bus = {};
+	var seen = {};
+	options.clear();
+	if (options.addProgramLogo) {
+		jQuery.get(options.server + "api/midstream/zip/" + viewingzip + "/" + viewingtype + "?apikey=" + options.apikey + "&uid=" + options.uid, {
+		}, function(programs) {
+			if (programs && programs.length) {
+				options.addProgramLogo(programs);
+			}	
+		});
+	}
+	jQuery.post(options.server + "api/getrebates", {"productid_list": options.productid_list,
+		"uid": options.uid,
+		"apikey": options.apikey,
+		"zip": viewingzip,
+		"propertytype": viewingtype
+	}, function(bus) {
+		for (let j = 0; j < bus.midstream.length; j++) {
+			var curProduct = bus.midstream[j];
+			var found = 0;
+			var maxIncentive = {"rebateAmount": -1};
+			// Look for a prescriptive incentive, then a custom. 
+			for (let i = 0; i < curProduct.rebates.prescriptive.length; i++) {
+				if (curProduct.rebates.prescriptive[i].rebateAmount > maxIncentive.rebateAmount) {
+					maxIncentive = curProduct.rebates.prescriptive[i];
+					found = 1;
+				}
+			}
+			maxIncentive.utilities = [];
+			for (let i = 0; i < curProduct.rebates.prescriptive.length; i++) {
+				if (curProduct.rebates.prescriptive[i].rebateid == maxIncentive.rebateid) {
+					maxIncentive.utilities.push(curProduct.rebates.prescriptive[i].utilityname);
+				}
+			}
+
+
+			for (let i = 0; i < curProduct.rebates.custom.length; i++) {
+				if (curProduct.rebates.custom[i].rebateAmount > maxIncentive.rebateAmount) {
+					maxIncentive = curProduct.rebates.custom[i];
+					found = 1;
+				}
+			}
+			if (found) {
+				maxIncentive.instant = 1;
+				options.callback(curProduct.productid, maxIncentive);
+				seen[curProduct.productid] = 1;
+			}
+		} 
+		if (options.showdownstream) {
+			for (let j = 0; j < bus.downstream.length; j++) {
+				curProduct = bus.downstream[j];
+				if (seen[bus.downstream[j].productid]) continue;
+				found = 0;
+				maxIncentive = {"rebateAmount": -1};
+				// Look for a prescriptive incentive, then a custom. 
+				for (let i = 0; i < curProduct.rebates.prescriptive.length; i++) {
+					if (curProduct.rebates.prescriptive[i].rebateAmount > maxIncentive.rebateAmount) {
+						maxIncentive = curProduct.rebates.prescriptive[i];
+						found = 1;
+					}
+				}
+				maxIncentive.utilities = [];
+				for (let i = 0; i < curProduct.rebates.prescriptive.length; i++) {
+					if (curProduct.rebates.prescriptive[i].rebateid == maxIncentive.rebateid) {
+						maxIncentive.utilities.push(curProduct.rebates.prescriptive[i].utilityname);
+					}
+				}
+
+				for (let i = 0; i < curProduct.rebates.custom.length; i++) {
+					if (curProduct.rebates.custom[i].rebateAmount > maxIncentive.rebateAmount) {
+						maxIncentive = curProduct.rebates.custom[i];
+						found = 1;
+					}
+				}
+				if (found) {
+					maxIncentive.instant = 0;
+					options.callback(curProduct.productid, maxIncentive);
+				}
+			}
+		}
+	}).done(function() {
+		if (window.console) console.log('finished getrebates');
+	}).fail(function(xhr, text, error) {
+		if (window.console) console.log('failed in getrebates ' + xhr.responseText);
+	}).always(function() {
+		if (window.console) console.log('finished getrebates always');
+	});
+}
+
+var SearchWidget = { 
+
+	"configure": function(options) {
+		if (!options.apikey || !options.uid || !options.productid_list || !options.callback) {
+			alert("Missing parameters in RebateSearchWidget request");
+			return;	}
+		// advanced configuration - known rebateid, property type, zip
+		if (!options.server) {
+			options.server = "https://www.rebatebus.com/";
+		}
+		if (!options.createZipBar) {
+			options.createZipBar = defaultCreateZipBar;
+		}
+		var viewingzip = getCookie('busfrm-rebatezip');
+		var viewingtype = getCookie('busfrm-propertytype');
+		//var fs = window.RequestFileSystem || window.webkitRequestFileSystem;
+		//if (!fs) {
+		//	return;
+		//}
+		//fs(window.TEMPORARY, 100, function(fs) {
+			if (viewingtype == "" || viewingzip == "") {
+				jQuery.post(options.server + "api/estimatezip", {"apikey": options.apikey, "uid": options.uid}, function(response) {
+					if (response.zip) {
+						viewingzip = response.zip;
+						if (options.viewingtype) 
+							viewingtype = options.viewingtype;
+						else 
+							viewingtype = "commercial";
+						options.createZipBar(viewingzip, viewingtype, options);
+						loadRebates(options, viewingtype, viewingzip);	
+					}	
+				});
+				// don't auto-guess, or guess based on geolocation	
+				//gotzipFlag = 0;
+				//createWidget(options, null, null);
+			}
+			else {
+				options.createZipBar(viewingzip, viewingtype, options);
+				loadRebates(options, viewingtype, viewingzip);	
+			}
+		/*
+		}
+		, function(err) {
+			return; 
+		});*/
+	}
+
+};

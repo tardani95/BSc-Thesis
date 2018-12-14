@@ -1,0 +1,5 @@
+var DISQUSWIDGETS;
+
+if (typeof DISQUSWIDGETS != 'undefined') {
+    DISQUSWIDGETS.displayCount({"text":{"and":"and","comments":{"zero":"Post a comment","multiple":"{num} comments","one":"1 comment"}},"counts":[{"id":"e12f73cd-0a81-4f21-879b-5e7c57ec7044","comments":15}]});
+}

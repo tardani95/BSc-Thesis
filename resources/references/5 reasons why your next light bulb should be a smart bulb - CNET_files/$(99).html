@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<!-- saved from url=(0442)https://c-4tvylwolbz88x24dddx2espnoaivejkux2ejvt.g00.cnet.com/g00/3_c-4ddd.jula.jvt_/c-4TVYLWOLBZ88x24oaawzx3ax2fx2fddd.spnoaivejku.jvtx2fsjszax2f9k7k3m75-3ijm-1k3l-i8lh-ml90k9h6j46mx2fsz.oatsx3fwbysx3doaawzx250Hx259Mx259Mddd.jula.jvtx259Movd-avx259Mdof-fvby-ulea-spnoa-ibsi-zovbsk-il-h-zthya-ibsix259Mx26cpkx3d9k7k3m75-3ijm-1k3l-i8lh-ml90k9h6j46mx26zlx3d7x26wylcx3d7x26jix3d303464213491368095x26p87j.thyrx3dpmyhtl_$/$/$/$?i10c.ua=1&i10c.dv=7 -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><!--<base href="https://www.lightboxcdn.com/lclst/2d0d6f08-6bcf-4d6e-b1ea-fe23d2a9c79f/ls.html?purl=https%3A%2F%2Fwww.cnet.com%2Fhow-to%2Fwhy-your-next-light-bulb-should-be-a-smart-bulb%2F&amp;vid=2d0d6f08-6bcf-4d6e-b1ea-fe23d2a9c79f&amp;se=0&amp;prev=0&amp;cb=636797546724691328">--><base href="."><meta name="robots" content="noindex,nofollow">
+<title>Digioh</title>
+
+<script type="text/javascript" src="./$(88)" x-enc="src"></script>
+<script>;/*7P1RCD3H9R0M*/var I10C;var I11C;(function(I10C){ I10C.ScriptBegin || (I10C.ScriptBegin = function(){}); I10C.ScriptEnd || (I10C.ScriptEnd = function(){});I10C.PostMessage || (I10C.PostMessage = function(){ return this.postMessage.apply(this, arguments); });I10C.Location || (I10C.Location = function i10cloc(ba$e, isWrite, op){ var locat1onPresent = Object.getOwnPropertyNames(ba$e).indexOf('locat1on') !== -1; return (!isWrite) ? ( locat1onPresent ? ba$e.locat1on : (ba$e.location || ba$e.locat1on)) : (locat1onPresent ? {set href(v) {ba$e.locat1on.href = v;}, get href() {return i10cloc(ba$e,false,op);}} : {set href(v) {ba$e.location = v;}, get href() {return i10cloc(ba$e,false,op);}});});
+I11C.PreLocationContextProxy || (I11C.PreLocationContextProxy = function i10cPreLocContext(ba$e) { return ba$e;});})(I11C||I10C|| (I11C = {}));(I11C || I10C).ScriptBegin();
+        try {
+            var PARENT_URL = '';
+            var VENDOR_GUID = '';
+            var SHOW_ERRORS = '';
+            var IS_PREVIEW = '';
+
+            var query_param_kvps = ((I11C || I10C).PreLocationContextProxy)(document).locat1on.href.split('?')[1].split('&');
+            var qKey = '';
+            var qVal = '';
+            for (var i = 0; i < query_param_kvps.length; i++) {
+                qKey = query_param_kvps[i].split('=')[0];
+                qVal = query_param_kvps[i].split('=')[1];
+                if (qKey === 'purl') PARENT_URL = decodeURIComponent(qVal);
+                if (qKey === 'vid') VENDOR_GUID = decodeURIComponent(qVal);
+                if (qKey === 'se') SHOW_ERRORS = decodeURIComponent(qVal);
+                if (qKey === 'prev') IS_PREVIEW = decodeURIComponent(qVal);
+            }
+
+            window.addEventListener('message', function (event) {
+
+                //console.log('LocalStorage postMessage event received in identity.html');
+                //console.log(event);
+
+                var origin = event.origin || event.originalEvent.origin;
+                //console.log('origin: ' + origin);
+
+                if (origin && PARENT_URL && PARENT_URL.indexOf(origin) === 0) {
+                    var data = {};
+
+                    try {
+                        data = JSON.parse(event.data);
+                    } catch (err) {
+                        return;
+                    }
+
+                    if (typeof data !== 'object' || data === null) {
+                        return;
+                    }
+
+                    if (!data.hasOwnProperty('vid') || data.vid !== VENDOR_GUID) {
+                        //console.log('DIGIOH: ERROR in identity.html: LocalStorage postMessage event vendor guid in child (identity.html) does not match parent (child / parent): ' + VENDOR_GUID + ' / ' + data.vid);
+                        //console.log(data);
+                        return;
+                    }
+
+                    if (!data.hasOwnProperty('operation')) {
+                        //console.log('DIGIOH: ERROR in identity.html: LocalStorage postMessage operation not found or invalid (identity.html)');
+                        //console.log(data);
+                        return;
+                    }
+
+                    if (data.operation === 'set' && data.hasOwnProperty('value')) {
+                        localStorage.setItem(VENDOR_GUID, data.value);
+                    }
+                    else if (data.operation === 'get' && data.hasOwnProperty('identifier')) {
+                        var val = localStorage.getItem(VENDOR_GUID);
+                        if (typeof val !== 'string') {
+                            val = '';
+                        }
+
+                        ((I11C || I10C).PostMessage).call(parent,'#localStorage#' + data.identifier + '#' + val, origin);
+                    }
+                    else if (data.operation === 'erase') {
+                        localStorage.removeItem(VENDOR_GUID);
+                    }
+                    else if (data.operation === 'set_manual' && data.hasOwnProperty('key') && data.hasOwnProperty('value')) {
+                        localStorage.setItem(data.key, data.value);
+                    }
+                    else if (data.operation === 'get_manual' && data.hasOwnProperty('key') && data.hasOwnProperty('identifier')) {
+                        var val = localStorage.getItem(data.key);
+                        if (typeof val === 'undefined' || val === null) {
+                            val = '';
+                        }
+
+                        ((I11C || I10C).PostMessage).call(parent,'#localStorage#' + data.identifier + '#' + val, origin);
+                    }
+                    else if (data.operation === 'erase_manual' && data.hasOwnProperty('key')) {
+                        localStorage.removeItem(data.key);
+                    }
+                    else if (data.operation === 'set_inner' && data.hasOwnProperty('key') && data.hasOwnProperty('value') && data.hasOwnProperty('type')) {
+                        var val = '';
+                        var json = {};
+                        var str = localStorage.getItem(VENDOR_GUID);
+                        if (typeof str === 'string') {
+                            str = LZString.decompressFromBase64(str);
+                            if (str && str.indexOf('{') === 0) {
+                                json = JSON.parse(str);
+                            }
+                        }
+
+                        var dec = LZString.decompressFromBase64(data.value);
+
+                        if (data.type === 'object') {
+                            val = JSON.parse(dec);
+                        } else if (data.type === 'number') {
+                            val = Number(dec);
+                        } else if (data.type === 'boolean') {
+                            val = (dec === 'true');
+                        } else {
+                            val = dec.toString();
+                        }
+
+                        json[data.key] = val;
+                        localStorage.setItem(VENDOR_GUID, LZString.compressToBase64(JSON.stringify(json)));
+                    }
+                    else if (data.operation === 'get_inner' && data.hasOwnProperty('key') && data.hasOwnProperty('identifier')) {
+                        var val = '';
+                        var json = {};
+                        var str = localStorage.getItem(VENDOR_GUID);
+                        if (typeof str === 'string') {
+                            str = LZString.decompressFromBase64(str);
+                            if (str && str.indexOf('{') === 0) {
+                                json = JSON.parse(str);
+                            }
+                        }
+                        if (typeof json === 'object' && json !== null && json.hasOwnProperty(data.key)) {
+                            val = json[data.key];
+                        }
+                        if (typeof val === 'undefined' || val === null) {
+                            val = '';
+                        }
+                        if (typeof val === 'object') {
+                            val = JSON.stringify(val);
+                        } else {
+                            val = val.toString();
+                        }
+
+                        val = LZString.compressToBase64(val);
+
+                        ((I11C || I10C).PostMessage).call(parent,'#localStorage#' + data.identifier + '#' + val, origin);
+                    }
+                    else if (data.operation === 'erase_inner' && data.hasOwnProperty('key')) {
+                        var json = {};
+                        var str = localStorage.getItem(VENDOR_GUID);
+                        if (typeof str === 'string') {
+                            str = LZString.decompressFromBase64(str);
+                            if (str && str.indexOf('{') === 0) {
+                                json = JSON.parse(str);
+                            }
+                        }
+                        if (typeof json === 'object' && json !== null && json.hasOwnProperty(data.key)) {
+                            delete json[data.key];
+                        }
+                        localStorage.setItem(VENDOR_GUID, LZString.compressToBase64(JSON.stringify(json)));
+                    }
+                    else {
+                        //console.log('DIGIOH: ERROR in identity.html: LocalStorage postMessage operation not found.');
+                        //console.log(data);
+                    }
+                } else {
+                    //console.log('DIGIOH: ERROR in identity.html: LocalStorage postMessage event origin in child (identity.html) does not match parent (origin / parent): ' + origin + ' / ' + PARENT_URL);
+                    //console.log(event);
+                }
+            }, false);
+
+            //console.log('LocalStorage postMessage identity.html signaling ready to parent');
+
+            setTimeout(function() {
+                ((I11C || I10C).PostMessage).call(parent,
+                            '#localStorage#999999999#zyxcba',
+                            PARENT_URL
+                        );
+            }, 50);
+
+        } catch (err) {
+            console.log('DIGIOH: ERROR in identity.html: ' + err.message);
+        }
+    
+;(I11C || I10C).ScriptEnd();</script>
+</head>
+<body>
+
+
+</body></html>
