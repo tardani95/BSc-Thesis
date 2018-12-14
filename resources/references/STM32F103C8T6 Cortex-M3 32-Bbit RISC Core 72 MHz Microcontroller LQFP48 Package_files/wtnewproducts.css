@@ -1,0 +1,71 @@
+.wt-new-products {
+  margin-bottom: 25px;
+  margin-top: 15px; }
+  .wt-new-products .container {
+    background: #fff;
+    border-top: 2px solid #26a69d; }
+  .wt-new-products .product-container {
+    border-right: 1px solid #d6d6d6;
+    border-bottom: 1px solid #d6d6d6;
+    padding: 20px 15px; }
+  .wt-new-products .product-image-container {
+    margin-bottom: 12px; }
+  .wt-new-products .ajax_block_product.first .product-container {
+    margin-left: 1px; }
+  .wt-new-products .new-banner-img {
+    position: relative; }
+    .wt-new-products .new-banner-img:before {
+      content: '';
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      right: 0;
+      left: 0;
+      -webkit-transition: all 0.6s ease-in-out;
+      transition: all 0.6s ease-in-out;
+      -moz-transition: all 0.6s ease-in-out;
+      -ms-transition: all 0.6s ease-in-out;
+      -o-transition: all 0.6s ease-in-out; }
+    .wt-new-products .new-banner-img:after {
+      content: '';
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      right: 0;
+      left: 0;
+      -webkit-transition: all 0.6s ease-in-out;
+      transition: all 0.6s ease-in-out;
+      -moz-transition: all 0.6s ease-in-out;
+      -ms-transition: all 0.6s ease-in-out;
+      -o-transition: all 0.6s ease-in-out; }
+    .wt-new-products .new-banner-img:hover:before {
+      right: 50%;
+      left: 50%;
+      background: rgba(255, 255, 255, 0.2); }
+    .wt-new-products .new-banner-img:hover:after {
+      top: 50%;
+      bottom: 50%;
+      background: rgba(255, 255, 255, 0.2); }
+  @media (min-width: 768px) {
+    .wt-new-products .new-prod-content {
+      padding-right: 0; }
+    .wt-new-products .new-banner-img {
+      padding-left: 0; } }
+
+@media (max-width: 767px) {
+  .wt-new-products .product-container {
+    border: none; }
+
+  .new-banner-img {
+    text-align: center; }
+
+  .wt-new-products .product_img_link {
+    display: inline-block; } }
+@media (min-width: 768px) and (max-width: 1199px) {
+  .wt-new-products .new-banner-img {
+    padding-right: 0; }
+
+  .wt-new-products .new-prod-content {
+    padding-left: 0; } }
+
+/*# sourceMappingURL=wtnewproducts.css.map */

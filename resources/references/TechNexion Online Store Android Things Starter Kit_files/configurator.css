@@ -1,0 +1,64 @@
+.product-view-detail .product-shop .em-addthis a{
+    border-bottom-width: 1px;
+    border-bottom-style: solid;
+}
+
+#product-options-wrapper p.required{
+    display:none!important;
+}
+
+.configurator-overview-content img{
+    max-width:135px;
+}
+
+.configurator_options .option-details img{
+    max-width:100px;
+}
+
+.group-wrapper dt {
+    border:none;
+    background: #be1f00!important;
+    padding: 0px 9px;
+    color: white;
+}
+
+.group-wrapper dt label{
+    display:none!important;
+}
+
+.group-wrapper .detail-dt {
+    background: none!important;
+    border-top: none;
+    color:black;
+}
+
+input[type='radio']:checked:after {
+    background-color: #ffa500!important;
+
+}
+
+.vertical-img img.option-details-img{
+
+	display:block;
+	float:none;
+	width:100%;
+	max-width:100%;
+
+}
+
+.product-options .dd-checkbox{
+    margin-top: 20px;
+    display:block!important;
+}
+
+.product-options .dd-checkbox input[type="checkbox"]{
+    display:inline;
+}
+
+.product-options .dd-checkbox label{
+    margin-right: 10px;
+}
+
+.configurator_options .option-details img {
+    max-width: 200px!important;
+}

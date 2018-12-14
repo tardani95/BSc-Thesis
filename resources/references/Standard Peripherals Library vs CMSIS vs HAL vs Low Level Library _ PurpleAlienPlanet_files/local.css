@@ -1,0 +1,5 @@
+/* Remove RSS icon */
+.feed-icon img {
+  display:none;
+}
+

@@ -1,0 +1,14 @@
+/**/ this.facebookCallback({
+   "share": {
+      "comment_count": 0,
+      "share_count": 72
+   },
+   "og_object": {
+      "id": "1354045017966162",
+      "description": "One of the easiest ways to dive into smart home technology is with connected lighting. Here's what you need to know to get started along with reviews of the top systems we've tested.",
+      "title": "The Best Smart Light Bulbs of 2018",
+      "type": "article",
+      "updated_time": "2018-07-31T07:35:05+0000"
+   },
+   "id": "https://www.pcmag.com/article2/0,2817,2483488,00.asp"
+});

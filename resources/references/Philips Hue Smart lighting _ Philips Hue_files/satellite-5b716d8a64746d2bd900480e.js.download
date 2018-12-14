@@ -1,0 +1,35 @@
+_satellite.pushAsyncScript(function(event, target, $variables){
+  (function(w, doc) {
+
+    addPinterest = function(tid) {
+        var newNode = new Image(1, 1);
+        newNode.style.display = "none";
+        newNode.alt = "Pinterest";
+        newNode.src = "https://ct.pinterest.com/v3/?tid=" + tid + "&pd[em]=<hashed_email_address>&noscript=1";
+        doc.body.appendChild(newNode);
+    }
+
+    addPinterestEvent = function(tid, event) {
+        var newNode = new Image(1, 1);
+        newNode.style.display = "none";
+        newNode.alt = "";
+        newNode.src = "//ct.pinterest.com/v3/?tid=" + tid + "&event=" + event + "&noscript=1";
+        doc.body.appendChild(newNode);
+    }
+
+    addPinterest("2612708614544");
+
+    $("div.p-youtube-container").on("click", function() {
+        addPinterestEvent("2612708614544", "WatchVideo");
+    });
+
+    $("div.p-button.p-add-to-cart").on("click", function() {
+        addPinterestEvent("2612708614544", "AddToCart");
+    });
+
+    if (/^\/content\/B2C\/en_US\/microsites\/meethue.*/i.test(_satellite.getVar("dlRepPath")) === true) {
+        addPinterestEvent("2612708614544", "PageVisit");
+    }
+
+}(window, document))
+});

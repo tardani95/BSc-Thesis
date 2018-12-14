@@ -1,0 +1,18 @@
+_satellite.pushAsyncScript(function(event, target, $variables){
+  // Create the command queue.
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+
+// Add triggers for clicks
+jQuery('a[href*="https://www.amazon.com"]').click(function() {
+  gtag('event', 'conversion', {
+    'send_to': 'AW-828987653/PCcNCMeFjXsQhbKliwM'
+  });
+});
+
+jQuery('a[href*="https://www.homedepot.com"]').click(function() {
+  gtag('event', 'conversion', {
+    'send_to': 'AW-828987653/D4z5COWFjXsQhbKliwM'
+  });
+});
+});

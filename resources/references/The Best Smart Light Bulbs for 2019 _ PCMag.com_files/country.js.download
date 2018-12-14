@@ -1,0 +1,12 @@
+(function () {
+	var country = {'code':'hu','id':24,'defaultLangauge':'hu'};
+	
+	if (!window.evidon) window.evidon = {};
+	
+	if (window.evidon.notice) {
+		window.evidon.notice.setLocation(country);
+	}
+	else {
+		window.evidon.location = country;
+	}
+})();

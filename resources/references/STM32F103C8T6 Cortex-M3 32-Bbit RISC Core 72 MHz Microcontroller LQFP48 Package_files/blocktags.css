@@ -1,0 +1,14 @@
+.tags_block .block_content {
+  overflow: hidden; }
+  .tags_block .block_content a {
+    display: inline-block;
+    font-size: 13px;
+    text-transform: capitalize;
+    padding-right: 10px;
+    float: left;
+    line-height: 25px;
+    font-family: "Droid Sans", sans-serif; }
+    .tags_block .block_content a:hover {
+      text-decoration: underline; }
+
+/*# sourceMappingURL=blocktags.css.map */

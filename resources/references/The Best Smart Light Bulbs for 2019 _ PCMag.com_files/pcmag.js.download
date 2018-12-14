@@ -1,0 +1,9 @@
+
+(function() {
+    var domain = '.pcmag.com'; var cc = 'HU'; var akcc = 'HU';
+    if (cc && document.cookie.indexOf('geoCC') == -1) {
+      document.cookie='geoCC='+cc+';path=/;domain='+domain;
+      document.cookie='geoCC='+cc+';path=/;domain=.ziffdavisinternational.com';
+    }
+})();
+    

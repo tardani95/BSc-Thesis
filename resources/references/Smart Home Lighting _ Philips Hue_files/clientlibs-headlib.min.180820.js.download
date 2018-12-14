@@ -1,0 +1,451 @@
+/*!
+ * modernizr v3.3.1
+ * Build https://modernizr.com/download?-canvas-csstransforms-csstransforms3d-csstransitions-flexbox-fullscreen-localstorage-objectfit-svg-touchevents-addtest-domprefixes-mq-prefixes-setclasses-testallprops-testprop-teststyles-dontmin
+ *
+ * Copyright (c)
+ *  Faruk Ates
+ *  Paul Irish
+ *  Alex Sexton
+ *  Ryan Seddon
+ *  Patrick Kettner
+ *  Stu Cox
+ *  Richard Herrera
+
+ * MIT License
+ */
+(function(X,aA,au){var ay=[];
+var ap=[];
+var U={_version:"3.3.1",_config:{classPrefix:"test-",enableClasses:true,enableJSClass:true,usePrefixes:true},_q:[],on:function(b,a){var c=this;
+setTimeout(function(){a(c[b])
+},0)
+},addTest:function(c,b,a){ap.push({name:c,fn:b,options:a})
+},addAsyncTest:function(a){ap.push({name:null,fn:a})
+}};
+var aa=function(){};
+aa.prototype=U;
+aa=new aa();
+/*!
+{
+  "name": "SVG",
+  "property": "svg",
+  "caniuse": "svg",
+  "tags": ["svg"],
+  "authors": ["Erik Dahlstrom"],
+  "polyfills": [
+    "svgweb",
+    "raphael",
+    "amplesdk",
+    "canvg",
+    "svg-boilerplate",
+    "sie",
+    "dojogfx",
+    "fabricjs"
+  ]
+}
+!*/
+;
+aa.addTest("svg",!!aA.createElementNS&&!!aA.createElementNS("http://www.w3.org/2000/svg","svg").createSVGRect);
+/*!
+{
+  "name": "Local Storage",
+  "property": "localstorage",
+  "caniuse": "namevalue-storage",
+  "tags": ["storage"],
+  "knownBugs": [],
+  "notes": [],
+  "warnings": [],
+  "polyfills": [
+    "joshuabell-polyfill",
+    "cupcake",
+    "storagepolyfill",
+    "amplifyjs",
+    "yui-cacheoffline"
+  ]
+}
+!*/
+;
+aa.addTest("localstorage",function(){var a="modernizr";
+try{localStorage.setItem(a,a);
+localStorage.removeItem(a);
+return true
+}catch(b){return false
+}});
+var aq=(U._config.usePrefixes?" -webkit- -moz- -o- -ms- ".split(" "):["",""]);
+U._prefixes=aq;
+function af(b,a){return typeof b===a
+}function P(){var e;
+var c;
+var g;
+var d;
+var h;
+var f;
+var a;
+for(var b in ap){if(ap.hasOwnProperty(b)){e=[];
+c=ap[b];
+if(c.name){e.push(c.name.toLowerCase());
+if(c.options&&c.options.aliases&&c.options.aliases.length){for(g=0;
+g<c.options.aliases.length;
+g++){e.push(c.options.aliases[g].toLowerCase())
+}}}d=af(c.fn,"function")?c.fn():c.fn;
+for(h=0;
+h<e.length;
+h++){f=e[h];
+a=f.split(".");
+if(a.length===1){aa[a[0]]=d
+}else{if(aa[a[0]]&&!(aa[a[0]] instanceof Boolean)){aa[a[0]]=new Boolean(aa[a[0]])
+}aa[a[0]][a[1]]=d
+}ay.push((d?"":"no-")+a.join("-"))
+}}}}var i=aA.documentElement;
+var aC=i.nodeName.toLowerCase()==="svg";
+function aB(c){var b=i.className;
+var d=aa._config.classPrefix||"";
+if(aC){b=b.baseVal
+}if(aa._config.enableJSClass){var a=new RegExp("(^|\\s)"+d+"no-js(\\s|$)");
+b=b.replace(a,"$1"+d+"js$2")
+}if(aa._config.enableClasses){b+=" "+d+c.join(" "+d);
+aC?i.className.baseVal=b:i.className=b
+}}var at="Moz O ms Webkit";
+var R=(U._config.usePrefixes?at.toLowerCase().split(" "):[]);
+U._domPrefixes=R;
+var Z;
+(function(){var a=({}).hasOwnProperty;
+if(!af(a,"undefined")&&!af(a.call,"undefined")){Z=function(c,b){return a.call(c,b)
+}
+}else{Z=function(c,b){return((b in c)&&af(c.constructor.prototype[b],"undefined"))
+}
+}})();
+U._l={};
+U.on=function(b,a){if(!this._l[b]){this._l[b]=[]
+}this._l[b].push(a);
+if(aa.hasOwnProperty(b)){setTimeout(function(){aa._trigger(b,aa[b])
+},0)
+}};
+U._trigger=function(b,c){if(!this._l[b]){return
+}var a=this._l[b];
+setTimeout(function(){var d,e;
+for(d=0;
+d<a.length;
+d++){e=a[d];
+e(c)
+}},0);
+delete this._l[b]
+};
+function ah(e,b){if(typeof e=="object"){for(var a in e){if(Z(e,a)){ah(a,e[a])
+}}}else{e=e.toLowerCase();
+var c=e.split(".");
+var d=aa[c[0]];
+if(c.length==2){d=d[c[1]]
+}if(typeof d!="undefined"){return aa
+}b=typeof b=="function"?b():b;
+if(c.length==1){aa[c[0]]=b
+}else{if(aa[c[0]]&&!(aa[c[0]] instanceof Boolean)){aa[c[0]]=new Boolean(aa[c[0]])
+}aa[c[0]][c[1]]=b
+}aB([(!!b&&b!=false?"":"no-")+c.join("-")]);
+aa._trigger(e,b)
+}return aa
+}aa._q.push(function(){U.addTest=ah
+});
+function ac(){if(typeof aA.createElement!=="function"){return aA.createElement(arguments[0])
+}else{if(aC){return aA.createElementNS.call(aA,"http://www.w3.org/2000/svg",arguments[0])
+}else{return aA.createElement.apply(aA,arguments)
+}}}
+/*!
+{
+  "name": "Canvas",
+  "property": "canvas",
+  "caniuse": "canvas",
+  "tags": ["canvas", "graphics"],
+  "polyfills": ["flashcanvas", "excanvas", "slcanvas", "fxcanvas"]
+}
+!*/
+;
+aa.addTest("canvas",function(){var a=ac("canvas");
+return !!(a.getContext&&a.getContext("2d"))
+});
+/*!
+{
+  "name": "CSS Supports",
+  "property": "supports",
+  "caniuse": "css-featurequeries",
+  "tags": ["css"],
+  "builderAliases": ["css_supports"],
+  "notes": [{
+    "name": "W3 Spec",
+    "href": "http://dev.w3.org/csswg/css3-conditional/#at-supports"
+  },{
+    "name": "Related Github Issue",
+    "href": "github.com/Modernizr/Modernizr/issues/648"
+  },{
+    "name": "W3 Info",
+    "href": "http://dev.w3.org/csswg/css3-conditional/#the-csssupportsrule-interface"
+  }]
+}
+!*/
+;
+var ad="CSS" in X&&"supports" in X.CSS;
+var ai="supportsCSS" in X;
+aa.addTest("supports",ad||ai);
+function Q(){var a=aA.body;
+if(!a){a=ac(aC?"svg":"body");
+a.fake=true
+}return a
+}function an(d,a,k,b){var c="modernizr";
+var l;
+var e;
+var j;
+var g;
+var h=ac("div");
+var f=Q();
+if(parseInt(k,10)){while(k--){j=ac("div");
+j.id=b?b[k]:c+(k+1);
+h.appendChild(j)
+}}l=ac("style");
+l.type="text/css";
+l.id="s"+c;
+(!f.fake?h:f).appendChild(l);
+f.appendChild(h);
+if(l.styleSheet){l.styleSheet.cssText=d
+}else{l.appendChild(aA.createTextNode(d))
+}h.id=c;
+if(f.fake){f.style.background="";
+f.style.overflow="hidden";
+g=i.style.overflow;
+i.style.overflow="hidden";
+i.appendChild(f)
+}e=a(h,d);
+if(f.fake){f.parentNode.removeChild(f);
+i.style.overflow=g;
+i.offsetHeight
+}else{h.parentNode.removeChild(h)
+}return !!e
+}var av=(function(){var a=X.matchMedia||X.msMatchMedia;
+if(a){return function(b){var c=a(b);
+return c&&c.matches||false
+}
+}return function(b){var c=false;
+an("@media "+b+" { #modernizr { position: absolute; } }",function(d){c=(X.getComputedStyle?X.getComputedStyle(d,null):d.currentStyle).position=="absolute"
+});
+return c
+}
+})();
+U.mq=av;
+var ak=U.testStyles=an;
+/*!
+{
+  "name": "Touch Events",
+  "property": "touchevents",
+  "caniuse" : "touch",
+  "tags": ["media", "attribute"],
+  "notes": [{
+    "name": "Touch Events spec",
+    "href": "https://www.w3.org/TR/2013/WD-touch-events-20130124/"
+  }],
+  "warnings": [
+    "Indicates if the browser supports the Touch Events spec, and does not necessarily reflect a touchscreen device"
+  ],
+  "knownBugs": [
+    "False-positive on some configurations of Nokia N900",
+    "False-positive on some BlackBerry 6.0 builds – https://github.com/Modernizr/Modernizr/issues/372#issuecomment-3112695"
+  ]
+}
+!*/
+;
+aa.addTest("touchevents",function(){var a;
+if(("ontouchstart" in X)||X.DocumentTouch&&aA instanceof DocumentTouch){a=true
+}else{var b=["@media (",aq.join("touch-enabled),("),"heartz",")","{#modernizr{top:9px;position:absolute}}"].join("");
+ak(b,function(c){a=c.offsetTop===9
+})
+}return a
+});
+var V=(U._config.usePrefixes?at.split(" "):[]);
+U._cssomPrefixes=V;
+function ab(b,a){return !!~(""+b).indexOf(a)
+}function aj(a){return a.replace(/([a-z])-([a-z])/g,function(b,c,d){return c+d.toUpperCase()
+}).replace(/^-/,"")
+}var az=function(a){var e=aq.length;
+var c=X.CSSRule;
+var b;
+if(typeof c==="undefined"){return au
+}if(!a){return false
+}a=a.replace(/^@/,"");
+b=a.replace(/-/g,"_").toUpperCase()+"_RULE";
+if(b in c){return"@"+a
+}for(var g=0;
+g<e;
+g++){var d=aq[g];
+var f=d.toUpperCase()+"_"+b;
+if(f in c){return"@-"+d.toLowerCase()+"-"+a
+}}return false
+};
+U.atRule=az;
+function ag(a,b){return function(){return a.apply(b,arguments)
+}
+}function al(d,a,b){var c;
+for(var e in d){if(d[e] in a){if(b===false){return d[e]
+}c=a[d[e]];
+if(af(c,"function")){return ag(c,b||a)
+}return c
+}}return false
+}var S={elem:ac("modernizr")};
+aa._q.push(function(){delete S.elem
+});
+var W={style:S.elem.style};
+aa._q.unshift(function(){delete W.style
+});
+function aw(a){return a.replace(/([A-Z])/g,function(b,c){return"-"+c.toLowerCase()
+}).replace(/^ms-/,"-ms-")
+}function ae(c,b){var d=c.length;
+if("CSS" in X&&"supports" in X.CSS){while(d--){if(X.CSS.supports(aw(c[d]),b)){return true
+}}return false
+}else{if("CSSSupportsRule" in X){var a=[];
+while(d--){a.push("("+aw(c[d])+":"+b+")")
+}a=a.join(" or ");
+return an("@supports ("+a+") { #modernizr { position: absolute; } }",function(e){return getComputedStyle(e,null).position=="absolute"
+})
+}}return au
+}function Y(e,j,b,d){d=af(d,"undefined")?false:d;
+if(!af(b,"undefined")){var n=ae(e,b);
+if(!af(n,"undefined")){return n
+}}var a,h,m,k,c;
+var l=["modernizr","tspan","samp"];
+while(!W.style&&l.length){a=true;
+W.modElem=ac(l.shift());
+W.style=W.modElem.style
+}function g(){if(a){delete W.style;
+delete W.modElem
+}}m=e.length;
+for(h=0;
+h<m;
+h++){k=e[h];
+c=W.style[k];
+if(ab(k,"-")){k=aj(k)
+}if(W.style[k]!==au){if(!d&&!af(b,"undefined")){try{W.style[k]=b
+}catch(f){}if(W.style[k]!=c){g();
+return j=="pfx"?k:true
+}}else{g();
+return j=="pfx"?k:true
+}}}g();
+return false
+}var ax=U.testProp=function(b,c,a){return Y([b],au,c,a)
+};
+function ao(a,d,e,c,b){var g=a.charAt(0).toUpperCase()+a.slice(1),f=(a+" "+V.join(g+" ")+g).split(" ");
+if(af(d,"string")||af(d,"undefined")){return Y(f,d,c,b)
+}else{f=(a+" "+(R).join(g+" ")+g).split(" ");
+return al(f,d,e)
+}}U.testAllProps=ao;
+function ar(b,a,c){return ao(b,au,au,a,c)
+}U.testAllProps=ar;
+/*!
+{
+  "name": "Flexbox",
+  "property": "flexbox",
+  "caniuse": "flexbox",
+  "tags": ["css"],
+  "notes": [{
+    "name": "The _new_ flexbox",
+    "href": "http://dev.w3.org/csswg/css3-flexbox"
+  }],
+  "warnings": [
+    "A `true` result for this detect does not imply that the `flex-wrap` property is supported; see the `flexwrap` detect."
+  ]
+}
+!*/
+;
+aa.addTest("flexbox",ar("flexBasis","1px",true));
+/*!
+{
+  "name": "CSS Transforms",
+  "property": "csstransforms",
+  "caniuse": "transforms2d",
+  "tags": ["css"]
+}
+!*/
+;
+aa.addTest("csstransforms",function(){return navigator.userAgent.indexOf("Android 2.")===-1&&ar("transform","scale(1)",true)
+});
+/*!
+{
+  "name": "CSS Transforms 3D",
+  "property": "csstransforms3d",
+  "caniuse": "transforms3d",
+  "tags": ["css"],
+  "warnings": [
+    "Chrome may occassionally fail this test on some systems; more info: https://code.google.com/p/chromium/issues/detail?id=129004"
+  ]
+}
+!*/
+;
+aa.addTest("csstransforms3d",function(){var d=!!ar("perspective","1px",true);
+var a=aa._config.usePrefixes;
+if(d&&(!a||"webkitPerspective" in i.style)){var c;
+var b="#modernizr{width:0;height:0}";
+if(aa.supports){c="@supports (perspective: 1px)"
+}else{c="@media (transform-3d)";
+if(a){c+=",(-webkit-transform-3d)"
+}}c+="{#modernizr{width:7px;height:18px;margin:0;padding:0;border:0}}";
+ak(b+c,function(e){d=e.offsetWidth===7&&e.offsetHeight===18
+})
+}return d
+});
+/*!
+{
+  "name": "CSS Transitions",
+  "property": "csstransitions",
+  "caniuse": "css-transitions",
+  "tags": ["css"]
+}
+!*/
+;
+aa.addTest("csstransitions",ar("transition","all",true));
+var am=U.prefixed=function(b,c,a){if(b.indexOf("@")===0){return az(b)
+}if(b.indexOf("-")!=-1){b=aj(b)
+}if(!c){return ao(b,"pfx")
+}else{return ao(b,c,a)
+}};
+/*!
+{
+  "name": "Fullscreen API",
+  "property": "fullscreen",
+  "caniuse": "fullscreen",
+  "notes": [{
+    "name": "MDN documentation",
+    "href": "https://developer.mozilla.org/en/API/Fullscreen"
+  }],
+  "polyfills": ["screenfulljs"],
+  "builderAliases": ["fullscreen_api"]
+}
+!*/
+;
+aa.addTest("fullscreen",!!(am("exitFullscreen",aA,false)||am("cancelFullScreen",aA,false)));
+/*!
+{
+  "name": "CSS Object Fit",
+  "caniuse": "object-fit",
+  "property": "objectfit",
+  "tags": ["css"],
+  "builderAliases": ["css_objectfit"],
+  "notes": [{
+    "name": "Opera Article on Object Fit",
+    "href": "https://dev.opera.com/articles/css3-object-fit-object-position/"
+  }]
+}
+!*/
+;
+aa.addTest("objectfit",!!am("objectFit"),{aliases:["object-fit"]});
+P();
+aB(ay);
+delete U.addTest;
+delete U.addAsyncTest;
+for(var T=0;
+T<aa._q.length;
+T++){aa._q[T]()
+}X.Modernizr=aa
+})(window,document);
+Modernizr.addTest("correctvh",function(){return !navigator.userAgent.match(/(iPad|iPhone);.*CPU.*OS (6|7)_\d/i)
+});
+Modernizr.addTest("touch",function(){return Modernizr.touchevents
+});
+(function(){var d=document.documentElement;
+var c="no-js";
+if(Modernizr._config.classPrefix&&d.className.indexOf(c)>-1){d.className=d.className.replace(c,Modernizr._config.classPrefix+"js")
+}})();

@@ -1,0 +1,13 @@
+_satellite.pushAsyncScript(function(event, target, $variables){
+  function AddMediaMath(mt_id) {
+	var newNode = document.createElement("img");
+	newNode.src = "//pixel.mathtag.com/event/js?mt_id=" + mt_id + "&mt_adid=150621&mt_exem=&mt_excl=&v1=&v2=&v3=&s1=&s2=&s3=";
+	newNode.width = "1";
+	newNode.height = "1";
+	newNode.style.display = "none";
+	newNode.alt = "MediaMath";
+	document.body.appendChild(newNode);
+}
+
+AddMediaMath("1348539");
+});
