@@ -4,7 +4,7 @@
 \begin{document}
 
 \section{Tervezési feladat követelményeinek felállítása}
-    A feladatot az Ebay-en vásárolt olcsó mudulok segítségével szerettem volna megvalósítani, amik már a rendelkezésemre álltak. A cél egy olyan áramköri elem megépítése volt, ami viszonylag könnyedén beforrasztható, külső egyenáramú tápellátásról vezérelni tudja a rákapcsolt LED sorokat, és egy cserélhető Wifi modulon keresztül képes az Androidos applikációnkból érkező, általam definiált protokollú, adatok fogadására. Továbbá egy olyan védődoboz tervezése, amivel különböző helyekre lehet majd felszerelni. A következőkben pontokba szedtem az összes tervezési követelményt:
+    A feladatot az Ebay-en vásárolt olcsó modulok segítségével szerettem volna megvalósítani, amik már a rendelkezésemre álltak. A cél egy olyan áramköri elem megépítése volt, ami viszonylag könnyedén beforrasztható, külső egyenáramú tápellátásról vezérelni tudja a rákapcsolt LED sorokat, és egy cserélhető Wifi modulon keresztül képes az Androidos alkalmazásunkból érkező, általam definiált protokollú, adatok fogadására. Továbbá egy olyan védődoboz tervezése, amivel különböző helyekre lehet majd felszerelni. A következőkben pontokba szedtem az összes tervezési követelményt:
  
         \begin{itemize}
             \item Legyen telefonnal működtethető vezeték nélküli hálózaton keresztül
@@ -23,17 +23,17 @@
     
     \subsection{Rendelkezésre álló hardverek}
         \subsubsection{Wifi modul: ESP8266 - ESP01} 
-            Az ESP8266 egy olyan IC, ami IoT világnak megfelelően lett tervezve. Képes egy 802.11 típusú hálózaton TCP/IP protokol segítségével kommunikálni. Teljesen címezhető SPI vagy UART segítségével, és hozzáférést ad a GPIO-hoz.\cite{sec_201} \\[12px]
+            Az ESP8266 egy olyan IC, ami IoT világnak megfelelően lett tervezve. Képes egy 802.11 típusú hálózaton TCP/IP protokoll segítségével kommunikálni. Teljesen címezhető SPI vagy UART segítségével, és hozzáférést ad a GPIO-hoz.\cite{sec_201} \\[12px]
             Néhány tulajdonsága:
             \begin{itemize}
                 \item 802.11 b/g/n szabványokat támogat
                 \item Wi-Fi Direct (P2P), soft-AP módú működés
-                \item integrált TCP/IP protokol
+                \item integrált TCP/IP protokoll
                 \item integrált WEP, TKIP, AES motorok
                 \item 3.3V DC tápfelszültség
             \end{itemize}
             
-            Ennek az IC-nek az ESP01 típusú modulját (\ref{fig:esp01}. Ábra) használtam. Körübelül 500 Ft-ért lehet hozzájutni az Ebay-en, és egy 2x4-es csatlakozóval lehet az áramkörünkhöz csatlakoztatni.
+            Ennek az IC-nek az ESP01 típusú modulját (\ref{fig:esp01}. Ábra) használtam. Körülbelül 500 Ft-ért lehet hozzájutni az Ebay-en, és egy 2x4-es csatlakozóval lehet az áramkörünkhöz csatlakoztatni.
             
             \begin{figure}[h!]
                 \centering
@@ -51,7 +51,7 @@
                 \label{fig:ledstrip}
             \end{figure}
         
-            A WS2811 egy 3 kimeneti csatornás speciális LED meghajtó IC. Egy jelvezetéken küldött 24 bit szélességű bitsorozattal lehet vezérelni 400 vagy 800 Kbps sebességgel. Az IC-ben van belső jelerősítő, hogy egymás után lehessen kötni őket. Az általam vásárolt LED szalagon IC-nként 3[db] RGB LED található, és ezek az IC-k az imént említett módon vannak összekötve. Ezt a felépítést szemlélteti \aref{fig:ledstrip_schematic}.~ábra.\\[12px]
+            A WS2811 egy 3 kimeneti csatornás speciális LED meghajtó IC. Egy jelvezetéken küldött 24 bit szélességű bitsorozattal lehet vezérelni 400 vagy 800 Kbps sebességgel. Az IC-ben van belső jelerősítő, hogy egymás után lehessen kötni őket. Az általam vásárolt LED szalagon IC-nként 3 db] RGB LED található, és ezek az IC-k az imént említett módon vannak összekötve. Ezt a felépítést szemlélteti \aref{fig:ledstrip_schematic}.~ábra.\\[12px]
             
             \begin{figure}[h!]
                 \centering
@@ -70,7 +70,7 @@
             \end{itemize}
             
         \subsubsection{Mikrovezérlő: STM32F103C8T6}
-            Ez a mikrovezérlő az F103-as család tagja, azon belül pedig az a változat aminek 48 lába van (C), 64 Kbyte Flash memóriája van (8), LQFP csomagú (T) és -40-től +85°C-ig működik (6). \cite{ds_stm32}
+            Ez a mikrovezérlő az F103-as család tagja, azon belül pedig az a változat, aminek 48 lába van (C), 64 Kbyte Flash memóriája van (8), LQFP csomagú (T) és -40-től +85°C-ig működik (6). \cite{ds_stm32}
             
             \begin{figure}[h!]
                 \centering
@@ -79,7 +79,7 @@
                 \label{fig:stm32f103_ic}
             \end{figure}
             
-            Egy maximum 72 MHz-es, 32-bit-es ARM Cortex-M3-as processzor a magja, ami a fent említtett Flash és SRAM memória és megannyi más egység (2x A/D konverter, DMA vezérlő 37 I/O port, 7x timer, és 9 kommunikációs interfész) is kiegészít. Számomra az időzítők (PWM generálás, és időzítési feladatok), az UART interfész és a DMA vezérlő játszik fontos szerepet, illetve az A/D konverterek bővítési lehetőségként.
+            Egy maximum 72 MHz-es, 32-bit-es ARM Cortex-M3-as processzor a magja, ami a fent említett Flash és SRAM memória és megannyi más egység (2x A/D konverter, DMA vezérlő 37 I/O port, 7x timer, és 9 kommunikációs interfész) is kiegészít. Számomra az időzítők (PWM generálás, és időzítési feladatok), az UART interfész és a DMA vezérlő játszik fontos szerepet, illetve az A/D konverterek bővítési lehetőségként.
             
             \begin{figure}[h!]
                 \centering

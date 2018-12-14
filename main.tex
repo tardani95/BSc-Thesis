@@ -13,7 +13,7 @@
 
 \begin{document}
 
-\pagenumbering{roman}
+% \pagenumbering{roman}
 \author{\myname}
 \title{Android vezérlésű okos LED-rendszer fejlesztése}
 
@@ -67,25 +67,25 @@
 %--Záradék és nyilatkozatok-------------------------------
 \pagenumbering{roman}
 \setcounter{page}{4}
-\subfile{misc_content/nyilatkozatok}
+% \subfile{misc_content/nyilatkozatok}
 \newpage
 %--Tartalomjegyzék----------------------------------------
 
-% \newpage\thispagestyle{empty}
-% \addtocontents{toc}{\protect\thispagestyle{empty}}
-% \tableofcontents
-
-\newpage
-\thispagestyle{empty}
+\newpage\pagestyle{plain}
+\addtocontents{toc}{\protect\thispagestyle{plain}}
 \tableofcontents
 \newpage
+
+% \newpage
+% \thispagestyle{empty}
+% \tableofcontents
+
 
 
 % \pagenumbering{arabic}
 %--Előszó-------------------------------------------------
 \newpage
 \thispagestyle{plain}
-% \setcounter{page}{1}
 \subfile{sections/eloszo}
 \newpage
 
@@ -141,6 +141,7 @@ A táblázatban a többször előforduló jelölések magyar és angol nyelvű e
 \newpage
 
 %--Footer-------------------------------------------------
+\pagestyle{fancy}
 \thispagestyle{fancy}
 \pagenumbering{arabic}
 
@@ -148,11 +149,6 @@ A táblázatban a többször előforduló jelölések magyar és angol nyelvű e
 \thispagestyle{fancy}
 \subfile{sections/bevezetes}
 \newpage
-
-%--Irodalomkutatás----------------------------------------
-%\subfile{sections/literature}
-%\newpage
-%---------------------------------------------------------
 
 %--Tartalmi rész------------------------------------------
     \thispagestyle{fancy}
@@ -196,13 +192,16 @@ A táblázatban a többször előforduló jelölések magyar és angol nyelvű e
 % \bibliographystyle{acm}
 % \bibliographystyle{plain}
 
-\newpage
+
+\cleardoublepage
+\phantomsection
 \addcontentsline{toc}{section}{Hivatkozások}
 \bibliographystyle{unsrt}
 \bibliography{references}
 %---------------------------------------------------------
 
 %--Angol összefoglalás------------------------------------
+ \cleardoublepage
  \subfile{sections/osszefoglalas_EN}
  \newpage
 %---------------------------------------------------------

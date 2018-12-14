@@ -5,7 +5,7 @@
 
 \section{Eszköz elektronikai tervezése és összeállítása}
     \subsection{Elektronikai tervezés}
-        Az elektronikai tervezést 3 fázisra és az utolsó fázis hibáinak kijavítására bontottam le. Az elsőnél a meglévő modulokkat dugdostam össze próbapanelen, a másodiknál vasalásos technikával készítettem NYÁK-ot a stabil, kevésbé zajos csatlakozások érdekében. A harmadik fázisnál került sor a modulok egy NYÁK-lapra való integrálására.
+        Az elektronikai tervezést 3 fázisra és az utolsó fázis hibáinak kijavítására bontottam le. Az elsőnél a meglévő modulokat dugdostam össze próbapanelen, a másodiknál vasalásos technikával készítettem NYÁK-ot a stabil, kevésbé zajos csatlakozások érdekében. A harmadik fázisnál került sor a modulok egy NYÁK-lapra való integrálására.
         
         Az első fázis első lépései között szerepelt az Ebay-ről vásárolt eszközök tesztelése: működik-e mindegyik, programozható-e a fejlesztői lap, konfigurálható-e a Wifi modul, stb. Második lépésként a mikrovezérlő lábkiosztása (\ref{fig:stm32f103_pinout}. ábra) alapján kiválasztottam a lábak általam használt funkcióit. 
         
@@ -17,7 +17,7 @@
             \label{fig:stm32f103_pinout}
         \end{figure}
         
-        A PB\_0-s lábat választottam a LED sor vezérlő lábának, és a PA\_9, PA\_10 (TX,RX) lábakat pedig Wifi modullal kommunikáló UART lábaknak. Minden modulra az előírt tápfeszültséget kötöttem, illetve az összes földpotenciált összehuzaloztam, ezzel egy közös földpontot létrehozva. A ESP-01-s modul pinoutja (\ref{fig:eps01_pinout}. ábra) alapján az UART lábakat is összekötöttem a megfelelő módon: a mikrovezérlő RX lábát (PA\_10) a Wifi modul U0TXD lábával és mikrovezérlő TX lábát (PA\_9) a Wifi modul U0RXD lábával. 
+        A PB\_0-s lábat választottam a LED sor vezérlő lábának, és a PA\_9, PA\_10 (TX,RX) lábakat pedig Wifi modullal kommunikáló UART lábaknak. Minden modulra az előírt tápfeszültséget kötöttem, illetve az összes földpotenciált összehuzaloztam, ezzel egy közös földpontot létrehozva. A ESP-01-s modul pinout-ja (\ref{fig:eps01_pinout}. ábra) alapján az UART lábakat is összekötöttem a megfelelő módon: a mikrovezérlő RX lábát (PA\_10) a Wifi modul U0TXD lábával és mikrovezérlő TX lábát (PA\_9) a Wifi modul U0RXD lábával. 
         
         \begin{figure}[h!]
             \centering
@@ -28,9 +28,9 @@
         
         A WS2811-es IC adatlapján a logikai jelszintes részt áttanulmányozva megállapítottam, hogy a mikrovezérlő 3,3V-os vezérlő jelét még éppen tolerálja a LED sor vezérlő IC 5V-os bemeneti lába (3,2V-os jel igaznak felel meg). 
         
-        Ezek alapján állítottam össze a kapcsolást breadboard-on, és az internetről letöltött mintaprogramokat kicsit módosítva elértem, hogy külön-külön működjön a Wifi modullal történő kommunikáció, illetve a LED soron meg tudtam jeleníteni egy fehér színt. Az összeállítással több probléma is volt; a tesztelés során a breadboardból gyakran kicsúsztak a kábelek és a csatlakozások kontaktosak voltak, hamis színeket okozva ezzel a LED soron. 
+        Ezek alapján állítottam össze a kapcsolást breadboard-on, és az internetről letöltött mintaprogramokat kicsit módosítva elértem, hogy külön-külön működjön a Wifi modullal történő kommunikáció, illetve a LED soron meg tudtam jeleníteni egy fehér színt. Az összeállítással több probléma is volt; a tesztelés során a breadboard-ból gyakran kicsúsztak a kábelek és a csatlakozások kontaktosak voltak, hamis színeket okozva ezzel a LED soron. 
         
-        A problémák orvoslásaként került sor a második fázis kivitelezésére, amit az Autodesk Eagle nyáktervező programmal valósítottam meg. Az internetről letöltöttem és beimportáltam az STM32F103C8T6 mikrovezérlő fejlesztői lapjának, az ESP8266-os modul ESP-01-es típusának a könyvtárait \citep{armMbed}\cite{esp_eagle_lib}. Létrehoztam egy saját könyvtárt is az Ebay-ről rendelt DC/DC modulnak. Ez a feszültségátalakító állítja elő a 12V-os tápfeszültségből a 3,3V-osat. Egy pár csatlakozó, állatpotjelző LED és ellenállás hozzáadása után összehuzaloztam a megfelelő elemeket. 
+        A problémák orvoslásaként került sor a második fázis kivitelezésére, amit az Autodesk Eagle nyáktervező programmal valósítottam meg. Az internetről letöltöttem és beimportáltam az STM32F103C8T6 mikrovezérlő fejlesztői lapjának, az ESP8266-os modul ESP-01-es típusának a könyvtárait \citep{armMbed}\cite{esp_eagle_lib}. Létrehoztam egy saját könyvtárt is az Ebay-ről rendelt DC/DC modulnak. Ez a feszültségátalakító állítja elő a 12V-os tápfeszültségből a 3,3V-osat. Egy pár csatlakozó, állapotjelző LED és ellenállás hozzáadása után összehuzaloztam a megfelelő elemeket. 
         
         \begin{figure}[h!]
             \centering
@@ -62,7 +62,7 @@
     
         
         \subsubsection{DC/DC tervezés}
-            Mivel nagy a különbség a bemeneti és kimenteti feszültségek között (12V-ról 5V-ra), ezért egy DC/DC konverter sokkal jobban megfelel, mint egy LDO (Low-DropOut regulator), hiszen egy LDO-nak a hatékonysága nagyon alacsony (12V-ról 5V-ra kb. 41\%) és a maradék energiát elfűti. Ez a megoldás semmiképpen sem előnyös, illetve még hűtőborda alkalmazását is megköveteli. \cite{dcdc_1}\cite{dcdc_2}
+            Mivel nagy a különbség a bemeneti és kimeneti feszültségek között (12V-ról 5V-ra), ezért egy DC/DC konverter sokkal jobban megfelel, mint egy LDO (Low-DropOut regulator), hiszen egy LDO-nak a hatékonysága nagyon alacsony (12V-ról 5V-ra kb. 41\%) és a maradék energiát elfűti. Ez a megoldás semmiképpen sem előnyös, illetve még hűtőborda alkalmazását is megköveteli. \cite{dcdc_1}\cite{dcdc_2}
             %https://www.quora.com/Where-can-I-use-LDO-and-DC-DC-converters
             %https://electronics.stackexchange.com/questions/160218/how-does-dcdc-save-power-over-an-ldo
             
@@ -93,7 +93,7 @@
             A TPS562219A típusú IC mindkét konfigurációban (3,3V - 5V) előfordult. A két verzió között %(3,3V - 5V) 
             csak egy tekercs és egy ellenállás volt a különbség.
             
-            A TI Webench Designer által kínált kapcsolási rajzok komponensei nem mindig megfelelők, illetve beszerezhetők. Tovább bonyolította a helyzetet, hogy SMD komponenseket sohasem forrasztottam, tehát az alkatrészek mérete sem volt mindegy számomra. A korábbi tapasztalataim alapján úgy döntöttem hogy 1206-os (metrikus: 3216) SMD méretet fogok használni. Az egyik legnagyobb elektronikai kereskedőnél, a Mouser Electronics-nál, a megfelelő paraméterek figyelembevételével újraválasztottam az alkatrészeket. Miután néhány komponensnek megcsináltam az Eagle könyvtárát, elkészítettem a kapcsolási rajzokat a Webench Designer és a TPS562219A IC adatlapja alapján \cite{ds_tps56}. Mivel a két konfiguráció (3,3V - 5V) minimálisan különbözik egymástól ezért csak az egyiket ábrázoltam (\ref{fig:schematic_3v3}. ábra).
+            A TI Webench Designer által kínált kapcsolási rajzok komponensei nem mindig megfelelők, illetve beszerezhetők. Tovább bonyolította a helyzetet, hogy SMD alkatrészeket sohasem forrasztottam, tehát az alkatrészek mérete sem volt mindegy számomra. A korábbi tapasztalataim alapján úgy döntöttem hogy 1206-os (metrikus: 3216) SMD méretet fogok használni. Az egyik legnagyobb elektronikai kereskedőnél, a Mouser Electronics-nál, a megfelelő paraméterek figyelembevételével újraválasztottam az alkatrészeket. Miután néhány komponensnek megcsináltam az Eagle könyvtárát, elkészítettem a kapcsolási rajzokat a Webench Designer és a TPS562219A IC adatlapja alapján \cite{ds_tps56}. Mivel a két konfiguráció (3,3V - 5V) minimálisan különbözik egymástól ezért csak az egyiket ábrázoltam (\ref{fig:schematic_3v3}. ábra).
             
             \begin{figure}[h!]
                 \centering
@@ -142,7 +142,7 @@
             %az elejére kéne valami kis összefoglaló mondat arról hogy a különböző fázisú nyákokkal mi a cél (Betti) - ezt írta szakaly is xD - javitva
         
         \subsubsection{STMF103C8T6 mikrokontroller és perifériák}
-            A mikrokontrollert külső komponensekkel is el kell látni ahhoz, hogy megfelelően működjön. Az elsők és legfontosabbak a bufferkondenzátorok a mikrokontroller megfelelő lábain. Az alkalmazási útmutató (AN2586\cite{an2586}) leírja, hogyan kell a kondenzátorokat megfelelően bekötni (\ref{fig:decoupling_cap}. ábra): minél közelebb a megfelelő lábakhoz, és ha lehetséges akkor alkalmazzunk galvanizált furatokat a föld ($V_{SS}$) és a tápfeszültség ($V_{DD}$) rétegekre. Az adatlapban (\ref{fig:decoupling_cap}. ábra) megtalálható, hogy melyik lábra mekkora és milyen kondenzátort kell bekötni.
+            A mikrokontrollert külső komponensekkel is el kell látni ahhoz, hogy megfelelően működjön. Az elsők és legfontosabbak a bufferkondenzátorok a mikrokontroller megfelelő lábain. Az alkalmazási útmutató (AN2586\cite{an2586}) leírja, hogyan kell a kondenzátorokat megfelelően bekötni (\ref{fig:decoupling_cap}. ábra): minél közelebb a megfelelő lábakhoz, és ha lehetséges, akkor alkalmazzunk galvanizált furatokat a föld ($V_{SS}$) és a tápfeszültség ($V_{DD}$) rétegekre. Az adatlapban (\ref{fig:decoupling_cap}. ábra) megtalálható, hogy melyik lábra mekkora és milyen kondenzátort kell bekötni.
             
             \begin{figure}[h!]
                 \centering
@@ -169,7 +169,7 @@
             
             Többféleképpen is felprogramozható (UART-on keresztül bootloader segítségével, JTAG-en vagy pedig SWD-n) a mikrokontroller, viszont DEBUG-olni csak JTAG-en és SWD-n (Serial Wire Debug) lehet. A kettő közül az utóbbit választottam, mert rendelkezésemre állt egy USB-s SWD programozó. Ahhoz, hogy a mikrokontrollert SWD-n keresztül programozhassuk, ki kell vezetni a SWCLK (Serial Wire Clock), illetve SWDIO lábakat egy csatlakozóra. A kétirányú kommunikáció miatt (programozás, debuggolás), az SWDIO vezetéket egy 100[k$\Omega$]-os ellenállással ajánlott felhúzni a tápfeszültségre \cite{rm0008}. 
             
-            %//TODO boot pinek kimaradtak - sumakoljuk el?
+            %//TODO boot pinek kimaradtak - sumákoljuk el?
             Három különböző helyről képes a mikrokontroller bootolni. Az alapértelmezett fő flash memóriából való bootolást a boot lábak földre húzásával valósítottam meg.
             
             A maximális, 72MHz-es, órajellel való működéshez külső oszcillátor áramkörre is szükség van, anélkül csak 64MHz lenne elérhető. A referencia terv (\ref{fig:hse_ref_des}. ábra) alapján egy 8MHz-es kristály oszcillátort és két 20pF-os kerámiakondenzátort használtam a megvalósításhoz. 
@@ -201,7 +201,7 @@
             \end{figure}
             
             
-            A mikrokontrollerem EAGLE könyvtárát az internetről letöltöttem és beimportáltam a programba. A tervek alapján elkészítettem a kapcsolási rajzot (\ref{fig:schematic_v02}. ábra) pár extra visszajelző komponensel ellátva: UART RX, TX jelvezetékeire, a 12V-os és a DC/DC áramkörök kimeneti tápfeszültségeire kötöttem visszajelző LED-eket. 
+            A mikrokontrollerem EAGLE könyvtárát az internetről letöltöttem és beimportáltam a programba. A tervek alapján elkészítettem a kapcsolási rajzot (\ref{fig:schematic_v02}. ábra) pár extra visszajelző komponenssel ellátva: UART RX, TX jelvezetékeire, a 12V-os és a DC/DC áramkörök kimeneti tápfeszültségeire kötöttem visszajelző LED-eket. 
             
             \begin{figure}[h!]
                 \centering
@@ -213,7 +213,7 @@
             
             A kapcsolási rajz után az alkatrészek elhelyezése és huzalozása következett. Az EAGLE fejlesztői itt is nagy segítségemre voltak, és a 10 leghasznosabb tippet \cite{eagle_tips}
             % https://www.autodesk.com/products/eagle/blog/top-10-pcb-routing-tips-beginners/
-            összegyűjtötték a témában nem annyira jártasak számára.
+            összegyűjtötték a témában nem annyira jártasok számára.
             A NYÁK-on logikai szempontok alapján elhelyeztem az alkatrészeket. A tápfeszültség és egyéb visszajelző LED-eket, gombokat - csoportonként - egymás mellé és a reset gombot a többi gombtól elkülönített helyre raktam. A LED sor és a Wifi modul kommunikációs jelvezetékeit minél távolabbra helyeztem a zajforrásoktól, mint például a DC/DC áramköröktől és az oszcillátor áramkörtől. Az elrendezett komponenseket összehuzaloztam a tervezési irányelvek és a fejlesztői tippek alapján (\ref{fig:board_v02}. ábra). 
             
             \begin{figure}[h!]
@@ -225,9 +225,9 @@
             
         \subsubsection{Alkatrészek megrendelése és a NYÁK legyártatása}
             
-            Az alkatrészeimet az egyik legnagyobb internetes elektronikai viszonteladónál, a Mouser Electronics-nál, választottam ki. A terveket úgy hoztam létre, hogy 1206-os mértetű alkatrészeket használtam, mert ezt a méretet nagy biztonsággal képes leszek beforrasztani. A projekt nagy tanulsága viszont, hogy ebben a méretben egyátalán nem biztos, hogy minden értékben megtalálhatók az alkatrészek, és ha igen, akkor is jellemzően jóval drágábban mint más méretekben. További probléma volt, hogy a TI Workbench által javasolt alkatrészek a DC/DC átalakítóhoz, kifutott termék révén, már elfogytak vagy nem is forgalmazták őket. A megfelelő szempontokra figyelve kiválasztottam az új alkatrészeket, frissítettem a kapcsolási rajzot és a NYÁK tervet (a frissített verzió képei találhatók az előző alfejezetben). 
+            Az alkatrészeimet az egyik legnagyobb internetes elektronikai viszonteladónál, a Mouser Electronics-nál, választottam ki. A terveket úgy hoztam létre, hogy 1206-os méretű alkatrészeket használtam, mert ezt a méretet nagy biztonsággal képes leszek beforrasztani. A projekt nagy tanulsága viszont, hogy ebben a méretben egyáltalán nem biztos, hogy minden értékben megtalálhatók az alkatrészek, és ha igen, akkor is jellemzően jóval drágábban, mint más méretekben. További probléma volt, hogy a TI Workbench által javasolt alkatrészek a DC/DC átalakítóhoz, kifutott termék révén, már elfogytak vagy nem is forgalmazták őket. A megfelelő szempontokra figyelve kiválasztottam az új alkatrészeket, frissítettem a kapcsolási rajzot és a NYÁK tervet (a frissített verzió képei találhatók az előző alfejezetben). 
             
-            A sok NYÁK gyártó közül én a JLCPCB-t, egy prototípusgyártásra specializálódott céget, választottam. Az EAGLE-ben kigenerált gerber fáljokat (\ref{fig:gerber_v10}. ábra) kellett feltöltenem valamilyen tömörített állományként vagy zip vagy rar formátumban. Az alap beállításokat használva mindössze 2\$-ért és szállítási költségért két héten belül megkaptam.
+            A sok NYÁK gyártó közül én a JLCPCB-t, egy prototípusgyártásra specializálódott céget, választottam. Az EAGLE-ben kigenerált gerber fájlokat (\ref{fig:gerber_v10}. ábra) kellett feltöltenem valamilyen tömörített állományként vagy zip vagy rar formátumban. Az alapbeállításokat használva mindössze 2\$-ért és szállítási költségért két héten belül megkaptam.
             
             \begin{figure}[h!]
                 \centering
@@ -238,9 +238,9 @@
             \end{figure}
 
     \subsection{Az elkészült eszköz beforrasztása, tesztelése}
-        Az eszközt fokozatosan készítettem el, részegységenként haladva. Először beforrasztottam, majd ellenőriztem a csatlakozásokat, rövidrezárást multiméterrel (diódateszter funkció). Ha nem sikerült valamit rendesen beforrasztani, akkor megpróbáltam még egyszer, és utána újra ellenőriztem a dolgok helyességét. Amennyiben mindent rendben találtam, akkor rákötöttem az eszközöm a labortápra (megfelelő feszültséget, és áramkorlátozást beállítva) és oszcilloszkóppal mértem a megfelelő működést. Szépen haladtam sorban a 3,3V-os, az 5V-os DC/DC, a mikrokontroller és a többi részen. Többnyire első próbálkozásra sikerültek a forrasztások, a STM32F103-as IC-nél másodikra.
+        Az eszközt fokozatosan készítettem el, részegységenként haladva. Először beforrasztottam, majd ellenőriztem a csatlakozásokat, rövidre zárást multiméterrel (diódateszter funkció). Ha nem sikerült valamit rendesen beforrasztani, akkor megpróbáltam még egyszer, és utána újra ellenőriztem a dolgok helyességét. Amennyiben mindent rendben találtam, akkor rákötöttem az eszközöm a labortápra (megfelelő feszültséget, és áramkorlátozást beállítva) és oszcilloszkóppal mértem a megfelelő működést. Szépen haladtam sorban a 3,3V-os, az 5V-os DC/DC, a mikrokontroller és a többi részen. Többnyire első próbálkozásra sikerültek a forrasztások, a STM32F103-as IC-nél másodikra.
         
-        Az elkészült első prototípus után jöhetett a szoftveres tesztelés. Az első és legfontosabb az volt, hogy programozható legyen a mikrokontroller. 10 alkalomból 7-szer sikerült is felprogramozni az IC-t, ami nem éppen az elvárt működés volt. További tesztek során a Wifi modullal való kommunikációt is sikeresen leteszteltem. Az egyik bekapcsolásnál viszont váratlanul kisült az egyik táp IC. Huzamosabb kísérletezés után, megismétlődött az előbbi eset és elkezdtem keresni a probléma okát. Időbe telt, mire kiderült, hogy a táp IC EAGLE könyvtárának készítése során felcseréltem két lábat. Viszont a hiba kijavítása után sem szűnt meg az eredeti probléma. A végső megoldást az úgynevezett \textit{Soft Start} kondenzátor (C$_{SS}$) kicserélése jelentette. Ez a kondenzátor felelős azért, hogy milyen gyorsan kapcsoljon be, és állítsa be a kimeneti feszültséget a DC/DC áramkör\cite{ds_tps56}. A TI Workbench által javasolt 8,2nF értéket 100nF-ra cseréltem, amivel a készülék azóta is jól működik. Ezzel az értékkel 20ms felfutási ideje lett a tápfeszültségeknek.
+        Az elkészült első prototípus után jöhetett a szoftveres tesztelés. Az első és legfontosabb az volt, hogy programozható legyen a mikrokontroller. 10 alkalomból 7-szer sikerült is felprogramozni az IC-t, ami nem éppen az elvárt működés volt. További tesztek során a Wifi modullal való kommunikációt is sikeresen leteszteltem. Az egyik bekapcsolásnál viszont váratlanul kisült az egyik táp IC. Huzamosabb kísérletezés után, megismétlődött az előbbi eset és elkezdtem keresni a probléma okát. Időbe telt, mire kiderült, hogy a táp IC EAGLE könyvtárának készítése során felcseréltem két lábat. Viszont a hiba kijavítása után sem szűnt meg az eredeti probléma. A végső megoldást, az úgynevezett \textit{Soft Start} kondenzátor (C$_{SS}$) kicserélése jelentette. Ez a kondenzátor felelős azért, hogy milyen gyorsan kapcsoljon be, és állítsa be a kimeneti feszültséget a DC/DC áramkör\cite{ds_tps56}. A TI Workbench által javasolt 8,2nF értéket 100nF-ra cseréltem, amivel a készülék azóta is jól működik. Ezzel az értékkel 20ms felfutási ideje lett a tápfeszültségeknek.
         
         \begin{figure}[h!]
             \centering
@@ -255,7 +255,7 @@
     \subsection{Védődoboz tervezése, 3D-nyomtatással prototípus gyártása}
     
         \subsubsection{Védődoboz 3D modellezése}
-            Az utóbbi időben egyre gyosabban fejlődik az EAGLE. Megjelentek a 3D-s alkatrészkönyvtárak, és az Autodesk Fusion 360 (továbbiakban Fusion) nevű programba való exportálás, feltöltés lehetősége is. A Fusion egy felhő alapú program CAD, CAM és CAE eszközökkel. A felhő alapú szolgáltatás lényege, hogyha a NYÁK tervet az EAGLE-ben frissítem, akkor az Autodesk szerverein is frissül, ezáltal a Fusion-be érzékelve a változtatásokat.
+            Az utóbbi időben egyre gyorsabban fejlődik az EAGLE. Megjelentek a 3D-s alkatrészkönyvtárak, és az Autodesk Fusion 360 (továbbiakban Fusion) nevű programba való exportálás, feltöltés lehetősége is. A Fusion egy felhő alapú program CAD, CAM és CAE eszközökkel. A felhő alapú szolgáltatás lényege, hogyha a NYÁK tervet az EAGLE-ben frissítem, akkor az Autodesk szerverein is frissül, ezáltal a Fusion-be érzékelve a változtatásokat.
             A NYÁK-ot és a grabcad.com oldalról letöltött Wifi modult beimportáltam és összeillesztettem (\ref{fig:fusion_pcb_esp8266}. ábra).
             
             \begin{figure}[h!]
@@ -322,6 +322,6 @@
                     \label{fig:printed_cases_2}
             \end{figure}
     
-%otthoni megvalositas, aramforraskereses, bekotes, zavarszüres ferritgyuruvel, teraszrol kepek\\
+%otthoni megvalósítás, aramforraskereses, bekotes, zavarszüres ferritgyuruvel, teraszrol kepek\\
 
 \end{document}
